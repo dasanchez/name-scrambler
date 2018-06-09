@@ -17,14 +17,23 @@ def main(args):
     if len(args) < 2:
         print("Not enough arguments.\nUsage:\npython name-scrambler letters [filename]")
 
-    # load source soup
+    # read source soup
     letters = args[1]
     print("Source soup has " + str(len(letters)) + " characters")
 
+    # set dictionary file name 
     wordFileName = "words/full-list.txt"
     if len(args) > 2:
         wordFileName = args[2]
 
+    # set combination slots
+    wordCount = 3
+    if len(args) > 3:
+        wordCount = int(args[3])
+        if wordCount < 2 or wordCount > 4:
+            wordCount = 3
+
+    # populate potential words
     wordsFound = []
     findWords(wordFileName, wordsFound, letters)
     print("Found " + str(len(wordsFound)) + " words in the soup.")
@@ -51,70 +60,69 @@ def main(args):
                     if currentCombo not in combo1 and currentCombo not in fullMatch:
                         if isfullMatch(currentCombo, letters):
                             fullMatch.append(currentCombo)
-                            print(str(currentCombo))
                         elif hasPotentialAdditions(currentCombo, testLetters, wordsFound):
                             combo1.append(currentCombo)
 
     print("Two-item list has " + str(len(combo1)) + " entries")
     print("There are " + str(len(fullMatch)) + " full matches")
 
-    combo2 = []
-    for entry in combo1:
-        # iterate through each combo1 entry as the starter
-        testLetters = letters[:]
-        for word in entry:
+    if wordCount > 2:
+        combo2 = []
+        for entry in combo1:
+            # iterate through each combo1 entry as the starter
+            testLetters = letters[:]
+            for word in entry:
             
-            # prepare temporary test soup
-            for letter in word:
-                testLetters = testLetters.replace(letter,"",1)
+                # prepare temporary test soup
+                for letter in word:
+                    testLetters = testLetters.replace(letter,"",1)
         
-        # iterate through the remaining words
-        for testWord in wordsFound:
-            currentCombo = set(entry)
-            if testWord not in currentCombo:
-                if wordIsPresent(testWord, testLetters):
-                    currentCombo.add(testWord)
-                    # Two scenarios: 
-                    # 1. we have a full match (number of letters)
-                    # 2. we can fit more words
-                    if currentCombo not in combo2 and currentCombo not in fullMatch:
-                        if isfullMatch(currentCombo, letters):
-                            fullMatch.append(currentCombo)
-                            print(str(currentCombo))
-                        elif hasPotentialAdditions(currentCombo, testLetters, wordsFound):
-                            combo2.append(currentCombo)
+            # iterate through the remaining words
+            for testWord in wordsFound:
+                currentCombo = set(entry)
+                if testWord not in currentCombo:
+                    if wordIsPresent(testWord, testLetters):
+                        currentCombo.add(testWord)
+                        # Two scenarios:
+                        # 1. we have a full match (number of letters)
+                        # 2. we can fit more words
+                        if currentCombo not in combo2 and currentCombo not in fullMatch:
+                            if isfullMatch(currentCombo, letters):
+                                fullMatch.append(currentCombo)
+                            elif hasPotentialAdditions(currentCombo, testLetters, wordsFound):
+                                combo2.append(currentCombo)
 
-    print("Three-item list has " + str(len(combo2)) + " entries")
-    print("There are " + str(len(fullMatch)) + " full matches")
+        print("Three-item list has " + str(len(combo2)) + " entries")
+        print("There are " + str(len(fullMatch)) + " full matches")
 
-    combo3 = []
-    for entry in combo2:
-        # iterate through each combo1 entry as the starter
-        testLetters = letters[:]
-        for word in entry:
+    if wordCount > 3:
+        combo3 = []
+        for entry in combo2:
+            # iterate through each combo1 entry as the starter
+            testLetters = letters[:]
+            for word in entry:
             
-            # prepare temporary test soup
-            for letter in word:
-                testLetters = testLetters.replace(letter,"",1)
+                # prepare temporary test soup
+                for letter in word:
+                    testLetters = testLetters.replace(letter,"",1)
         
-        # iterate through the remaining words
-        for testWord in wordsFound:
-            currentCombo = set(entry)
-            if testWord not in currentCombo:
-                if wordIsPresent(testWord, testLetters):
-                    currentCombo.add(testWord)
-                    # Two scenarios: 
-                    # 1. we have a full match (number of letters)
-                    # 2. we can fit more words
-                    if currentCombo not in combo3 and currentCombo not in fullMatch:
-                        if isfullMatch(currentCombo, letters):
-                            fullMatch.append(currentCombo)
-                            print(str(currentCombo))
-                        elif hasPotentialAdditions(currentCombo, testLetters, wordsFound):
-                            combo3.append(currentCombo)
+            # iterate through the remaining words
+            for testWord in wordsFound:
+                currentCombo = set(entry)
+                if testWord not in currentCombo:
+                    if wordIsPresent(testWord, testLetters):
+                        currentCombo.add(testWord)
+                        # Two scenarios: 
+                        # 1. we have a full match (number of letters)
+                        # 2. we can fit more words
+                        if currentCombo not in combo3 and currentCombo not in fullMatch:
+                            if isfullMatch(currentCombo, letters):
+                                fullMatch.append(currentCombo)
+                            elif hasPotentialAdditions(currentCombo, testLetters, wordsFound):
+                                combo3.append(currentCombo)
 
-    print("Four-item list has " + str(len(combo3)) + " entries")
-    print("There are " + str(len(fullMatch)) + " full matches")
+        print("Four-item list has " + str(len(combo3)) + " entries")
+        print("There are " + str(len(fullMatch)) + " full matches")
 
     outFileName = "words/" + letters + "-out.txt"
 
