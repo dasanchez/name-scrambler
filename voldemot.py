@@ -10,7 +10,10 @@ python voldemot letters [filename] [slots]
 
 For example,
 python voldemot albertcamus words/voldemot-dict.txt 2
-will yield "abnormal beets" in the fifth line of the results
+
+will yield a text file called albert-camus.iter with 1125
+combinations, "a clubmaster" and "cabal muster" to
+"macabre slut" and "tsamba ulcer".
 """
 
 import itertools
