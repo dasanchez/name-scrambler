@@ -6,7 +6,11 @@ Using English word list from SCOWL.
 The results are output to a text file: [input]-iter.txt
 
 Usage:
-python name-scrambler letters [filename] [slots]
+python voldemot letters [filename] [slots]
+
+For example,
+python voldemot albertcamus words/voldemot-dict.txt 2
+will yield "abnormal beets" in the fifth line of the results
 """
 
 import itertools
