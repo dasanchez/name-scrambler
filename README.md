@@ -1,12 +1,12 @@
 # voldemot
 
-Takes a set of letters (such as a name) and assembles combinations of words based on it.  
+Voldemot takes a set of letters (such as a name) and assembles combinations of words based on it. The results are output to a text file: [input]-iter.txt
+
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
-The results are output to a text file: [input]-iter.txt
 
 ## Usage:
 
-`python name-scrambler input [filename] [slots]`
+`python voldemot input [filename] [slots]`
 
 ## Example
 
