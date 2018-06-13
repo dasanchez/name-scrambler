@@ -41,8 +41,7 @@ def main(args):
         wordCount = int(args[3])
 
     # find words present in the soup
-    wordsFound = []
-    findWords(wordFileName, wordsFound, letters)
+    wordsFound = findWords(wordFileName, letters)
     print("Found " + str(len(wordsFound)) + " words in the soup.")
 
     # generate all possible and put them in the fullMatch list
@@ -59,6 +58,12 @@ def main(args):
             myStr = myStr + word + " "
         outFile.write(myStr.rstrip(" ") + "\n")
     outFile.close()
+
+def voldemot(letters, wordsRequested):
+    """ simplified function call that always goes to the standard dictionary """
+    wordsFound = findWords("words/voldemot-dict.txt", letters)
+    fullMatch = fillBucket(sorted(letters), wordsFound, wordsRequested)
+    return fullMatch
 
 def fillBucket(sortedSoup, wordsFound, wordCount):
     """ populate fullMatch list """
@@ -81,8 +86,9 @@ def fillBucket(sortedSoup, wordsFound, wordCount):
 
     return fullMatch
 
-def findWords(wordsFileName, wordsFound, letters):
+def findWords(wordsFileName, letters):
     """ fills wordsFound list with words found in the letters string """
+    wordsFound = []
     soupFileName = "words/" + letters + ".txt"
 
     if os.path.isfile(soupFileName):
@@ -105,6 +111,8 @@ def findWords(wordsFileName, wordsFound, letters):
                 wordsFound.append(word)
                 soupFile.write(word + "\n")
         soupFile.close()
+    
+    return wordsFound
 
 def loadDictionary(filename):
     """ reads words line by line from a file and returns them in a list """
