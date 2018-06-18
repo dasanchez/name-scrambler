@@ -22,6 +22,9 @@ import os.path
 
 def main(args):
     """ main program """
+    for i in enumerate(args):
+        print(i)
+
     if len(args) < 2:
         print("Not enough arguments.\nUsage:\npython name-scrambler letters [filename]")
 
@@ -32,12 +35,12 @@ def main(args):
 
     # generate dictionary file name
     wordFileName = "words/voldemot-dict.txt"
-    if len(args) > 2:
+    if len(args) > 3:
         wordFileName = args[2]
 
     # set number of slots
     wordCount = 3
-    if len(args) > 3:
+    if len(args) > 4:
         wordCount = int(args[3])
 
     # find words present in the soup
