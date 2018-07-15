@@ -40,7 +40,7 @@ def main(args):
 
     # set number of slots
     wordCount = 3
-    if len(args) > 4:
+    if len(args) > 3:
         wordCount = int(args[3])
 
     # find words present in the soup
@@ -52,7 +52,7 @@ def main(args):
 
     print("There are " + str(len(fullMatch)) + " full matches")
 
-    outFileName = "words/" + letters + "-iter.txt"
+    outFileName = "words/" + letters + "-iter-" + str(wordCount) + ".txt"
 
     outFile = open(outFileName, "w")
     for entry in fullMatch:
@@ -74,18 +74,19 @@ def fillBucket(sortedSoup, wordsFound, wordCount):
     letterCount = len(sortedSoup)
 
     # Check for all possible combinations against the soup
-    for i in range(1, wordCount+1):
-        print("Checking " + str(i) + "-word combinations...")
-        for combo in itertools.combinations(wordsFound, i):
+    # for i in range(1, wordCount+1):
+        # print("Checking " + str(i) + "-word combinations...")
+        # for combo in itertools.combinations(wordsFound, i):
+    print("Checking " + str(wordCount) + '-word combinations...')
+    for combo in itertools.combinations(wordsFound, wordCount):
+        letterList = []
+        for word in combo:
+            letterList.extend(word)
 
-            letterList = []
-            for word in combo:
-                letterList.extend(word)
-
-            if len(letterList) == letterCount:
-                if sortedSoup == sorted(letterList):
-                    if combo not in fullMatch:
-                        fullMatch.append(combo)
+        if len(letterList) == letterCount:
+            if sortedSoup == sorted(letterList):
+                if combo not in fullMatch:
+                    fullMatch.append(combo)
 
     return fullMatch
 
