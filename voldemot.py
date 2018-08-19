@@ -28,8 +28,8 @@ def main(args):
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
 
-    for i in enumerate(args):
-        print(i)
+    # for i in enumerate(args):
+        # print(i)
 
     if len(args) < 2:
         print("Not enough arguments.\nUsage:\npython name-scrambler letters [filename]")
@@ -37,7 +37,7 @@ def main(args):
     # load source soup
     letters = args[1]
     sortedLetters = sorted(list(letters))
-    print("Sorted letters: " + str(sortedLetters))
+    # print("Sorted letters: " + str(sortedLetters))
     print("Source soup (" + letters + ") has " + str(len(letters)) + " characters")
 
     # generate dictionary file name
