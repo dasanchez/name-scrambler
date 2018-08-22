@@ -19,7 +19,8 @@ combinations, "a clubmaster" and "cabal muster" to
 import itertools
 import sys
 import os.path
-from voldemot_utils import *
+import re
+from voldemot_utils import loadDictionary, splitOptions, genSetList
 import wordDB
 
 def main(args):
@@ -36,6 +37,10 @@ def main(args):
 
     # load source soup
     letters = args[1]
+
+    # remove spaces and non-alphabetical characters
+    letters = re.sub(r"\W?\d?", "", letters).lower()
+
     sortedLetters = sorted(list(letters))
     # print("Sorted letters: " + str(sortedLetters))
     print("Source soup (" + letters + ") has " + str(len(letters)) + " characters")
@@ -74,10 +79,14 @@ def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
+    
+    # remove spaces and non-alphabetical characters
+    letters = re.sub(r"\W?\d?", "", letters).lower()
+    letters = letters[:16]
 
     wordsFound = findWords("words/voldemot-dict.txt", letters,worddb)
     fullMatch = fillBucket(sorted(letters), wordsFound, wordsRequested, worddb)
-    return fullMatch
+    return letters, fullMatch
 
 def fillBucket(sortedSoup, wordsFound, wordCount, worddb):
     """ populate fullMatch list """
