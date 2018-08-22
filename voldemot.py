@@ -18,7 +18,6 @@ combinations, "a clubmaster" and "cabal muster" to
 
 import itertools
 import sys
-import os.path
 import re
 from voldemot_utils import loadDictionary, splitOptions, genSetList
 import wordDB
@@ -64,16 +63,11 @@ def main(args):
 
     print("There are " + str(len(fullMatch)) + " full matches")
 
-    # outFileName = "words/" + letters + "-iter-" + str(wordCount) + ".txt"
-
-    # outFile = open(outFileName, "w")
     for entry in fullMatch:
         myStr = ""
         for word in entry:
             myStr = myStr + word + " "
         print(myStr)
-        # outFile.write(myStr.rstrip(" ") + "\n")
-    # outFile.close()
 
 def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
@@ -98,20 +92,29 @@ def fillBucket(sortedSoup, wordsFound, wordCount, worddb):
     lenCombos = splitOptions(letterCount, wordCount)
     print(lenCombos)
     setList = genSetList(lenCombos, worddb)
-    if (len(setList)):
+
+    if (setList):
         print("setList length: " + str(len(setList)))
         if (len(setList) == 1):
             print(setList[0])
 
     for entry in setList:
-        for combo in itertools.product(*entry):
-            letterList = sorted([letter for word in combo for letter in word])
-
-            if sortedSoup == letterList:
-                if combo not in fullMatch:
-                    fullMatch.append(combo)
+        fullMatch.extend(processSet(sortedSoup, entry, fullMatch))
 
     return fullMatch
+
+def processSet(sortedSoup, wordSet, fullMatch):
+    """
+    Compares a set of words to the sorted letters and returns all matches.
+    """
+    setMatches = []
+    for combo in itertools.product(*wordSet):
+        letterList = sorted([letter for word in combo for letter in word])
+
+        if sortedSoup == letterList:
+            if combo not in fullMatch:
+                setMatches.append(combo)
+    return setMatches
 
 def findWords(wordsFileName, letters, worddb):
     """
@@ -119,24 +122,16 @@ def findWords(wordsFileName, letters, worddb):
     wordfound is a dictionary with a word as a key and the length as a value
     """
     wordsFound = []
-    # soupFileName = "words/" + letters + ".txt"
-
-    # Load dictionary and save to file
+    # Load dictionary
     wordList = loadDictionary(wordsFileName)
-    # soupFile = open(soupFileName, "w")
-    # print("Saving to file " + soupFileName + "...")
 
     # Check if a word can be assembled from the letters available.
     # If so, add it to the wordsFound list.
     for word in wordList:
         if wordIsPresent(word, letters):
             wordsFound.append(word)
-            # query = "INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")"
-            # print(query)
             worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
             worddb.commit()
-            # soupFile.write(word + "\n")
-        # soupFile.close()
 
     return wordsFound
 
