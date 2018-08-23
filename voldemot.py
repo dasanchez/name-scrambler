@@ -19,11 +19,14 @@ combinations, "a clubmaster" and "cabal muster" to
 import itertools
 import sys
 import re
+import time
+from multiprocessing import Process, Queue
 from voldemot_utils import loadDictionary, splitOptions, genSetList
 import wordDB
 
 def main(args):
     """ main program """
+    start = time.time()
 
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
@@ -59,7 +62,7 @@ def main(args):
     print("Found " + str(len(wordsFound)) + " words in the soup.")
 
     # generate all possible and put them in the fullMatch list
-    fullMatch = fillBucket(sortedLetters, wordsFound, wordCount, worddb)
+    fullMatch = fillBucket(sortedLetters, wordCount, worddb)
 
     print("There are " + str(len(fullMatch)) + " full matches")
 
@@ -67,25 +70,30 @@ def main(args):
         myStr = ""
         for word in entry:
             myStr = myStr + word + " "
-        print(myStr)
+        # print(myStr)
+
+    end = time.time()
+    print(str(end-start) + " seconds elapsed")
 
 def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
-    
+
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
     letters = letters[:16]
 
-    wordsFound = findWords("words/voldemot-dict.txt", letters,worddb)
-    fullMatch = fillBucket(sorted(letters), wordsFound, wordsRequested, worddb)
+    findWords("words/voldemot-dict.txt", letters, worddb)
+    fullMatch = fillBucket(sorted(letters), wordsRequested, worddb)
     return letters, fullMatch
 
-def fillBucket(sortedSoup, wordsFound, wordCount, worddb):
+def fillBucket(sortedSoup, wordCount, worddb):
     """ populate fullMatch list """
     fullMatch = []
     letterCount = len(sortedSoup)
+
+    q = Queue()
 
     # Check for all possible combinations against the soup
     print("Checking " + str(wordCount) + '-word combinations...')
@@ -93,17 +101,28 @@ def fillBucket(sortedSoup, wordsFound, wordCount, worddb):
     print(lenCombos)
     setList = genSetList(lenCombos, worddb)
 
-    if (setList):
-        print("setList length: " + str(len(setList)))
-        if (len(setList) == 1):
+    setCount = len(setList)
+
+    if setList:
+        print("setList length: " + str(setCount))
+        if setCount == 1:
             print(setList[0])
 
     for entry in setList:
-        fullMatch.extend(processSet(sortedSoup, entry, fullMatch))
+        p = Process(target=processSet, args=(sortedSoup, entry, fullMatch, q))
+        p.start()
+
+    progress = 1
+
+    for entry in setList:
+        newSet = q.get()
+        print("New set: " + str(int(progress*(100/setCount))) + "%")
+        fullMatch.extend(newSet)
+        progress += 1
 
     return fullMatch
 
-def processSet(sortedSoup, wordSet, fullMatch):
+def processSet(sortedSoup, wordSet, fullMatch, q):
     """
     Compares a set of words to the sorted letters and returns all matches.
     """
@@ -114,7 +133,9 @@ def processSet(sortedSoup, wordSet, fullMatch):
         if sortedSoup == letterList:
             if combo not in fullMatch:
                 setMatches.append(combo)
-    return setMatches
+
+    q.put(setMatches)
+    q.close()
 
 def findWords(wordsFileName, letters, worddb):
     """
