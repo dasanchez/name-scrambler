@@ -73,7 +73,7 @@ def main(args):
         # print(myStr)
 
     end = time.time()
-    print(str(end-start) + " seconds elapsed")
+    print(str(int(end-start)) + " seconds elapsed")
 
 def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
@@ -90,17 +90,14 @@ def voldemot(letters, wordsRequested):
 
 def fillBucket(sortedSoup, wordCount, worddb):
     """ populate fullMatch list """
+    CHUNKSIZE = 10
     fullMatch = []
-    letterCount = len(sortedSoup)
-
-    q = Queue()
 
     # Check for all possible combinations against the soup
     print("Checking " + str(wordCount) + '-word combinations...')
-    lenCombos = splitOptions(letterCount, wordCount)
+    lenCombos = splitOptions(len(sortedSoup), wordCount)
     print(lenCombos)
     setList = genSetList(lenCombos, worddb)
-
     setCount = len(setList)
 
     if setList:
@@ -108,21 +105,43 @@ def fillBucket(sortedSoup, wordCount, worddb):
         if setCount == 1:
             print(setList[0])
 
-    for entry in setList:
-        p = Process(target=processSet, args=(sortedSoup, entry, fullMatch, q))
-        p.start()
+    if setCount < CHUNKSIZE:
+        CHUNKSIZE = setCount
 
     progress = 1
+    setCounter = 0
+    chunks = setCount//CHUNKSIZE
 
-    for entry in setList:
-        newSet = q.get()
-        print("New set: " + str(int(progress*(100/setCount))) + "%")
-        fullMatch.extend(newSet)
-        progress += 1
+    # Check for all possible combinations against the soup
+    print("Chunk size: " + str(CHUNKSIZE))
+
+    q = Queue()
+
+    if chunks:
+        for entry in setList[setCounter:setCounter+CHUNKSIZE]:
+            p = Process(target=processSet, args=(sortedSoup, entry, q))
+            p.start()
+
+        setCounter += CHUNKSIZE
+
+        for _ in range(setCount):
+            if setCounter < setCount:
+                p = Process(target=processSet, args=(sortedSoup, setList[setCounter], q))
+                p.start()
+
+            newSet = q.get()
+
+            print("New set: " + str(int(progress*(100/setCount))) + "%")
+            if newSet:
+                print(newSet[0])
+                fullMatch.extend(newSet)
+
+            progress += 1
+            setCounter += 1
 
     return fullMatch
 
-def processSet(sortedSoup, wordSet, fullMatch, q):
+def processSet(sortedSoup, wordSet, q):
     """
     Compares a set of words to the sorted letters and returns all matches.
     """
@@ -131,8 +150,8 @@ def processSet(sortedSoup, wordSet, fullMatch, q):
         letterList = sorted([letter for word in combo for letter in word])
 
         if sortedSoup == letterList:
-            if combo not in fullMatch:
-                setMatches.append(combo)
+            # if combo not in fullMatch:
+            setMatches.append(combo)
 
     q.put(setMatches)
     q.close()
