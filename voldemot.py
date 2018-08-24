@@ -19,11 +19,14 @@ combinations, "a clubmaster" and "cabal muster" to
 import itertools
 import sys
 import re
+import time
+from multiprocessing import Process, Queue
 from voldemot_utils import loadDictionary, splitOptions, genSetList
 import wordDB
 
 def main(args):
     """ main program """
+    start = time.time()
 
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
@@ -59,7 +62,7 @@ def main(args):
     print("Found " + str(len(wordsFound)) + " words in the soup.")
 
     # generate all possible and put them in the fullMatch list
-    fullMatch = fillBucket(sortedLetters, wordsFound, wordCount, worddb)
+    fullMatch = fillBucket(sortedLetters, wordCount, worddb)
 
     print("There are " + str(len(fullMatch)) + " full matches")
 
@@ -67,43 +70,78 @@ def main(args):
         myStr = ""
         for word in entry:
             myStr = myStr + word + " "
-        print(myStr)
+        # print(myStr)
+
+    end = time.time()
+    print(str(int(end-start)) + " seconds elapsed")
 
 def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
     worddb = wordDB.wordDB()
     worddb.query("CREATE TABLE words(word text, length int)")
-    
+
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
     letters = letters[:16]
 
-    wordsFound = findWords("words/voldemot-dict.txt", letters,worddb)
-    fullMatch = fillBucket(sorted(letters), wordsFound, wordsRequested, worddb)
+    findWords("words/voldemot-dict.txt", letters, worddb)
+    fullMatch = fillBucket(sorted(letters), wordsRequested, worddb)
     return letters, fullMatch
 
-def fillBucket(sortedSoup, wordsFound, wordCount, worddb):
+def fillBucket(sortedSoup, wordCount, worddb):
     """ populate fullMatch list """
+    CHUNKSIZE = 10
     fullMatch = []
-    letterCount = len(sortedSoup)
 
     # Check for all possible combinations against the soup
     print("Checking " + str(wordCount) + '-word combinations...')
-    lenCombos = splitOptions(letterCount, wordCount)
+    lenCombos = splitOptions(len(sortedSoup), wordCount)
     print(lenCombos)
     setList = genSetList(lenCombos, worddb)
+    setCount = len(setList)
 
-    if (setList):
-        print("setList length: " + str(len(setList)))
-        if (len(setList) == 1):
+    if setList:
+        print("setList length: " + str(setCount))
+        if setCount == 1:
             print(setList[0])
 
-    for entry in setList:
-        fullMatch.extend(processSet(sortedSoup, entry, fullMatch))
+    if setCount < CHUNKSIZE:
+        CHUNKSIZE = setCount
+
+    progress = 1
+    setCounter = 0
+    chunks = setCount//CHUNKSIZE
+
+    # Check for all possible combinations against the soup
+    print("Chunk size: " + str(CHUNKSIZE))
+
+    q = Queue()
+
+    if chunks:
+        for entry in setList[setCounter:setCounter+CHUNKSIZE]:
+            p = Process(target=processSet, args=(sortedSoup, entry, q))
+            p.start()
+
+        setCounter += CHUNKSIZE
+
+        for _ in range(setCount):
+            if setCounter < setCount:
+                p = Process(target=processSet, args=(sortedSoup, setList[setCounter], q))
+                p.start()
+
+            newSet = q.get()
+
+            print("New set: " + str(int(progress*(100/setCount))) + "%")
+            if newSet:
+                print(newSet[0])
+                fullMatch.extend(newSet)
+
+            progress += 1
+            setCounter += 1
 
     return fullMatch
 
-def processSet(sortedSoup, wordSet, fullMatch):
+def processSet(sortedSoup, wordSet, q):
     """
     Compares a set of words to the sorted letters and returns all matches.
     """
@@ -112,9 +150,11 @@ def processSet(sortedSoup, wordSet, fullMatch):
         letterList = sorted([letter for word in combo for letter in word])
 
         if sortedSoup == letterList:
-            if combo not in fullMatch:
-                setMatches.append(combo)
-    return setMatches
+            # if combo not in fullMatch:
+            setMatches.append(combo)
+
+    q.put(setMatches)
+    q.close()
 
 def findWords(wordsFileName, letters, worddb):
     """
