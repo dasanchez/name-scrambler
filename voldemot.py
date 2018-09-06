@@ -16,12 +16,13 @@ combinations, "a clubmaster" and "cabal muster" to
 "macabre slut" and "tsamba ulcer".
 """
 
-import itertools
+# import itertools
 import sys
 import re
 import time
+import asyncio
 # from multiprocessing import Process, Queue
-from voldemot_utils import loadDictionary, splitOptions, genSetList
+import voldemot_utils as vol
 import wordDB
 
 def main(args):
@@ -58,13 +59,15 @@ def main(args):
         wordCount = int(args[3])
 
     # find words present in the soup
-    wordsFound = findWords(wordFileName, letters, worddb)
-    print("Found " + str(len(wordsFound)) + " words in the soup.")
+    wordsFound = vol.findWords(wordFileName, letters, worddb)
+    print("Found " + str(len(wordsFound)) + " words.")
 
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(fillBucket(sortedLetters, wordCount, worddb))
+    loop.close()
     # generate all possible and put them in the fullMatch list
-    fullMatch = fillBucket(sortedLetters, wordCount, worddb)
-
-    print("There are " + str(len(fullMatch)) + " full matches")
+    # fullMatch = fillBucket(sortedLetters, wordCount, worddb)
+    # print("There are " + str(len(fullMatch)) + " full matches")
 
     # for entry in fullMatch:
     #     myStr = ""
@@ -84,20 +87,20 @@ def voldemot(letters, wordsRequested):
     letters = re.sub(r"\W?\d?", "", letters).lower()
     letters = letters[:16]
 
-    findWords("words/voldemot-dict.txt", letters, worddb)
+    vol.findWords("words/voldemot-dict.txt", letters, worddb)
     fullMatch = fillBucket(sorted(letters), wordsRequested, worddb)
     return letters, fullMatch
 
-def fillBucket(sortedSoup, wordCount, worddb):
+async def fillBucket(sortedSoup, wordCount, worddb):
     """ populate fullMatch list """
     # CHUNKSIZE = 4
     fullMatch = []
 
     # Check for all possible combinations against the soup
     print("Checking " + str(wordCount) + '-word combinations...')
-    lenCombos = splitOptions(len(sortedSoup), wordCount)
+    lenCombos = vol.splitOptions(len(sortedSoup), wordCount)
     print(lenCombos)
-    setList = genSetList(lenCombos, worddb)
+    setList = vol.genSetList(lenCombos, worddb)
     setCount = len(setList)
 
     if setList:
@@ -106,63 +109,28 @@ def fillBucket(sortedSoup, wordCount, worddb):
             print(setList[0])
 
     progress = 1
+    id = 1
 
+    tasks = []
     for entry in setList:
-        setCombos = []
-        for combo in processSet(sortedSoup, entry):
-            if combo not in setCombos:
-                setCombos.append(combo)
-        fullMatch.extend(setCombos)
-        print(f"{lenCombos[progress-1]} | {len(setCombos):4} | " +
-              f"{int(progress*(100/setCount)):3}%")
-        for combo in setCombos:
-            print(combo)
-        progress += 1
+        tasks.append(asyncio.ensure_future(vol.processSet(id, sortedSoup, entry)))
+        id += 1
+        # setCombos = []
+        # for combo in vol.processSet(sortedSoup, entry):
+            # if combo not in setCombos:
+                # setCombos.append(combo)
+        # fullMatch.extend(setCombos)
+        # print(f"{lenCombos[progress-1]} | {len(setCombos):4} | " +
+            #   f"{int(progress*(100/setCount)):3}%")
+        # for combo in setCombos:
+            # print(combo)
+        # progress += 1
 
-    # q = Queue()
+    await asyncio.gather(*tasks)
 
     return fullMatch
 
 # def processSet(sortedSoup, wordSet, q):
-def processSet(sortedSoup, wordSet):
-    """
-    Compares a set of words to the sorted letters and returns all matches.
-    """
-    for combo in itertools.product(*wordSet):
-        letterList = sorted([letter for word in combo for letter in word])
-        if sortedSoup == letterList:
-            yield sorted(combo)
-
-def findWords(wordsFileName, letters, worddb):
-    """
-    Fills wordsFound list with words found in the letters string.
-    wordfound is a dictionary with a word as a key and the length as a value
-    """
-    wordsFound = []
-    # Load dictionary
-    wordList = loadDictionary(wordsFileName)
-
-    # Check if a word can be assembled from the letters available.
-    # If so, add it to the wordsFound list.
-    for word in wordList:
-        if wordIsPresent(word, letters):
-            wordsFound.append(word)
-            worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
-            worddb.commit()
-
-    return wordsFound
-
-def wordIsPresent(word, soup):
-    """ checks if the word can be assembled with the characters in the soup """
-    wordOK = True
-    tempLetters = soup[:]
-    for letter in word:
-        if letter not in tempLetters:
-            wordOK = False
-            break
-        else:
-            tempLetters = tempLetters.replace(letter, "", 1)
-    return wordOK
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -2,8 +2,8 @@
 voldemot_utils
 Helper functions for voldemot package
 """
-
-from itertools import combinations, chain
+import asyncio
+from itertools import combinations, chain, product
 
 def loadDictionary(filename):
     """ reads words line by line from a file and returns them in a list """
@@ -30,6 +30,7 @@ def splitOptions(wordlength, count):
         s = sorted(s)
         if (len(s) == count and s not in options):
             options.append(s)
+        # print(s)
     return options
 
 def genSetList(lenCombos, worddb):
@@ -47,3 +48,47 @@ def genSetList(lenCombos, worddb):
             comboList.append(wordSet)
         setList.append(comboList)
     return setList
+
+async def processSet(id, sortedSoup, wordSet):
+    """
+    Compares a set of words to the sorted letters and returns all matches.
+    """
+    prod = product(*wordSet)
+    for combo in prod:
+        letterList = sorted([letter for word in combo for letter in word])
+        # await asyncio.sleep(0.01)
+        if sortedSoup == letterList:
+            print(sorted(combo))
+            # yield sorted(combo)
+    print(f"Coroutine {id} finished")
+
+def findWords(wordsFileName, letters, worddb):
+    """
+    Fills wordsFound list with words found in the letters string.
+    wordfound is a dictionary with a word as a key and the length as a value
+    """
+    wordsFound = []
+    # Load dictionary
+    wordList = loadDictionary(wordsFileName)
+
+    # Check if a word can be assembled from the letters available.
+    # If so, add it to the wordsFound list.
+    for word in wordList:
+        if wordIsPresent(word, letters):
+            wordsFound.append(word)
+            worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
+            worddb.commit()
+
+    return wordsFound
+
+def wordIsPresent(word, soup):
+    """ checks if the word can be assembled with the characters in the soup """
+    wordOK = True
+    tempLetters = soup[:]
+    for letter in word:
+        if letter not in tempLetters:
+            wordOK = False
+            break
+        else:
+            tempLetters = tempLetters.replace(letter, "", 1)
+    return wordOK
