@@ -58,8 +58,9 @@ async def processSet(id, sortedSoup, wordSet):
         letterList = sorted([letter for word in combo for letter in word])
         # await asyncio.sleep(0.01)
         if sortedSoup == letterList:
-            print(sorted(combo))
-            # yield sorted(combo)
+            # print(sorted(combo))
+            yield sorted(combo)
+        
     print(f"Coroutine {id} finished")
 
 def findWords(wordsFileName, letters, worddb):

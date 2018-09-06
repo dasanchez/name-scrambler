@@ -63,11 +63,13 @@ def main(args):
     print("Found " + str(len(wordsFound)) + " words.")
 
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(fillBucket(sortedLetters, wordCount, worddb))
+    fullMatch = loop.run_until_complete(fillBucket(sortedLetters, wordCount, worddb))
     loop.close()
     # generate all possible and put them in the fullMatch list
     # fullMatch = fillBucket(sortedLetters, wordCount, worddb)
-    # print("There are " + str(len(fullMatch)) + " full matches")
+    print("There are " + str(len(fullMatch)) + " full matches:")
+    # for i in range(100):
+        # print(fullMatch[i])
 
     # for entry in fullMatch:
     #     myStr = ""
@@ -111,10 +113,20 @@ async def fillBucket(sortedSoup, wordCount, worddb):
     progress = 1
     id = 1
 
-    tasks = []
+    # tasks = []
+
     for entry in setList:
-        tasks.append(asyncio.ensure_future(vol.processSet(id, sortedSoup, entry)))
+        setCombos = []
+        async for combo in vol.processSet(id, sortedSoup, entry):
+            if combo not in setCombos:
+                setCombos.append(combo)
+        fullMatch.extend(setCombos)
+        print(f"{int(progress*(100/setCount)):3}%")
+        progress += 1
+        # for combo in setCombos:
+            # print(combo)
         id += 1
+        
         # setCombos = []
         # for combo in vol.processSet(sortedSoup, entry):
             # if combo not in setCombos:
@@ -126,7 +138,8 @@ async def fillBucket(sortedSoup, wordCount, worddb):
             # print(combo)
         # progress += 1
 
-    await asyncio.gather(*tasks)
+    # await asyncio.gather(*tasks)
+    # print("There are " + str(len(fullMatch)) + " full matches")
 
     return fullMatch
 
