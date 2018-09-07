@@ -9,19 +9,18 @@ Usage:
 python voldemot letters [filename] [slots]
 
 For example,
-python voldemot albertcamus words/voldemot-dict.txt 2
+python voldemot.py albertcamus words/voldemot-dict.txt 2
 
 will yield a text file called albert-camus.iter with 1125
 combinations, "a clubmaster" and "cabal muster" to
 "macabre slut" and "tsamba ulcer".
 """
 
-import itertools
 import sys
 import re
 import time
-from multiprocessing import Process, Queue
-from voldemot_utils import loadDictionary, splitOptions, genSetList
+import asyncio
+import voldemot_utils as vol
 import wordDB
 
 def main(args):
@@ -42,9 +41,8 @@ def main(args):
 
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
-
     sortedLetters = sorted(list(letters))
-    # print("Sorted letters: " + str(sortedLetters))
+
     print("Source soup (" + letters + ") has " + str(len(letters)) + " characters")
 
     # generate dictionary file name
@@ -58,18 +56,24 @@ def main(args):
         wordCount = int(args[3])
 
     # find words present in the soup
-    wordsFound = findWords(wordFileName, letters, worddb)
-    print("Found " + str(len(wordsFound)) + " words in the soup.")
+    wordsFound = vol.findWords(wordFileName, letters, worddb)
+    print("Found " + str(len(wordsFound)) + " words.")
 
     # generate all possible and put them in the fullMatch list
-    fullMatch = fillBucket(sortedLetters, wordCount, worddb)
+    loop = asyncio.get_event_loop()
+    fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
+    loop.close()
+    
+    print("There are " + str(len(fullMatch)) + " full matches.")
+    # for i in range(5):
+        # print(fullMatch[i])
+    # for i in range(5):
+        # print(fullMatch[-i])
 
-    print("There are " + str(len(fullMatch)) + " full matches")
-
-    for entry in fullMatch:
-        myStr = ""
-        for word in entry:
-            myStr = myStr + word + " "
+    # for entry in fullMatch:
+        # myStr = ""
+        # for word in entry:
+            # myStr = myStr + word + " "
         # print(myStr)
 
     end = time.time()
@@ -84,108 +88,34 @@ def voldemot(letters, wordsRequested):
     letters = re.sub(r"\W?\d?", "", letters).lower()
     letters = letters[:16]
 
-    findWords("words/voldemot-dict.txt", letters, worddb)
-    fullMatch = fillBucket(sorted(letters), wordsRequested, worddb)
+    vol.findWords("words/voldemot-dict.txt", letters, worddb)
+    fullMatch = generateList(sorted(letters), wordsRequested, worddb)
     return letters, fullMatch
 
-def fillBucket(sortedSoup, wordCount, worddb):
-    """ populate fullMatch list """
-    CHUNKSIZE = 10
+async def generateList(sortedSoup, wordCount, worddb):
+    """ Returns a list of valid combinations in fullMatch """
     fullMatch = []
 
     # Check for all possible combinations against the soup
     print("Checking " + str(wordCount) + '-word combinations...')
-    lenCombos = splitOptions(len(sortedSoup), wordCount)
+    lenCombos = vol.splitOptions(len(sortedSoup), wordCount)
     print(lenCombos)
-    setList = genSetList(lenCombos, worddb)
+    setList = vol.genSetList(lenCombos, worddb)
     setCount = len(setList)
 
     if setList:
         print("setList length: " + str(setCount))
-        if setCount == 1:
-            print(setList[0])
 
-    if setCount < CHUNKSIZE:
-        CHUNKSIZE = setCount
+    lock = asyncio.Lock()
+    # print(f"{len(asyncio.Task.all_tasks())} tasks pending")
 
-    progress = 1
-    setCounter = 0
-    chunks = setCount//CHUNKSIZE
+    progress = [1, setCount]
+    for entry in setList:
+        asyncio.ensure_future(vol.processSet(sortedSoup, entry, lock, fullMatch, progress))
 
-    # Check for all possible combinations against the soup
-    print("Chunk size: " + str(CHUNKSIZE))
-
-    q = Queue()
-
-    if chunks:
-        for entry in setList[setCounter:setCounter+CHUNKSIZE]:
-            p = Process(target=processSet, args=(sortedSoup, entry, q))
-            p.start()
-
-        setCounter += CHUNKSIZE
-
-        for _ in range(setCount):
-            if setCounter < setCount:
-                p = Process(target=processSet, args=(sortedSoup, setList[setCounter], q))
-                p.start()
-
-            newSet = q.get()
-
-            print("New set: " + str(int(progress*(100/setCount))) + "%")
-            if newSet:
-                print(newSet[0])
-                fullMatch.extend(newSet)
-
-            progress += 1
-            setCounter += 1
+    # print(f"{len(asyncio.Task.all_tasks())} tasks pending")
 
     return fullMatch
-
-def processSet(sortedSoup, wordSet, q):
-    """
-    Compares a set of words to the sorted letters and returns all matches.
-    """
-    setMatches = []
-    for combo in itertools.product(*wordSet):
-        letterList = sorted([letter for word in combo for letter in word])
-
-        if sortedSoup == letterList:
-            # if combo not in fullMatch:
-            setMatches.append(combo)
-
-    q.put(setMatches)
-    q.close()
-
-def findWords(wordsFileName, letters, worddb):
-    """
-    Fills wordsFound list with words found in the letters string.
-    wordfound is a dictionary with a word as a key and the length as a value
-    """
-    wordsFound = []
-    # Load dictionary
-    wordList = loadDictionary(wordsFileName)
-
-    # Check if a word can be assembled from the letters available.
-    # If so, add it to the wordsFound list.
-    for word in wordList:
-        if wordIsPresent(word, letters):
-            wordsFound.append(word)
-            worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
-            worddb.commit()
-
-    return wordsFound
-
-def wordIsPresent(word, soup):
-    """ checks if the word can be assembled with the characters in the soup """
-    wordOK = True
-    tempLetters = soup[:]
-    for letter in word:
-        if letter not in tempLetters:
-            wordOK = False
-            break
-        else:
-            tempLetters = tempLetters.replace(letter, "", 1)
-    return wordOK
 
 if __name__ == "__main__":
     main(sys.argv)
