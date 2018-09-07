@@ -30,7 +30,6 @@ def splitOptions(wordlength, count):
         s = sorted(s)
         if (len(s) == count and s not in options):
             options.append(s)
-        # print(s)
     return options
 
 def genSetList(lenCombos, worddb):
@@ -49,19 +48,20 @@ def genSetList(lenCombos, worddb):
         setList.append(comboList)
     return setList
 
-async def processSet(id, sortedSoup, wordSet):
+async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
     """
     Compares a set of words to the sorted letters and returns all matches.
     """
-    prod = product(*wordSet)
-    for combo in prod:
+    comboSet = []
+    for combo in product(*wordSet):
         letterList = sorted([letter for word in combo for letter in word])
-        # await asyncio.sleep(0.01)
-        if sortedSoup == letterList:
-            # print(sorted(combo))
-            yield sorted(combo)
-        
-    print(f"Coroutine {id} finished")
+        if sortedSoup == letterList and sorted(combo) not in comboSet:
+            comboSet.append(sorted(combo))
+    # print(f"Coroutine {proc_id} finished")
+    with await lock:
+        fullMatch.extend(comboSet)
+        print(f"Progress: {int(progress[0]*(100/progress[1])):3}%")
+        progress[0] += 1
 
 def findWords(wordsFileName, letters, worddb):
     """
