@@ -3,6 +3,7 @@ voldemot_utils
 Helper functions for voldemot package
 """
 import asyncio
+import json
 from itertools import combinations, chain, product
 
 def loadDictionary(filename):
@@ -63,6 +64,28 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
         print(f"Progress: {int(progress[0]*(100/progress[1])):3}%")
         progress[0] += 1
 
+async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
+    """
+    Compares a set of words to the sorted letters and returns all matches.
+    """
+    comboSet = []
+    for combo in product(*wordSet):
+        letterList = sorted([letter for word in combo for letter in word])
+        if sortedSoup == letterList and sorted(combo) not in comboSet:
+            comboSet.append(sorted(combo))
+
+    with await lock:
+        for combo in comboSet:
+            response = json.dumps({'match': True, 'value': combo})
+            await (ws.send(response))        
+        fullMatch.extend(comboSet)
+        percent = int(progress[0]*(100/progress[1]))
+        print(f"Progress: {percent:3}%")
+        response = json.dumps({'percent': True, 'value': percent})
+        await ws.send(response)
+        progress[0] += 1
+            
+
 def findWords(wordsFileName, letters, worddb):
     """
     Fills wordsFound list with words found in the letters string.
@@ -93,3 +116,4 @@ def wordIsPresent(word, soup):
         else:
             tempLetters = tempLetters.replace(letter, "", 1)
     return wordOK
+

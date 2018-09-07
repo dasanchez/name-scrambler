@@ -70,11 +70,11 @@ def main(args):
     # for i in range(5):
         # print(fullMatch[-i])
 
-    for entry in fullMatch:
-        myStr = ""
-        for word in entry:
-            myStr = myStr + word + " "
-        print(myStr)
+    # for entry in fullMatch:
+        # myStr = ""
+        # for word in entry:
+            # myStr = myStr + word + " "
+        # print(myStr)
 
     end = time.time()
     print(str(int(end-start)) + " seconds elapsed")

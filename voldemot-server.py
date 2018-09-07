@@ -6,8 +6,10 @@ and returns a list of possible word combinations.
 import sys
 import asyncio
 import json
+import re
 import websockets
-import voldemot
+import voldemot_utils as vol
+import wordDB
 
 def main(args):
     """ voldemot web server """
@@ -39,13 +41,40 @@ async def handle_message(websocket, data):
     """ handles incoming message from players """
     if data['type'] == 'voldemot-request':
         letters = data['input']
-        wordsRequested = int(data['word-count'])
+        wordCount = int(data['word-count'])
         print("Received request for *" + letters + "*, with up to "
-              + str(wordsRequested) + "-word combinations")
-        inputLetters, matches = voldemot.voldemot(letters, wordsRequested)
-        # for entry in matches:
-            # print(entry)
-        await send_response(websocket, inputLetters, matches)
+              + str(wordCount) + "-word combinations")
+
+        # START VOLDEMOT ROUTINE
+        worddb = wordDB.wordDB()
+        worddb.query("CREATE TABLE words(word text, length int)")
+
+        # remove spaces and non-alphabetical characters
+        letters = re.sub(r"\W?\d?", "", letters).lower()
+        # inputLetters = letters[:16]
+        sortedLetters = sorted(list(letters))
+        wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)
+        print("Found " + str(len(wordsFound)) + " words.")
+
+        # generate combinations
+        lenCombos = vol.splitOptions(len(letters), wordCount)
+        print(lenCombos)
+        setList = vol.genSetList(lenCombos, worddb)
+        setCount = len(setList)
+
+        if setList:
+            print("setList length: " + str(setCount))
+            if setCount == 1:
+                print(setList[0])
+
+        fullMatch = []
+        lock = asyncio.Lock()
+        progress = [1, setCount]
+
+        for entry in setList:
+            asyncio.ensure_future(vol.processClientSet(sortedLetters, entry, lock, fullMatch, progress, websocket))
+
+        return fullMatch
 
 if __name__ == "__main__":
     main(sys.argv)
