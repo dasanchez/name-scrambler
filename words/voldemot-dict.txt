@@ -962,7 +962,6 @@ acknowledgers
 acknowledges
 acknowledging
 aclastic
-aclu
 acme
 acmes
 acne
@@ -2778,7 +2777,6 @@ airworthiness
 airworthinesses
 airworthy
 airy
-ais
 aisle
 aisled
 aisleless
@@ -6616,14 +6614,12 @@ arthroscopic
 arthroscopically
 arthroscopies
 arthroscopy
-artic
 artichoke
 artichokes
 article
 articled
 articles
 articling
-artics
 articulability
 articulable
 articulacies
@@ -16085,7 +16081,6 @@ canvassing
 canyon
 canyons
 cap
-capa
 capabilities
 capability
 capable
@@ -16114,7 +16109,6 @@ capacitively
 capacitor
 capacitors
 capacity
-capas
 cape
 caped
 capellini
@@ -16408,14 +16402,7 @@ carded
 carder
 carders
 cardiac
-cardiacal
-cardiacean
-cardiacle
 cardiacs
-cardiagra
-cardiagram
-cardiagraph
-cardiagraphy
 cardial
 cardialgia
 cardialgias
@@ -16709,7 +16696,6 @@ cart
 cartage
 cartagena
 cartages
-carte
 carted
 cartel
 cartelism
@@ -16720,8 +16706,6 @@ cartelists
 cartellist
 cartels
 carter
-carterly
-cartes
 cartesian
 cartful
 carthage
@@ -20192,8 +20176,6 @@ clamberer
 clamberers
 clambering
 clambers
-clamer
-clames
 clammed
 clammer
 clammers
@@ -22060,6 +22042,10 @@ colonoscopies
 colonoscopy
 colons
 colony
+color
+colored
+coloring
+colors
 colossal
 colossality
 colossally
@@ -22070,6 +22056,10 @@ colossians
 colossus
 colostomies
 colostomy
+colour
+coloured
+colouring
+colours
 colt
 colted
 colter
@@ -28435,7 +28425,6 @@ crystalloblastic
 crystallochemical
 crystallochemistry
 crystals
-cs
 csi
 ctrl
 cub
@@ -28750,7 +28739,6 @@ curablenesses
 curably
 curate
 curated
-curatel
 curates
 curation
 curative
@@ -40563,7 +40551,6 @@ elvishly
 elysia
 elysian
 elysium
-em
 emaciate
 emaciated
 emaciates
@@ -41051,7 +41038,6 @@ emulsor
 emulsors
 emure
 emus
-en
 enable
 enabled
 enablement
@@ -72669,9 +72655,6 @@ lube
 lubed
 lubes
 lubing
-lubra
-lubras
-lubric
 lubrical
 lubricant
 lubricants
@@ -74765,11 +74748,6 @@ marsupium
 marsupiums
 mart
 marted
-martel
-martelled
-martellement
-martelling
-martels
 martensite
 martensites
 martensitic
@@ -76910,10 +76888,7 @@ mezzo
 mezzos
 mf
 mfa
-mh
-mhg
-mho
-mhometer
+mfa
 mhorr
 mhorrs
 mhos
@@ -79934,12 +79909,6 @@ morphemics
 morpheming
 morphetic
 morpheus
-morphew
-morphews
-morphgan
-morphia
-morphias
-morphiate
 morphic
 morphically
 morphin
@@ -82762,7 +82731,6 @@ nexts
 nexum
 nexus
 nexuses
-ni
 niacin
 niacins
 niagara
@@ -102786,8 +102754,6 @@ racketproof
 racketries
 racketry
 rackets
-rackett
-racketts
 rackety
 rackful
 rackfuls
@@ -151091,8 +151057,6 @@ zombiisms
 zonal
 zonality
 zonally
-zonar
-zonary
 zonate
 zonated
 zonation
