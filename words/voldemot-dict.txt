@@ -1525,7 +1525,6 @@ adjustores
 adjustoring
 adjusts
 adless
-adman
 administer
 administerd
 administered
@@ -67541,10 +67540,6 @@ juxtapositions
 jynx
 jynxes
 kG
-kHz
-kJ
-kW
-ka
 kabab
 kababbed
 kababbing
@@ -76876,7 +76871,6 @@ mexican
 mexicans
 mexico
 mezcal
-mezcaline
 mezcals
 mezuza
 mezuzah
@@ -84160,7 +84154,6 @@ nymphon
 nymphos
 nymphosis
 nymphs
-o
 oaf
 oafdom
 oafish
@@ -86185,8 +86178,6 @@ orangutan
 orangutans
 orangy
 orant
-orante
-orantes
 orants
 oraria
 orarian
@@ -103195,7 +103186,6 @@ rancidly
 rancidness
 rancidnesses
 rancing
-rancio
 rancor
 rancored
 rancorous

@@ -32,7 +32,10 @@ async def handler(websocket, path):
     try:
         async for message in websocket:
             data = json.loads(message)
-            await handle_message(websocket, data)
+            print("Received data: " + str(data))
+            # await handle_message(websocket, data)
+            asyncio.ensure_future(handle_message(websocket, data))
+            await asyncio.sleep(0.25)
     finally:
         # await unregister(websocket)
         pass
@@ -52,6 +55,7 @@ async def handle_message(websocket, data):
         # remove spaces and non-alphabetical characters
         letters = re.sub(r"\W?\d?", "", letters).lower()
         # inputLetters = letters[:16]
+        letters = letters[:16]
         sortedLetters = sorted(list(letters))
         wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)
         print("Found " + str(len(wordsFound)) + " words.")
@@ -70,12 +74,22 @@ async def handle_message(websocket, data):
         fullMatch = []
         lock = asyncio.Lock()
         progress = [1, setCount]
-
+        
         for entry in setList:
-            asyncio.ensure_future(vol.processClientSet(sortedLetters, entry, lock, fullMatch, progress, websocket))
+            asyncio.ensure_future(vol.processClientSet(sortedLetters, entry,
+                                                       lock, fullMatch, progress, websocket))
+            await asyncio.sleep(0.25)
 
+        response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
+        await websocket.send(response)
         return fullMatch
+
+async def listen_for_messages(websocket):
+    while True:
+        await asyncio.sleep(0.25)
+        async for msg in websocket:
+            data = json.loads(msg)
+            await handle_message(websocket, data)
 
 if __name__ == "__main__":
     main(sys.argv)
-

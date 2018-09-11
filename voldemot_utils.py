@@ -84,7 +84,9 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
         response = json.dumps({'percent': True, 'value': percent})
         await ws.send(response)
         progress[0] += 1
-            
+    
+    # await asyncio.sleep(0.25)
+
 
 def findWords(wordsFileName, letters, worddb):
     """
