@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="author" content="@dasanchez">
+    <meta name="description" content="Takes a set of letters (such as a name)
+         and assembles combinations of words based on it.">
+    <title>voldemot</title>
+    <link rel="stylesheet" href="voldemot.css">
+</head>
+
+<body>
+
+    <header>
+        <section class="title-card">
+            <div class="title">
+                voldemot
+            </div>
+            <div class="credits">
+                    <!-- A word de-scrambler -->
+                A word de-scrambler by<br><a href="https://github.com/dasanchez/voldemot">@dasanchez</a>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <div class="word-container">
+                <input class="words" type="text" pattern=".{3,16}" required title="3 characters minimum">
+                <div class="radio-container">
+                    <input class="radiobtn" type="radio" name="count" value="1">1
+                    <input class="radiobtn" type="radio" name="count" value="2">2
+                    <input class="radiobtn" type="radio" name="count" value="3" checked>3
+                    <!-- <input class="radiobtn" type="radio" name="count" value="4">4 -->
+                </div>
+            </div>
+        </section>
+
+        <section class="button-section">
+            <button>Go</button>
+        </section>
+
+        <!-- <section class="feedback"> -->
+            
+        <!-- </section> -->
+    </header>
+
+    <section class="main">
+            <div class="results">Waiting for query</div>
+            <div class="prog-con" id="progCon">
+                <div class="prog-bar" id="progBar"></div>
+                <div class="prog-text">0</div>
+            </div>
+
+        <div class="combinations"></div>
+    </section>
+
+    <footer>
+
+    </footer>
+
+    <script src="voldemot.js"></script>
+</body>
+
+</html>
