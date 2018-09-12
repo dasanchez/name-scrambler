@@ -45,9 +45,7 @@ process.onclick = function (event) {
         words = 2;
     } else if (counts[2].checked) {
         words = 3;
-    } else if (counts[3].checked) {
-        words = 4;
-    }
+    } 
 
     var myJSON = {
         "type": "voldemot-request",
