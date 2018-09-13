@@ -280,6 +280,7 @@ abruptedly
 abrupter
 abruptly
 abruptness
+abs
 abscess
 abscessed
 abscesses
@@ -3531,7 +3532,6 @@ always
 alzheimer
 alzheimers
 am
-ama
 amalgam
 amalgamable
 amalgamate
@@ -4100,6 +4100,7 @@ analytically
 analyticities
 analyticity
 analytics
+analyzer
 anamorphic
 anamorphism
 anamorphoscope
@@ -8202,7 +8203,6 @@ automatically
 automaticities
 automaticity
 automatics
-automatictacessing
 automating
 automation
 automations
@@ -17497,6 +17497,8 @@ celled
 celling
 cellist
 cellists
+cellmate
+cellmates
 cello
 celloist
 cellophane
@@ -29594,7 +29596,6 @@ daddies
 dadding
 daddy
 daddyish
-dade
 dads
 dae
 daedalous
@@ -43415,7 +43416,6 @@ euthenists
 eutheria
 eutherian
 eutherians
-ev
 evacuant
 evacuants
 evacuate
@@ -68356,7 +68356,6 @@ knavery
 knaves
 knaveship
 knaveships
-knavess
 knavish
 knavishly
 knavishness
@@ -68715,9 +68714,6 @@ kurta
 kurtas
 kuwait
 kuwaiti
-kvah
-kvar
-kvas
 kvell
 kvelled
 kvelling
@@ -73213,9 +73209,7 @@ lysols
 lythe
 lythes
 m
-mA
-mR
-mW
+mr
 ma
 mac
 macabre
@@ -82422,18 +82416,8 @@ nerves
 nervier
 nerviest
 nervily
-nervine
-nervines
-nerviness
-nervinesses
 nerving
 nervings
-nervish
-nervism
-nervose
-nervosism
-nervosities
-nervosity
 nervous
 nervously
 nervousness
@@ -83653,14 +83637,6 @@ nouvelles
 nova
 novae
 novas
-novate
-novatian
-novation
-novations
-novative
-novator
-novatory
-novatrix
 novel
 novela
 noveldom
@@ -84109,10 +84085,6 @@ nuzzler
 nuzzlers
 nuzzles
 nuzzling
-nv
-nw
-ny
-nye
 nyet
 nymph
 nympha
@@ -85182,7 +85154,6 @@ ohmically
 ohmmeter
 ohmmeters
 ohms
-oi
 oil
 oildom
 oiled
@@ -85610,7 +85581,6 @@ onomomancy
 onrush
 onrushes
 onrushing
-ons
 onscreen
 onset
 onsets
@@ -87666,11 +87636,6 @@ overmedicates
 overmedicating
 overmedication
 overmedications
-overmeek
-overnet
-overnets
-overnetted
-overnetting
 overnight
 overnighted
 overnighter
@@ -90276,9 +90241,6 @@ paystub
 paystubs
 paywall
 paywalls
-pb
-pbs
-pcp
 pea
 peace
 peaceable
@@ -123948,11 +123910,6 @@ stewpot
 stewpots
 stews
 stewy
-sthene
-sthenia
-sthenias
-sthenic
-stheno
 stick
 stickabilities
 stickability
@@ -133588,7 +133545,6 @@ tizz
 tizzes
 tizzies
 tizzy
-tm
 to
 toad
 toader

@@ -58,7 +58,7 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
         letterList = sorted([letter for word in combo for letter in word])
         if sortedSoup == letterList and sorted(combo) not in comboSet:
             comboSet.append(sorted(combo))
-    # print(f"Coroutine {proc_id} finished")
+
     with await lock:
         fullMatch.extend(comboSet)
         print(f"Progress: {int(progress[0]*(100/progress[1])):3}%")
@@ -74,19 +74,21 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
         if sortedSoup == letterList and sorted(combo) not in comboSet:
             comboSet.append(sorted(combo))
 
+    if len(wordSet) > 3:
+        await asyncio.sleep(0.25)
+    else:
+        await asyncio.sleep(0.1)
+
     with await lock:
+        fullMatch.extend(comboSet)
         for combo in comboSet:
             response = json.dumps({'match': True, 'value': combo})
-            await (ws.send(response))        
-        fullMatch.extend(comboSet)
+            await (ws.send(response))
         percent = int(progress[0]*(100/progress[1]))
         print(f"Progress: {percent:3}%")
         response = json.dumps({'percent': True, 'value': percent})
         await ws.send(response)
         progress[0] += 1
-    
-    # await asyncio.sleep(0.25)
-
 
 def findWords(wordsFileName, letters, worddb):
     """

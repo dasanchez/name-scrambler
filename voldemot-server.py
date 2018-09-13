@@ -1,4 +1,5 @@
 """
+voldemor-server
 Creates a websocket server that listens for a voldemot request
 and returns a list of possible word combinations.
 """
@@ -13,31 +14,25 @@ import wordDB
 
 def main(args):
     """ voldemot web server """
-    asyncio.get_event_loop().run_until_complete(
+    port = int(args[1])
+    print(f"Opening websocket server on port {port}...")
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(
         websockets.serve(handler, '0.0.0.0', int(args[1])))
-    asyncio.get_event_loop().run_forever()
-
-async def send_response(websocket, inputLetters, data):
-    """ returns state event in JSON """
-    response = json.dumps({'total-matches': str(len(data)), 'letters': inputLetters})
-    # print(response)
-    await asyncio.wait([websocket.send(response)])
-    for index, entry in enumerate(data, 1):
-        response = json.dumps({'match': index, 'value':entry})
-        await asyncio.wait([websocket.send(response)])
+    loop.run_forever()
 
 async def handler(websocket, path):
     """ register(websocket) sends user_event() to websocket """
-    # await register(websocket)
     try:
         async for message in websocket:
             data = json.loads(message)
             print("Received data: " + str(data))
-            # await handle_message(websocket, data)
-            asyncio.ensure_future(handle_message(websocket, data))
-            await asyncio.sleep(0.25)
+            fullMatch = await handle_message(websocket, data)
+            response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
+            print(response)
+            await websocket.send(response)
+            # await asyncio.sleep(0.25)
     finally:
-        # await unregister(websocket)
         pass
 
 async def handle_message(websocket, data):
@@ -54,7 +49,6 @@ async def handle_message(websocket, data):
 
         # remove spaces and non-alphabetical characters
         letters = re.sub(r"\W?\d?", "", letters).lower()
-        # inputLetters = letters[:16]
         letters = letters[:16]
         sortedLetters = sorted(list(letters))
         wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)
@@ -78,18 +72,11 @@ async def handle_message(websocket, data):
         for entry in setList:
             asyncio.ensure_future(vol.processClientSet(sortedLetters, entry,
                                                        lock, fullMatch, progress, websocket))
-            await asyncio.sleep(0.25)
+            await asyncio.sleep(0.1)
 
-        response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
-        await websocket.send(response)
+        await asyncio.sleep(0.5)
+
         return fullMatch
-
-async def listen_for_messages(websocket):
-    while True:
-        await asyncio.sleep(0.25)
-        async for msg in websocket:
-            data = json.loads(msg)
-            await handle_message(websocket, data)
 
 if __name__ == "__main__":
     main(sys.argv)

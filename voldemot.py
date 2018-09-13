@@ -65,16 +65,12 @@ def main(args):
     loop.close()
     
     print("There are " + str(len(fullMatch)) + " full matches.")
-    # for i in range(5):
-        # print(fullMatch[i])
-    # for i in range(5):
-        # print(fullMatch[-i])
 
     # for entry in fullMatch:
-        # myStr = ""
-        # for word in entry:
-            # myStr = myStr + word + " "
-        # print(myStr)
+    #     myStr = ""
+    #     for word in entry:
+    #         myStr = myStr + word + " "
+    #     print(myStr)
 
     end = time.time()
     print(str(int(end-start)) + " seconds elapsed")
@@ -107,13 +103,10 @@ async def generateList(sortedSoup, wordCount, worddb):
         print("setList length: " + str(setCount))
 
     lock = asyncio.Lock()
-    # print(f"{len(asyncio.Task.all_tasks())} tasks pending")
-
     progress = [1, setCount]
+
     for entry in setList:
         asyncio.ensure_future(vol.processSet(sortedSoup, entry, lock, fullMatch, progress))
-
-    # print(f"{len(asyncio.Task.all_tasks())} tasks pending")
 
     return fullMatch
 

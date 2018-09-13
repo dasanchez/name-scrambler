@@ -78,11 +78,22 @@ header {
     width: 30%;
 }
 
+.results-container {
+    position: sticky;
+    top: 0px;
+    /* bottom: 5px; */
+    padding-top: 5px;
+    background-color: white;
+    padding-bottom: 10px;
+}
+
 .results {
+    /* position: sticky; */
+    /* top: 10px; */
     margin-top: 10px;
     /* padding-top: 5px; */
     text-align: center;
-    /* background: #dddddd; */
+    /* background: #ffffff; */
     /* width: 0px; */
     /* border: 2px solid #222222; */
     /* border-radius: 10px; */
@@ -95,6 +106,10 @@ header {
 } */
 
 .prog-con {
+    /* position: sticky; */
+    /* top: 25px; */
+    /* padding: 5px; */
+    /* margin: 5px; */
     margin-top: 10px;
     border: 1px solid rgb(230, 230, 230);
     border-radius: 5px;
@@ -122,7 +137,7 @@ header {
 
   .combinations {
       display: grid;
-      margin-top: 20px;
+      margin-top: 10px;
       grid-template-columns: repeat(4, 1fr);
   }
   

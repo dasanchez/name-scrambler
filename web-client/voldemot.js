@@ -5,7 +5,9 @@ var process = document.querySelector('button'),
     results = document.querySelector('.results'),
     combinations = document.querySelector('.combinations');
 
-var names = ['isaacasimov', 'iainmbanks', 'arthurclarke ', 'roalddahl', 'williamgibson', 'frankherbert', 'stephenking']
+    var total = 0;
+
+var names = ['isaacasimov', 'iainmbanks', 'arthurclarke', 'roalddahl', 'williamgibson', 'frankherbert', 'stephenking']
 
     // progress bar:
 var progress=0;
@@ -31,6 +33,7 @@ input.addEventListener("keyup", function(event) {
 process.onclick = function (event) {
     var letters = input.value;
     setProgress(0)
+    total = 0;
     results.textContent = 'De-scrambling...';
 
     while (combinations.firstChild) {
@@ -45,6 +48,8 @@ process.onclick = function (event) {
         words = 2;
     } else if (counts[2].checked) {
         words = 3;
+    } else if (counts[3].checked) {
+        words = 4;
     } 
 
     var myJSON = {
@@ -67,11 +72,13 @@ process.onclick = function (event) {
                 } else {
                     results.textContent = data['value'] + ' combinations found';
                 }
+                console.log("Total matches received: " + total);
             } else if (data['match']) {
                  var combo = document.createElement('div');
                 combo.className = 'match';
                 combo.textContent = data['value'].join(' ');
                 combinations.appendChild(combo);
+                total += 1;
             } else if (data['percent']) {
                 console.log('percent done: ' + data['value']);
                 setProgress(data['value'])
