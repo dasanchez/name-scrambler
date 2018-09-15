@@ -38,7 +38,6 @@ abasias
 abasic
 abasing
 abask
-abassi
 abate
 abated
 abatement
@@ -37295,7 +37294,6 @@ dolefuls
 doles
 doll
 dollar
-dollardom
 dollars
 dolled
 dolley
@@ -46848,7 +46846,6 @@ fez
 fezzed
 fezzes
 fezzy
-fi
 fiasco
 fiascoes
 fiat
@@ -49642,8 +49639,6 @@ frailly
 frailness
 frailnesses
 frails
-frailtee
-frailtees
 frailties
 frailty
 frame
@@ -81422,8 +81417,6 @@ myxomata
 myxomatoses
 myxomatosis
 myxomatous
-nF
-nW
 naan
 naans
 nab
@@ -88113,9 +88106,6 @@ ozonides
 ozoniferous
 ozonification
 ozonify
-pF
-pH
-pW
 pa
 pace
 paced
@@ -96632,9 +96622,7 @@ pragmatist
 pragmatistic
 pragmatists
 prague
-prairial
 prairie
-prairiecraft
 prairied
 prairiedom
 prairielike
@@ -100415,7 +100403,6 @@ psalmographer
 psalmography
 psalms
 psalmy
-psec
 pseudo
 pseudoacademic
 pseudoacademical
@@ -113845,6 +113832,7 @@ seaworthiest
 seaworthiness
 seaworthinesses
 seaworthy
+sec
 secant
 secants
 secede
@@ -144322,8 +144310,6 @@ versal
 versals
 versant
 versants
-versate
-versatec
 versatile
 versatilely
 versatileness
@@ -145990,20 +145976,16 @@ vorticose
 vorticosely
 vorticular
 vorticularly
-vortiginous
 votable
 votation
 vote
 voteable
 voted
-voteen
-voteens
 voteless
 voter
 voters
 votes
 voting
-votist
 votive
 votively
 votiveness
