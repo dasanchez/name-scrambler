@@ -73,12 +73,7 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
         letterList = sorted([letter for word in combo for letter in word])
         if sortedSoup == letterList and sorted(combo) not in comboSet:
             comboSet.append(sorted(combo))
-
-    if len(wordSet) > 3:
-        await asyncio.sleep(0.25)
-    else:
-        await asyncio.sleep(0.1)
-
+            
     with await lock:
         fullMatch.extend(comboSet)
         for combo in comboSet:
@@ -89,6 +84,11 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
         response = json.dumps({'percent': True, 'value': percent})
         await ws.send(response)
         progress[0] += 1
+
+    if len(wordSet) > 3:
+        await asyncio.sleep(0.5)
+    else:
+        await asyncio.sleep(0.25)
 
 def findWords(wordsFileName, letters, worddb):
     """
@@ -120,4 +120,3 @@ def wordIsPresent(word, soup):
         else:
             tempLetters = tempLetters.replace(letter, "", 1)
     return wordOK
-

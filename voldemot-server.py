@@ -27,11 +27,10 @@ async def handler(websocket, path):
         async for message in websocket:
             data = json.loads(message)
             print("Received data: " + str(data))
-            fullMatch = await handle_message(websocket, data)
+            fullMatch = await asyncio.ensure_future(handle_message(websocket, data))
             response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
             print(response)
             await websocket.send(response)
-            # await asyncio.sleep(0.25)
     finally:
         pass
 
@@ -68,14 +67,14 @@ async def handle_message(websocket, data):
         fullMatch = []
         lock = asyncio.Lock()
         progress = [1, setCount]
-        
+
         for entry in setList:
+            await asyncio.sleep(0.25)
+
             asyncio.ensure_future(vol.processClientSet(sortedLetters, entry,
                                                        lock, fullMatch, progress, websocket))
-            await asyncio.sleep(0.1)
-
+            
         await asyncio.sleep(0.5)
-
         return fullMatch
 
 if __name__ == "__main__":

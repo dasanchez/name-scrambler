@@ -1,13 +1,14 @@
 
 var process = document.querySelector('button'),
     input = document.querySelector('input'),
-    counts = document.getElementsByName('count'),
+    count = document.getElementById('count'),
     results = document.querySelector('.results'),
     combinations = document.querySelector('.combinations');
 
     var total = 0;
 
-var names = ['isaacasimov', 'iainmbanks', 'arthurclarke', 'roalddahl', 'williamgibson', 'frankherbert', 'stephenking']
+var names = ['isaacasimov', 'iainmbanks', 'arthurclarke',
+ 'roalddahl', 'williamgibson', 'frankherbert', 'stephenking']
 
     // progress bar:
 var progress=0;
@@ -41,16 +42,7 @@ process.onclick = function (event) {
     }
 
     console.log('Processing ' + letters + ':');
-    var words = 2;
-    if (counts[0].checked) {
-        words = 1;
-    } else if (counts[1].checked) {
-        words = 2;
-    } else if (counts[2].checked) {
-        words = 3;
-    } else if (counts[3].checked) {
-        words = 4;
-    } 
+    var words = parseInt(count.value);
 
     var myJSON = {
         "type": "voldemot-request",

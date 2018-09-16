@@ -29623,12 +29623,7 @@ daftness
 daftnesses
 dagger
 daggers
-dago
-dagoba
-dagobas
-dagoes
 dagon
-dagos
 daguerreotype
 daguerreotyped
 daguerreotyper
@@ -37499,7 +37494,6 @@ doorjambs
 doors
 doorsill
 doorsills
-doos
 doover
 doowop
 doowops
@@ -43193,12 +43187,6 @@ etherealnesses
 etherean
 etherene
 ethereous
-etherial
-etherialism
-etherially
-etherical
-etherification
-etherifications
 etherified
 etherifies
 etheriform
@@ -67148,7 +67136,6 @@ joyrode
 joys
 joystick
 joysticks
-js
 jube
 jubes
 jubilance
@@ -69502,9 +69489,6 @@ largened
 largeness
 largenesses
 largening
-largens
-largeour
-largeous
 larger
 largest
 larghetto
@@ -136845,7 +136829,6 @@ trottles
 trottoir
 trottoired
 trotty
-troubador
 troubadour
 troubadourish
 troubadourism

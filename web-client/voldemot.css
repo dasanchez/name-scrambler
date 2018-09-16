@@ -21,7 +21,7 @@ header {
     margin-top: 10px;
 }
 
-  .title {
+.title {
     line-height: 3.2rem;
     border-radius: 10px;
     background: #222222;
@@ -29,30 +29,34 @@ header {
     letter-spacing: 4px;
     color: #eeeeee;
     text-align: center;
-  }
+}
 
-  .credits {
+.credits {
     margin-top: 5px;
     font-size: 0.8em;
     text-align: center;
-  }
+}
 
-  .input-section {
+.input-section {
     width: 35%;
     margin-top: 15px;
     margin-left: 20px;
     margin-right: 10px;
     text-align: center;
-  }
+}
   
-  .words {
+.words {
     margin-right: 10px;
     border-radius: 5px;
     font-size: 1.2rem;
     text-align: center;
-  } 
+} 
 
-  .radio-container {
+#count {
+    height: 1.6rem;
+} 
+
+.radio-container {
     display: flex;
 }
 
@@ -111,7 +115,7 @@ header {
     /* padding: 5px; */
     /* margin: 5px; */
     margin-top: 10px;
-    border: 1px solid rgb(230, 230, 230);
+    border: 2px solid rgb(110, 110, 110);
     border-radius: 5px;
     height: 1.4rem;
   }
@@ -121,6 +125,7 @@ header {
     height: 1.4rem;
     width: 0%;
     background-color: #eeeeee;
+    border-radius: 5px;
     z-index: 1;
   }
   

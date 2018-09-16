@@ -26,12 +26,18 @@
         <section class="input-section">
             <div class="word-container">
                 <input class="words" type="text" pattern=".{3,16}" required title="3 characters minimum">
-                <div class="radio-container">
+                <select id="count">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                </select>
+                <!-- <div class="radio-container">
                     <input class="radiobtn" type="radio" name="count" value="1">1
                     <input class="radiobtn" type="radio" name="count" value="2" checked>2
                     <input class="radiobtn" type="radio" name="count" value="3">3
                     <input class="radiobtn" type="radio" name="count" value="4">4
-                </div>
+                </div> -->
             </div>
         </section>
 
