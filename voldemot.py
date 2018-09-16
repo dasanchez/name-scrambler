@@ -63,7 +63,7 @@ def main(args):
     loop = asyncio.get_event_loop()
     fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
     loop.close()
-    
+
     print("There are " + str(len(fullMatch)) + " full matches.")
 
     # for entry in fullMatch:
@@ -106,7 +106,8 @@ async def generateList(sortedSoup, wordCount, worddb):
     progress = [1, setCount]
 
     for entry in setList:
-        asyncio.ensure_future(vol.processSet(sortedSoup, entry, lock, fullMatch, progress))
+        asyncio.ensure_future(vol.processSet(sortedSoup, entry,
+                                             lock, fullMatch, progress))
 
     return fullMatch
 

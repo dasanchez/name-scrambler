@@ -40,7 +40,7 @@ async def handle_message(websocket, data):
         letters = data['input']
         wordCount = int(data['word-count'])
         print("Received request for *" + letters + "*, with up to "
-              + str(wordCount) + "-word combinations")
+              + str(wordCount) + "-word combinations.")
 
         # START VOLDEMOT ROUTINE
         worddb = wordDB.wordDB()
@@ -73,7 +73,7 @@ async def handle_message(websocket, data):
 
             asyncio.ensure_future(vol.processClientSet(sortedLetters, entry,
                                                        lock, fullMatch, progress, websocket))
-            
+
         await asyncio.sleep(0.5)
         return fullMatch
 

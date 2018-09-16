@@ -1,20 +1,20 @@
-
 var process = document.querySelector('button'),
     input = document.querySelector('input'),
     count = document.getElementById('count'),
     results = document.querySelector('.results'),
     combinations = document.querySelector('.combinations');
 
-    var total = 0;
-
 var names = ['isaacasimov', 'iainmbanks', 'arthurclarke',
- 'roalddahl', 'williamgibson', 'frankherbert', 'stephenking']
+ 'corydoctorow', 'williamgibson', 'frankherbert', 'ursulaleguin', 'stephenking']
 
-    // progress bar:
+// progress bar:
 var progress=0;
+var total = 0;
+
 var progressContainer = document.getElementById("progCon");
 var progressBar = document.getElementById("progBar");
 var progressText = document.querySelector(".prog-text");
+var body = document.getElementsByTagName("BODY")[0];
 
 function setProgress(newProgress) {
     contW = progressContainer.clientWidth;
@@ -23,13 +23,22 @@ function setProgress(newProgress) {
     progressText.textContent = newProgress;
   }
 
+body.onresize = function() {
+    setProgress(progress)    
+};
+
+  var x = 0;
+  function myFunction() {
+      var txt = x += 1;
+      document.getElementById("demo").innerHTML = txt;
+  }
+
 input.addEventListener("keyup", function(event) {
     event.preventDefault();
     if(event.keyCode === 13) {
         process.click();
     }
 });
-
 
 process.onclick = function (event) {
     var letters = input.value;
@@ -73,7 +82,8 @@ process.onclick = function (event) {
                 total += 1;
             } else if (data['percent']) {
                 console.log('percent done: ' + data['value']);
-                setProgress(data['value'])
+                progress=data['value']
+                setProgress(progress)
             }
         
         };
@@ -84,16 +94,11 @@ process.onclick = function (event) {
     // } catch (exception) {
         // console.error(exception);
     // }
-
-    
 };
 
 input.focus();
 
-
 input.value = names[Math.floor(Math.random() * names.length)];
-
-// input.value = "albertcamus";
 
 input.onchange = function (event) {
     console.log("New value: " + input.value)

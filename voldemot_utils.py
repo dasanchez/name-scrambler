@@ -70,15 +70,15 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
     """
     comboSet = []
     for combo in product(*wordSet):
+        sortedCombo = sorted(combo)
         letterList = sorted([letter for word in combo for letter in word])
-        if sortedSoup == letterList and sorted(combo) not in comboSet:
-            comboSet.append(sorted(combo))
-            
+        if sortedSoup == letterList and sortedCombo not in comboSet:
+            comboSet.append(sortedCombo)
+            response = json.dumps({'match': True, 'value': sortedCombo})
+            await (ws.send(response))
+
     with await lock:
         fullMatch.extend(comboSet)
-        for combo in comboSet:
-            response = json.dumps({'match': True, 'value': combo})
-            await (ws.send(response))
         percent = int(progress[0]*(100/progress[1]))
         print(f"Progress: {percent:3}%")
         response = json.dumps({'percent': True, 'value': percent})
