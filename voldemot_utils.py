@@ -8,11 +8,9 @@ from itertools import combinations, chain, product
 
 def loadDictionary(filename):
     """ reads words line by line from a file and returns them in a list """
-    wordList = []
+    # wordList = []
     wordFile = open(filename, "r")
-    for word in wordFile:
-        if "'" not in word:
-            wordList.append(word.rstrip().lower())
+    wordList = [word.rstrip().lower() for word in wordFile if "'" not in word]
     wordFile.close()
     print("Read " + str(len(wordList)) + " words.")
     return wordList
@@ -22,7 +20,7 @@ def sumToN(n):
     from operator import sub
     b, mid, e = [0], list(range(1, n)), [n]
     splits = (d for i in range(n) for d in combinations(mid, i))
-    return (list(map(sub, chain(s, e), chain(b, s))) for s in splits)
+    return [list(map(sub, chain(s, e), chain(b, s))) for s in splits]
 
 def splitOptions(wordlength, count):
     'Returns the available combinations for the word length and number of words'
@@ -120,3 +118,5 @@ def wordIsPresent(word, soup):
         else:
             tempLetters = tempLetters.replace(letter, "", 1)
     return wordOK
+
+print(splitOptions(12,2))
