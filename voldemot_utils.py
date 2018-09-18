@@ -20,32 +20,25 @@ def sumToN(n):
     from operator import sub
     b, mid, e = [0], list(range(1, n)), [n]
     splits = (d for i in range(n) for d in combinations(mid, i))
-    return [list(map(sub, chain(s, e), chain(b, s))) for s in splits]
+
+    return set((tuple(sorted(list(map(sub, chain(s, e), chain(b, s))))) for s in splits))
 
 def splitOptions(wordlength, count):
     'Returns the available combinations for the word length and number of words'
-    options = []
-    for s in sumToN(wordlength):
-        s = sorted(s)
-        if (len(s) == count and s not in options):
-            options.append(s)
-    return options
+    return sorted(list((option for option in sumToN(wordlength) if len(option) == count)))
+
+def getWordsOfLength(wordLength, worddb):
+    'Returns a list of words from the database matching the required length.'
+    return [word[0] for word in worddb.query("SELECT word FROM words WHERE length IS " + str(wordLength))]
 
 def genSetList(lenCombos, worddb):
-    'Generate word sets based on word lengths provided by lenCombos'
-    setList = []
-    for lenCombo in lenCombos:
-        # Get only the words that match the lengths in this list
-        # lenCombo is a tuple of the possible length combinations
-        # that add up to letterCount
-        comboList = []
-        for length in lenCombo:
-            wordSet = []
-            for word in worddb.query("SELECT word FROM words WHERE length IS " + str(length)):
-                wordSet.append(word[0])
-            comboList.append(wordSet)
-        setList.append(comboList)
-    return setList
+    """
+    Generate word sets based on word lengths provided by lenCombos:
+    Get only the words that match the lengths in this list
+    lenCombo is a tuple of the possible length combinations
+    that add up to letterCount
+    """
+    return [[getWordsOfLength(length, worddb) for length in lenCombo] for lenCombo in lenCombos]
 
 async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
     """
@@ -118,5 +111,3 @@ def wordIsPresent(word, soup):
         else:
             tempLetters = tempLetters.replace(letter, "", 1)
     return wordOK
-
-print(splitOptions(12,2))
