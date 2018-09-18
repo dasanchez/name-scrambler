@@ -27,7 +27,7 @@ async def handler(websocket, path):
         async for message in websocket:
             data = json.loads(message)
             print("Received data: " + str(data))
-            fullMatch = await asyncio.ensure_future(handle_message(websocket, data))
+            fullMatch = await handle_message(websocket, data)
             response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
             print(response)
             await websocket.send(response)
