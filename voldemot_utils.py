@@ -15,6 +15,32 @@ def loadDictionary(filename):
     print("Read " + str(len(wordList)) + " words.")
     return wordList
 
+def wordIsPresent(word, soup):
+    """ checks if the word can be assembled with the characters in the soup """
+    testWord = word
+    for letter in soup:
+        testWord = testWord.replace(letter,"",1)
+    return not testWord
+
+def findWords(wordsFileName, letters, worddb):
+    """
+    Fills wordsFound list with words found in the letters string.
+    wordfound is a dictionary with a word as a key and the length as a value
+    """
+    wordsFound = []
+    # Load dictionary
+    wordList = loadDictionary(wordsFileName)
+
+    # Check if a word can be assembled from the letters available.
+    # If so, add it to the wordsFound list.
+    for word in wordList:
+        if wordIsPresent(word, letters):
+            wordsFound.append(word)
+            worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
+            worddb.commit()
+
+    return wordsFound
+
 def sumToN(n):
     'Generate the series of +ve integer lists which sum to a +ve integer, n.'
     from operator import sub
@@ -46,9 +72,10 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
     """
     comboSet = []
     for combo in product(*wordSet):
+        sortedCombo = sorted(combo)
         letterList = sorted([letter for word in combo for letter in word])
-        if sortedSoup == letterList and sorted(combo) not in comboSet:
-            comboSet.append(sorted(combo))
+        if sortedSoup == letterList and sortedCombo not in comboSet:
+            comboSet.append(sortedCombo)
 
     with await lock:
         fullMatch.extend(comboSet)
@@ -80,34 +107,3 @@ async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
         await asyncio.sleep(0.5)
     else:
         await asyncio.sleep(0.25)
-
-def findWords(wordsFileName, letters, worddb):
-    """
-    Fills wordsFound list with words found in the letters string.
-    wordfound is a dictionary with a word as a key and the length as a value
-    """
-    wordsFound = []
-    # Load dictionary
-    wordList = loadDictionary(wordsFileName)
-
-    # Check if a word can be assembled from the letters available.
-    # If so, add it to the wordsFound list.
-    for word in wordList:
-        if wordIsPresent(word, letters):
-            wordsFound.append(word)
-            worddb.query("INSERT INTO words VALUES ('" + word + "'," + str(len(word)) + ")")
-            worddb.commit()
-
-    return wordsFound
-
-def wordIsPresent(word, soup):
-    """ checks if the word can be assembled with the characters in the soup """
-    wordOK = True
-    tempLetters = soup[:]
-    for letter in word:
-        if letter not in tempLetters:
-            wordOK = False
-            break
-        else:
-            tempLetters = tempLetters.replace(letter, "", 1)
-    return wordOK
