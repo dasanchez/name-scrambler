@@ -121393,7 +121393,6 @@ spewinesses
 spewing
 spews
 spewy
-
 spherable
 spheradian
 spheral
@@ -124209,7 +124208,6 @@ stodginess
 stodginesses
 stodging
 stodgy
-
 stogey
 stogeys
 stogie
@@ -144574,11 +144572,6 @@ viatication
 viaticum
 viaticums
 viaticus
-viator
-viatores
-viatorial
-viatorially
-viators
 vibe
 vibes
 vibist
