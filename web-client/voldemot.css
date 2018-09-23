@@ -154,10 +154,18 @@ button {
     } 
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .combinations {
         display: grid;
         margin-top: 20px;
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .combinations {
+        display: grid;
+        margin-top: 20px;
+        grid-template-columns: repeat(2, 1fr);
     }
 }

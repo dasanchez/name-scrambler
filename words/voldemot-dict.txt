@@ -7468,8 +7468,6 @@ atlantis
 atlantite
 atlas
 atlases
-atmo
-atmos
 atmosphere
 atmosphered
 atmosphereful
@@ -7750,7 +7748,6 @@ atypical
 atypicalities
 atypicality
 atypically
-au
 aubergine
 aubergines
 auburn
@@ -29865,8 +29862,6 @@ dankness
 danknesses
 danks
 dans
-dante
-dantean
 danzon
 dapper
 dapperer
@@ -42230,7 +42225,6 @@ ephemerous
 ephererist
 ephesian
 ephesians
-epi
 epic
 epical
 epically
@@ -45882,7 +45876,6 @@ fantastics
 fantastries
 fantastry
 fantasy
-fao
 fap
 faqir
 faqirs
@@ -46607,8 +46600,6 @@ feracities
 feracity
 feral
 ferally
-ferial
-feriation
 ferment
 fermentabilities
 fermentability
@@ -73171,7 +73162,6 @@ lysol
 lysols
 lythe
 lythes
-m
 mr
 ma
 mac
@@ -80288,8 +80278,6 @@ mover
 movers
 moves
 movie
-moviedom
-moviedoms
 moviegoer
 moviegoers
 moviegoing
@@ -83216,13 +83204,6 @@ nondeistically
 nondo
 none
 nones
-nonet
-nonets
-nonette
-nonettes
-nonetti
-nonetto
-nonettos
 nong
 nongs
 nonic
@@ -84901,7 +84882,6 @@ odds
 ode
 odeon
 odeons
-oder
 odes
 odessa
 odeum
@@ -103176,15 +103156,6 @@ rapaciousness
 rapaciousnesses
 rapacities
 rapacity
-rape
-rapeable
-raped
-rapeful
-rapely
-rapeoil
-raper
-rapers
-rapes
 rapeseed
 rapeseeds
 rapid
