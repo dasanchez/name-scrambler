@@ -9,8 +9,13 @@ import asyncio
 import json
 import re
 import websockets
+from itertools import product
 import voldemot_utils as vol
 import wordDB
+
+pauseInterval = 10000
+pauseLength = 0.05
+USERS = set()
 
 def main(args):
     """ voldemot web server """
@@ -21,8 +26,37 @@ def main(args):
         websockets.serve(handler, '0.0.0.0', int(args[1])))
     loop.run_forever()
 
+async def register(websocket):
+    global pauseInterval
+    global pauseLength
+
+    USERS.add(websocket)
+    # pauseInterval -= 5000
+    pauseLength += 0.05
+    print(f"{len(USERS)} users connected, {pauseLength}ms pause every {pauseInterval} checks")
+    await notify_users()
+
+async def unregister(websocket):
+    global pauseInterval
+    global pauseLength
+
+    USERS.remove(websocket)
+    # pauseInterval += 5000
+    pauseLength -= 0.05
+    print(f"{len(USERS)} users connected, {pauseLength}ms pause every {pauseInterval} checks")
+    await notify_users()
+
+def users_event():
+    return json.dumps({'type': 'users', 'count': len(USERS)})
+
+async def notify_users():
+    if USERS:       # asyncio.wait doesn't accept an empty list
+        message = users_event()
+        await asyncio.wait([user.send(message) for user in USERS])
+
 async def handler(websocket, path):
     """ register(websocket) sends user_event() to websocket """
+    await register(websocket)
     try:
         async for message in websocket:
             data = json.loads(message)
@@ -32,7 +66,8 @@ async def handler(websocket, path):
             print(response)
             await websocket.send(response)
     finally:
-        pass
+        await unregister(websocket)
+        # pass
 
 async def handle_message(websocket, data):
     """ handles incoming message from players """
@@ -69,13 +104,42 @@ async def handle_message(websocket, data):
         progress = [1, setCount]
 
         for entry in setList:
-            await asyncio.sleep(0.25)
+            await processClientSet(sortedLetters, entry,
+                                       lock, fullMatch, progress, websocket)
 
-            asyncio.ensure_future(vol.processClientSet(sortedLetters, entry,
-                                                       lock, fullMatch, progress, websocket))
-
-        await asyncio.sleep(0.5)
+        # await asyncio.sleep(1)
         return fullMatch
+
+async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
+    """
+    Compares a set of words to the sorted letters and returns all matches.
+    """
+    global pauseInterval
+    global pauseLength
+    
+    comboSet = []
+    pause = pauseInterval
+    for combo in product(*wordSet):
+        sortedCombo = sorted(combo)
+        letterList = sorted([letter for word in combo for letter in word])
+        if sortedSoup == letterList and sortedCombo not in comboSet:
+            comboSet.append(sortedCombo)
+            response = json.dumps({'match': True, 'value': sortedCombo})
+            await (ws.send(response))
+        
+        pause -= 1
+        if pause == 0:
+            await asyncio.sleep(pauseLength)
+            pause = pauseInterval
+
+    with await lock:
+        fullMatch.extend(comboSet)
+        percent = int(progress[0]*(100/progress[1]))
+        # print(f"Progress: {percent:3}%")
+        response = json.dumps({'percent': True, 'value': percent})
+        await ws.send(response)
+        progress[0] += 1
+
 
 if __name__ == "__main__":
     main(sys.argv)

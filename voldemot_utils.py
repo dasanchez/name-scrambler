@@ -82,28 +82,7 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
         print(f"Progress: {int(progress[0]*(100/progress[1])):3}%")
         progress[0] += 1
 
-async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
-    """
-    Compares a set of words to the sorted letters and returns all matches.
-    """
-    comboSet = []
-    for combo in product(*wordSet):
-        sortedCombo = sorted(combo)
-        letterList = sorted([letter for word in combo for letter in word])
-        if sortedSoup == letterList and sortedCombo not in comboSet:
-            comboSet.append(sortedCombo)
-            response = json.dumps({'match': True, 'value': sortedCombo})
-            await (ws.send(response))
-
-    with await lock:
-        fullMatch.extend(comboSet)
-        percent = int(progress[0]*(100/progress[1]))
-        print(f"Progress: {percent:3}%")
-        response = json.dumps({'percent': True, 'value': percent})
-        await ws.send(response)
-        progress[0] += 1
-
-    if len(wordSet) > 3:
-        await asyncio.sleep(0.5)
-    else:
-        await asyncio.sleep(0.25)
+    # if len(wordSet) > 3:
+    #     await asyncio.sleep(0.5)
+    # else:
+    #     await asyncio.sleep(0.25)
