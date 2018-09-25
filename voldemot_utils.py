@@ -2,8 +2,7 @@
 voldemot_utils
 Helper functions for voldemot package
 """
-import asyncio
-import json
+# import asyncio
 from itertools import combinations, chain, product
 
 def loadDictionary(filename):
@@ -19,7 +18,7 @@ def wordIsPresent(word, soup):
     """ checks if the word can be assembled with the characters in the soup """
     testWord = word
     for letter in soup:
-        testWord = testWord.replace(letter,"",1)
+        testWord = testWord.replace(letter, "", 1)
     return not testWord
 
 def findWords(wordsFileName, letters, worddb):
@@ -55,7 +54,8 @@ def splitOptions(wordlength, count):
 
 def getWordsOfLength(wordLength, worddb):
     'Returns a list of words from the database matching the required length.'
-    return [word[0] for word in worddb.query("SELECT word FROM words WHERE length IS " + str(wordLength))]
+    return [word[0] for word in worddb.query("SELECT word FROM words WHERE length IS " +
+                                             str(wordLength))]
 
 def genSetList(lenCombos, worddb):
     """
@@ -71,6 +71,24 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
     Compares a set of words to the sorted letters and returns all matches.
     """
     comboSet = []
+    
+    # Build combinations before products
+    lengths = {}
+
+    for i in wordSet:
+        # Identify duplicates
+        setLength = len(i[0])
+        lengths[setLength] = 0
+
+    for i in wordSet:
+        setLength = len(i[0])
+        lengths[setLength] += 1
+    print(lengths)
+
+    for item in lengths:
+        if lengths[item] > 1:
+            print(f"{item}-letter words have more than one set")
+
     for combo in product(*wordSet):
         sortedCombo = sorted(combo)
         letterList = sorted([letter for word in combo for letter in word])
@@ -81,8 +99,3 @@ async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
         fullMatch.extend(comboSet)
         print(f"Progress: {int(progress[0]*(100/progress[1])):3}%")
         progress[0] += 1
-
-    # if len(wordSet) > 3:
-    #     await asyncio.sleep(0.5)
-    # else:
-    #     await asyncio.sleep(0.25)
