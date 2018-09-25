@@ -96,7 +96,7 @@ async def generateList(sortedSoup, wordCount, worddb):
     print("Checking " + str(wordCount) + '-word combinations...')
     lenCombos = vol.splitOptions(len(sortedSoup), wordCount)
     print(lenCombos)
-    setList = vol.genSetList(lenCombos, worddb)
+    setList = vol.generateCandidates(lenCombos, worddb)
     setCount = len(setList)
 
     if setList:

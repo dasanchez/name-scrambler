@@ -31968,7 +31968,6 @@ delver
 delvers
 delves
 delving
-dem
 demagnify
 demagogic
 demagogical
@@ -103176,8 +103175,6 @@ rapines
 raping
 rapini
 rapinis
-rapist
-rapists
 rapped
 rappel
 rappeled

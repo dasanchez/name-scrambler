@@ -3,7 +3,8 @@ voldemot_utils
 Helper functions for voldemot package
 """
 # import asyncio
-from itertools import combinations, chain, product
+from itertools import combinations, chain, product, combinations_with_replacement
+from collections import Counter
 
 def loadDictionary(filename):
     """ reads words line by line from a file and returns them in a list """
@@ -11,7 +12,7 @@ def loadDictionary(filename):
     wordFile = open(filename, "r")
     wordList = [word.rstrip().lower() for word in wordFile if "'" not in word]
     wordFile.close()
-    print("Read " + str(len(wordList)) + " words.")
+    # print("Read " + str(len(wordList)) + " words.")
     return wordList
 
 def wordIsPresent(word, soup):
@@ -57,41 +58,51 @@ def getWordsOfLength(wordLength, worddb):
     return [word[0] for word in worddb.query("SELECT word FROM words WHERE length IS " +
                                              str(wordLength))]
 
-def genSetList(lenCombos, worddb):
+def generateCandidates(lenCombos, worddb):
     """
     Generate word sets based on word lengths provided by lenCombos:
     Get only the words that match the lengths in this list
-    lenCombo is a tuple of the possible length combinations
-    that add up to letterCount
     """
-    return [[getWordsOfLength(length, worddb) for length in lenCombo] for lenCombo in lenCombos]
+    # Generate counter list
+    counterList = []
+    for lenCombo in lenCombos:
+        cnt = Counter()
+        for length in lenCombo:
+            cnt[length] += 1
+        counterList.append(cnt)
+
+    # Set up combinations
+    wordSets = []
+    for counter in counterList:
+        wordSet = []
+        for length in counter:
+            wordList = getWordsOfLength(length, worddb)
+            # Generate combinations if required
+            if counter[length] > 1:
+                wordSet.append(list(combinations_with_replacement(wordList, counter[length])))
+            else:
+                wordSet.append(wordList)
+        wordSets.append(wordSet)
+
+    return wordSets
 
 async def processSet(sortedSoup, wordSet, lock, fullMatch, progress):
     """
     Compares a set of words to the sorted letters and returns all matches.
     """
     comboSet = []
-    
-    # Build combinations before products
-    lengths = {}
-
-    for i in wordSet:
-        # Identify duplicates
-        setLength = len(i[0])
-        lengths[setLength] = 0
-
-    for i in wordSet:
-        setLength = len(i[0])
-        lengths[setLength] += 1
-    print(lengths)
-
-    for item in lengths:
-        if lengths[item] > 1:
-            print(f"{item}-letter words have more than one set")
 
     for combo in product(*wordSet):
-        sortedCombo = sorted(combo)
-        letterList = sorted([letter for word in combo for letter in word])
+        setEntry = []
+        for entry in combo:
+            if isinstance(entry, tuple):
+                for subset in entry:
+                    setEntry.append(subset)
+            else:
+                setEntry.append(entry)
+
+        sortedCombo = sorted(setEntry)
+        letterList = sorted([letter for word in setEntry for letter in word])
         if sortedSoup == letterList and sortedCombo not in comboSet:
             comboSet.append(sortedCombo)
 
