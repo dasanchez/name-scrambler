@@ -13014,7 +13014,6 @@ bondage
 bondager
 bondagers
 bondages
-bondar
 bonded
 bonder
 bonders
@@ -27734,7 +27733,6 @@ cried
 crier
 criers
 cries
-criey
 crikey
 crikeys
 crime
@@ -29804,7 +29802,6 @@ dandilly
 dandily
 dandiprat
 dandiprats
-dandis
 dandle
 dandled
 dandler
@@ -67579,10 +67576,7 @@ kazakh
 kazakhstan
 kazakstan
 kb
-kbar
-kbars
 kbps
-kcal
 kebab
 kebabbed
 kebabbing
@@ -79634,7 +79628,6 @@ moodir
 moodish
 moodishly
 moodishness
-moodle
 moods
 moody
 mooed
@@ -83097,7 +83090,6 @@ noisomenesses
 noisy
 nom
 nomad
-nomadian
 nomadic
 nomadical
 nomadically
@@ -86714,9 +86706,6 @@ osmically
 osmics
 osmidroses
 osmidrosis
-osmin
-osmina
-osmious
 osmium
 osmiums
 osmogene
@@ -110945,7 +110934,6 @@ ryebreads
 ryeflour
 ryeflours
 ryes
-s
 sabbat
 sabbatarian
 sabbath
@@ -129416,8 +129404,6 @@ takier
 takiest
 taking
 takingly
-takingness
-takingnesses
 takings
 talc
 talcier
