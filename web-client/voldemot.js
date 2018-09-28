@@ -44,7 +44,7 @@ process.onclick = function (event) {
     var letters = input.value;
     setProgress(0)
     total = 0;
-    results.textContent = 'De-scrambling...';
+    results.textContent = 'Requested combinations...';
 
     while (combinations.firstChild) {
         combinations.removeChild(combinations.firstChild);
@@ -84,16 +84,20 @@ process.onclick = function (event) {
                 console.log('percent done: ' + data['value']);
                 progress=data['value']
                 setProgress(progress)
+            } else if (data['reject']) {
+                if (data['reason']==='max-users') {
+                    results.textContent = 'Max connections reached, try again later';
+                }
+                console.log('Connection rejected: ' + data['reason']);
+            } else if (data['input']) {
+                results.textContent = 'Processing ' + data['value'] + ':';
+                console.log('Processing ' + data['value']);
             }
-        
         };
         
         websocket.onopen = function(evt) {
         websocket.send(JSON.stringify(myJSON));
         }
-    // } catch (exception) {
-        // console.error(exception);
-    // }
 };
 
 input.focus();

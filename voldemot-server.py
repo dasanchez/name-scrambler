@@ -57,25 +57,35 @@ async def notify_users():
         message = users_event()
         await asyncio.wait([user.send(message) for user in USERS])
 
+async def reject_connection(websocket):
+    message = json.dumps({'reject': True, 'reason': 'max-users'})
+    await websocket.send(message)
+
 async def handler(websocket, path):
     """ register(websocket) sends user_event() to websocket """
-    await register(websocket)
-    try:
-        async for message in websocket:
-            start = time.time()
-            data = json.loads(message)
-            fullMatch = await handle_message(websocket, data)
-            response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
-            print(response)
-            await websocket.send(response)
-            await asyncio.sleep(0.5)
-            end = time.time()
-            print(f"Processed request in {(end-start):.2f} seconds")
-            return 'done'
-    finally:
-        await unregister(websocket)
-        # pass
+    if len(USERS) >= 5:
+        await reject_connection(websocket)
+        print("Rejected new connection")
+        return
+    else:
+        await register(websocket)
+        try:
+            async for message in websocket:
+                start = time.time()
 
+                data = json.loads(message)
+                fullMatch = await handle_message(websocket, data)
+                response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
+                print(response)
+                await websocket.send(response)
+                await asyncio.sleep(0.5)
+                
+                end = time.time()
+                print(f"Processed request for {data['input']} in {(end-start):.2f} seconds")
+                return 'done'
+        finally:
+            await unregister(websocket)
+        
 async def handle_message(websocket, data):
     """ handles incoming message from players """
     if data['type'] == 'voldemot-request':
@@ -90,9 +100,14 @@ async def handle_message(websocket, data):
         letters = re.sub(r"\W?\d?", "", letters).lower()
         letters = letters[:16]
         print(f"Processing {letters} for {wordCount}-word combinations.")
+
+        response = json.dumps({'input': True, 'value': letters})
+        asyncio.ensure_future(websocket.send(response))
+
         sortedLetters = sorted(list(letters))
         wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)
         print("Found " + str(len(wordsFound)) + " words.")
+
 
         # generate combinations
         lenCombos = vol.splitOptions(len(letters), wordCount)
