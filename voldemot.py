@@ -19,6 +19,7 @@ combinations, "a clubmaster" and "cabal muster" to
 import sys
 import re
 import time
+from collections import Counter
 import asyncio
 import voldemot_utils as vol
 import wordDB
@@ -59,10 +60,62 @@ def main(args):
     wordsFound = vol.findWords(wordFileName, letters, worddb)
     print("Found " + str(len(wordsFound)) + " words.")
 
+    print(sorted(wordsFound, key=len))
+
+    wordDict = { word: len(word) for word in wordsFound }
+
+    fullMatch = []
+
+    print("1-word matches:")
+    for word in getWordsOfLength(wordDict, len(letters)):
+        if sorted(letters) == sorted(word):
+            fullMatch.append(word)
+
+    print("2-word matches:")
+    wordList = wordsFound.copy()
+    for word in wordsFound:
+        wordList.remove(word)
+        for second in getWords(wordList, len(letters) - len(word)):
+            testCombo = word + second
+            if sorted(testCombo) == sorted(letters):
+                fullMatch.append(word + ' ' + second)
+
+    print("3-word matches:")
+    wordList = wordsFound.copy()
+    for word in wordsFound:
+        wordList.remove(word)
+        secondList = wordList.copy()
+        for second in getWordsUnder(wordList, len(letters) - len(word)):
+            secondList.remove(second)
+            twoWordCombo = word + second
+            thirdList = secondList.copy()
+            for third in getWordsEqual(thirdList, len(letters) - len(twoWordCombo) ):
+                thirdList.remove(third)
+                testCombo = twoWordCombo + third
+                if sorted(testCombo) == sorted(letters):
+                    fullMatch.append(word + ' ' + second + ' ' + third)
+
+    # print("4-word matches:")
+    # wordList = wordsFound.copy()
+    # for word in wordsFound:
+    #     wordList.remove(word)
+    #     secondList = wordList.copy()
+    #     for second in getWordsUnder(wordList, len(letters) - len(word)):
+    #         secondList.remove(second)
+    #         twoWordCombo = word + second
+    #         thirdList = secondList.copy()
+    #         for third in getWordsUnder(thirdList, len(letters) - len(twoWordCombo) ):
+    #             thirdList.remove(third)
+    #             testCombo = twoWordCombo + third
+    #             if sorted(testCombo) == sorted(letters):
+    #                 # print(word + ' ' + second + ' ' + third)
+    #                 fullMatch.append(word + ' ' + second + ' ' + third)
+
+
     # generate all possible and put them in the fullMatch list
-    loop = asyncio.get_event_loop()
-    fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
-    loop.close()
+    # loop = asyncio.get_event_loop()
+    # fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
+    # loop.close()
 
     print("There are " + str(len(fullMatch)) + " full matches.")
 
@@ -74,6 +127,22 @@ def main(args):
 
     end = time.time()
     print(str(int(end-start)) + " seconds elapsed")
+
+def getWordsEqual(wordList, targetLength):
+    """ return list of words of a specified length in the list """
+    return [ word for word in wordList if len(word) == targetLength ]
+
+def getWordsUnder(wordList, targetLength):
+    """ return list of words of a specified length in the list """
+    return [ word for word in wordList if len(word) < targetLength ]
+
+def getWords(wordList, targetLength):
+    """ return list of words of a specified length in the list """
+    return [ word for word in wordList if len(word) <= targetLength ]
+
+def getWordsOfLength(wordDict, targetLength):
+    """ return list of words of a specified length in the dictionary """
+    return [ word for word, wordLen in wordDict.items() if wordLen == targetLength ]
 
 def voldemot(letters, wordsRequested):
     """ simplified function call that always goes to the standard dictionary """
