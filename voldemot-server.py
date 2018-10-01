@@ -102,7 +102,7 @@ async def handle_message(websocket, data):
         print(f"Processing {letters} for {wordCount}-word combinations.")
 
         response = json.dumps({'input': True, 'value': letters})
-        asyncio.ensure_future(websocket.send(response))
+        await websocket.send(response)
 
         sortedLetters = sorted(list(letters))
         wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)

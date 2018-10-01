@@ -2793,8 +2793,6 @@ akinesia
 akinesias
 akinesic
 akinesis
-akinete
-akinetic
 alabama
 alabaman
 alabamian
@@ -2993,15 +2991,6 @@ alienations
 alienator
 alienators
 aliency
-aliene
-aliened
-alienee
-alienees
-aliener
-alieners
-alienicola
-alienicolae
-alienigenate
 aliening
 alienism
 alienisms
@@ -4314,7 +4303,6 @@ anechoic
 anelastic
 anelasticities
 anelasticity
-anele
 anelectric
 anelectrode
 anelectrotonic
@@ -6172,8 +6160,6 @@ arduous
 arduously
 arduousness
 arduousnesses
-ardure
-ardurous
 are
 area
 areas
@@ -6577,7 +6563,6 @@ arteriectasia
 arteriectasis
 arteriectomy
 arteriectopia
-arteried
 arteries
 arterioscleroses
 arteriosclerosis
@@ -7780,15 +7765,6 @@ audibly
 audience
 audiencer
 audiences
-audiencia
-audiencias
-audiencier
-audient
-audients
-audile
-audiles
-auding
-audings
 audio
 audiocassette
 audiocassettes
@@ -7918,7 +7894,6 @@ aunthood
 aunthoods
 auntie
 aunties
-auntish
 auntly
 aunts
 aura
@@ -29601,7 +29576,6 @@ daffy
 daft
 dafter
 daftest
-dafties
 daftly
 daftness
 daftnesses
@@ -29645,8 +29619,6 @@ daiquiri
 daiquiris
 dairy
 dais
-daised
-daisee
 daises
 daisied
 daisies
@@ -29952,7 +29924,6 @@ dartingness
 dartle
 dartled
 dartles
-dartlike
 dartling
 dartmouth
 darts
@@ -31047,7 +31018,6 @@ deeply
 deeps
 deer
 deers
-dees
 deescalate
 deescalated
 deescalates
@@ -31777,9 +31747,6 @@ deleting
 deletion
 deletions
 deletive
-delft
-delfts
-delhi
 deli
 deliberant
 deliberate
@@ -31876,7 +31843,6 @@ delirant
 delirate
 deliration
 delirations
-delire
 deliriant
 deliriants
 deliriate
@@ -32376,7 +32342,6 @@ densitometry
 density
 dent
 dental
-dentale
 dentalgia
 dentalia
 dentalism
@@ -32995,8 +32960,6 @@ desaturate
 desaturated
 desaturation
 desaturations
-desaurin
-desaurine
 descale
 descaled
 descales
@@ -33118,7 +33081,6 @@ desertions
 desertism
 desertless
 desertlessly
-desertlike
 desertness
 desertress
 desertrice
@@ -34642,6 +34604,7 @@ dimwitted
 dimwittedly
 dimwittedness
 dimwittednesses
+dinar
 dinars
 dine
 dined
@@ -38789,6 +38752,7 @@ dunkable
 dunkadoo
 dunkard
 dunked
+dunkel
 dunker
 dunking
 dunkirk
@@ -38897,7 +38861,6 @@ dusting
 dustings
 dustless
 dustlessness
-dustlike
 dustoff
 dustoffs
 dustpan
@@ -39183,9 +39146,6 @@ earthily
 earthiness
 earthinesses
 earthing
-earthlier
-earthlies
-earthliest
 earthling
 earthlings
 earthly
@@ -39583,7 +39543,6 @@ edelweiss
 edelweisses
 eden
 edenic
-edenite
 edge
 edged
 edgeling
@@ -39638,11 +39597,7 @@ edifyingness
 edinburgh
 edit
 editable
-edital
-editchar
-edite
 edited
-edith
 editing
 edition
 editions
@@ -39970,7 +39925,6 @@ eighths
 eighties
 eights
 eighty
-eine
 ejaculate
 ejaculated
 ejaculates
@@ -43121,7 +43075,6 @@ estranging
 estuarial
 estuarian
 estuaries
-estuarine
 estuary
 eta
 etas
@@ -43177,7 +43130,6 @@ etherism
 etherisms
 etherist
 etherists
-etherlike
 ethernet
 ethernets
 etherol
@@ -45804,7 +45756,6 @@ fanciness
 fancinesses
 fancy
 fancying
-fand
 fandango
 fandangos
 fandom
@@ -45912,7 +45863,6 @@ farcinoma
 farcy
 fare
 fared
-farenheit
 farer
 farers
 fares
@@ -45942,7 +45892,6 @@ farrow
 farrowed
 farrowing
 farrows
-fars
 farsi
 farside
 farsides
@@ -50095,7 +50044,6 @@ friskinesses
 frisking
 friskingly
 friskings
-friskle
 frisks
 frisky
 frisson
@@ -50735,7 +50683,6 @@ furled
 furler
 furlers
 furless
-furlike
 furling
 furlong
 furlongs
@@ -56121,7 +56068,6 @@ heating
 heatingly
 heatings
 heatless
-heatlike
 heats
 heave
 heaved
@@ -59447,7 +59393,6 @@ id
 idaho
 idahoan
 idahoans
-ide
 idea
 ideaed
 ideaful
@@ -63529,7 +63474,6 @@ inquisiturient
 inroad
 inroader
 inroads
-ins
 insalubrious
 insalubriously
 insalubriousness
@@ -71236,7 +71180,6 @@ likens
 liker
 likers
 likes
-likest
 likewise
 likewisely
 likewiseness
@@ -73012,7 +72955,6 @@ luted
 luter
 luters
 lutes
-luther
 lutheran
 lutheranism
 lutherans
@@ -73153,7 +73095,6 @@ lysol
 lysols
 lythe
 lythes
-mr
 ma
 mac
 macabre
@@ -102798,7 +102739,6 @@ rafterings
 rafters
 raftiness
 rafting
-raftlike
 rafts
 rafty
 rag
@@ -103258,7 +103198,6 @@ rashes
 rashest
 rashful
 rashing
-rashlike
 rashly
 rashness
 rashnesses
@@ -114793,7 +114732,6 @@ serfish
 serfishly
 serfishness
 serfism
-serflike
 serfs
 serge
 sergeancies
@@ -115238,7 +115176,6 @@ shafters
 shafting
 shaftings
 shaftless
-shaftlike
 shafts
 shafty
 shag
@@ -115532,7 +115469,6 @@ sheafed
 sheafier
 sheafiest
 sheafing
-sheaflike
 sheafs
 sheafy
 shear
@@ -115638,7 +115574,6 @@ sheeting
 sheetings
 sheetless
 sheetlet
-sheetlike
 sheetling
 sheetrock
 sheetrocked
@@ -123480,7 +123415,6 @@ steedied
 steedies
 steeding
 steedless
-steedlike
 steeds
 steedy
 steel
@@ -132336,7 +132270,6 @@ threading
 threadle
 threadless
 threadlet
-threadlike
 threadmaker
 threadmakers
 threadmaking
@@ -132684,7 +132617,6 @@ thunderingly
 thunderings
 thunderless
 thunderlight
-thunderlike
 thunderous
 thunderously
 thunderousness
@@ -137560,7 +137492,6 @@ turfings
 turfite
 turfites
 turfless
-turflike
 turfman
 turfmen
 turfs
@@ -142901,7 +142832,6 @@ urning
 urningism
 urnings
 urnism
-urnlike
 urnmaker
 urns
 urochrome
@@ -147765,7 +147695,6 @@ wheaties
 wheatiest
 wheatland
 wheatless
-wheatlike
 wheatmeal
 wheatmeals
 wheats
