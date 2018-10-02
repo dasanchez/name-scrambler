@@ -71,49 +71,11 @@ def main(args):
     #     if sorted(letters) == sorted(word):
     #         fullMatch.append(word)
 
-    # print("2-word matches:")
-    # wordList = wordsFound.copy()
-    # for word in wordsFound:
-    #     wordList.remove(word)
-    #     for second in getWords(wordList, len(letters) - len(word)):
-    #         testCombo = word + second
-    #         if sorted(testCombo) == sorted(letters):
-    #             fullMatch.append(word + ' ' + second)
-
-    total = 1
-    print("3-word matches:")
-    wordList = wordsFound.copy()
-    for first in getWordsUnder(wordList, len(letters) - 2):
-        print(f"Word {total}: {first}")
-        total += 1
-        secondList = wordList.copy()
-        for second in getWordsUnder(secondList, len(letters) - len(first)):
-            twoWordCombo = first + second
-            thirdList = secondList.copy()
-            for third in getWordsEqualTo(thirdList, len(letters) - len(twoWordCombo)):
-                testCombo = twoWordCombo + third
-                if sorted(testCombo) == sorted(letters):
-                    fullMatch.append(first + ' ' + second + ' ' + third)
-            secondList.remove(second)
-        wordList.remove(first)
-
-    # print("4-word matches:")
-    # wordList = wordsFound.copy()
-    # for first in getWordsUnder(wordList, len(letters) - 3):
-    #     secondList = wordList.copy()
-    #     for second in getWordsUnder(secondList, len(letters) - len(first) - 2):
-    #         twoWordCombo = first + second
-    #         thirdList = secondList.copy()
-    #         for third in getWordsUnder(thirdList, len(letters) - len(twoWordCombo)):
-    #             threeWordCombo = twoWordCombo + third
-    #             fourthList = thirdList.copy()
-    #             for fourth in getWordsEqualTo(fourthList, len(letters) - len(threeWordCombo)):
-    #                 fourWordCombo = threeWordCombo + fourth
-    #                 if sorted(fourWordCombo) == sorted(letters):
-    #                     fullMatch.append(f"{first} {second} {third} {fourth}")
-    #             thirdList.remove(third)
-    #         secondList.remove(second)
-    #     wordList.remove(first)
+    # # generate all possible and put them in the fullMatch list
+    loop = asyncio.get_event_loop()
+    # fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
+    fullMatch = loop.run_until_complete(fourWordCombinations(wordsFound, letters))
+    loop.close()
 
     end = time.time()
     print(f"{(end-start):.2f} seconds elapsed.")
@@ -138,6 +100,67 @@ def main(args):
     #     for word in entry:
     #         myStr = myStr + word + " "
     #     print(myStr)
+
+async def twoWordCombinations(wordsFound, letters):
+    fullMatch = []
+    firstList = wordsFound.copy()
+    for first in wordsFound:
+        firstList.remove(first)
+        for second in getWords(firstList, len(letters) - len(first)):
+            testCombo = first + second
+            if sorted(testCombo) == sorted(letters):
+                await asyncio.sleep(0.05)
+                fullMatch.append(f"{first} {second}")
+    return fullMatch
+
+async def threeWordCombinations(wordsFound, letters):
+    fullMatch = []
+    firstList = wordsFound.copy()
+    total = 1
+    for first in getWordsUnder(firstList, len(letters) - 2):
+        print(f"Word {total}: {first}")
+        total += 1
+        secondList = firstList.copy()
+        for second in getWordsUnder(secondList, len(letters) - len(first)):
+            twoWordCombo = first + second
+            thirdList = secondList.copy()
+            for third in getWordsEqualTo(thirdList, len(letters) - len(twoWordCombo)):
+                testCombo = twoWordCombo + third
+                if sorted(testCombo) == sorted(letters):
+                    fullMatch.append(f"{first} {second} {third}")
+            secondList.remove(second)
+        firstList.remove(first)
+    return fullMatch
+
+async def fourWordCombinations(wordsFound, letters):
+    pauseInterval = 10000
+    pauseLength = 0.1
+    fullMatch = []
+    total = 1
+    intervalCounter = 0
+    wordList = wordsFound.copy()
+    for first in getWordsUnder(wordList, len(letters) - 3):
+        print(f"Word {total}: {first}")
+        total += 1
+        secondList = wordList.copy()
+        for second in getWordsUnder(secondList, len(letters) - len(first) - 2):
+            twoWordCombo = first + second
+            thirdList = secondList.copy()
+            for third in getWordsUnder(thirdList, len(letters) - len(twoWordCombo)):
+                threeWordCombo = twoWordCombo + third
+                fourthList = thirdList.copy()
+                for fourth in getWordsEqualTo(fourthList, len(letters) - len(threeWordCombo)):
+                    fourWordCombo = threeWordCombo + fourth
+                    if sorted(fourWordCombo) == sorted(letters):
+                        fullMatch.append(f"{first} {second} {third} {fourth}")
+                    intervalCounter += 1
+                    if intervalCounter == pauseInterval:
+                        await asyncio.sleep(pauseLength)
+                        intervalCounter = 0
+                thirdList.remove(third)
+            secondList.remove(second)
+        wordList.remove(first)
+    return fullMatch
 
 def getWordsEqualTo(wordList, targetLength):
     """ return list of words of a specified length in the list """

@@ -2901,7 +2901,6 @@ aldermanic
 aldermanical
 aldermanities
 aldermanity
-aldermanlike
 aldermanly
 aldermanries
 aldermanry
@@ -3708,7 +3707,6 @@ ambusher
 ambushers
 ambushes
 ambushing
-ambushlike
 ambushment
 ambushments
 amelia
@@ -4195,7 +4193,6 @@ anchoritically
 anchoritish
 anchoritism
 anchorless
-anchorlike
 anchorman
 anchormen
 anchorpeople
@@ -4395,7 +4392,6 @@ angelically
 angeline
 angelized
 angelizing
-angellike
 angels
 angelship
 angelus
@@ -6340,7 +6336,6 @@ armlessly
 armlessness
 armlet
 armlets
-armlike
 armlock
 armlocked
 armlocking
@@ -7489,7 +7484,6 @@ atomistically
 atomistics
 atomists
 atomity
-atomlike
 atomology
 atoms
 atomy
@@ -8182,7 +8176,6 @@ automatists
 automative
 automatograph
 automaton
-automatonlike
 automatons
 automobile
 automobiled
@@ -8522,7 +8515,6 @@ awning
 awninged
 awnings
 awnless
-awnlike
 awns
 awny
 awoke
@@ -8686,7 +8678,6 @@ babeldom
 babeldoms
 babelesque
 babelet
-babelike
 babelish
 babelism
 babelisms
@@ -8729,7 +8720,6 @@ babyish
 babyishly
 babyishness
 babyism
-babylike
 babylon
 babylonia
 babylonian
@@ -8788,7 +8778,6 @@ bachelorhood
 bachelorhoods
 bachelorism
 bachelorisms
-bachelorlike
 bachelorly
 bachelors
 bachelorship
@@ -9039,7 +9028,6 @@ badgered
 badgerer
 badgering
 badgeringly
-badgerlike
 badgerly
 badgers
 badgerweed
@@ -9160,7 +9148,6 @@ bakeress
 bakeries
 bakerite
 bakerless
-bakerlike
 bakerly
 bakers
 bakery
@@ -9483,7 +9470,6 @@ bankruptcy
 bankrupted
 bankrupting
 bankruptism
-bankruptlike
 bankruptly
 bankrupts
 bankruptship
@@ -9493,7 +9479,6 @@ banned
 banner
 bannered
 bannerless
-bannerlike
 bannerline
 bannerman
 bannermen
@@ -9827,7 +9812,6 @@ basilic
 basilica
 basilicae
 basilical
-basilicalike
 basilican
 basilicas
 basilicata
@@ -10115,7 +10099,6 @@ beamishly
 beamless
 beamlet
 beamlets
-beamlike
 beamman
 beamroom
 beams
@@ -11811,7 +11794,6 @@ birthroot
 birthroots
 births
 biscuit
-biscuitlike
 biscuitry
 biscuits
 bisect
@@ -12109,7 +12091,6 @@ blanketers
 blanketing
 blanketings
 blanketless
-blanketlike
 blanketry
 blankets
 blankies
@@ -12705,7 +12686,6 @@ boarding
 boardinghouse
 boardinghouses
 boardings
-boardlike
 boardroom
 boardrooms
 boards
@@ -13462,7 +13442,6 @@ bowed
 bowedness
 bowel
 bowelless
-bowellike
 bowels
 bowenite
 bower
@@ -13470,7 +13449,6 @@ bowered
 boweries
 bowering
 bowerlet
-bowerlike
 bowerly
 bowermaiden
 bowermay
@@ -13952,7 +13930,6 @@ breeze
 breezed
 breezeful
 breezeless
-breezelike
 breezes
 breezier
 breeziest
@@ -14310,7 +14287,6 @@ brontosauruses
 bronx
 bronze
 bronzed
-bronzelike
 bronzen
 bronzer
 bronzers
@@ -14469,7 +14445,6 @@ brutalness
 brute
 bruted
 brutedom
-brutelike
 brutely
 bruteness
 brutenesses
@@ -15187,7 +15162,6 @@ butleress
 butleries
 butlering
 butlerism
-butlerlike
 butlers
 butlery
 buts
@@ -16806,11 +16780,9 @@ casked
 casket
 casketed
 casketing
-casketlike
 caskets
 caskful
 casking
-casklike
 casks
 casky
 caspian
@@ -17075,7 +17047,6 @@ cateringly
 caterings
 caterpillar
 caterpillared
-caterpillarlike
 caterpillars
 caters
 catharses
@@ -17096,7 +17067,6 @@ cathedral
 cathedraled
 cathedralesque
 cathedralic
-cathedrallike
 cathedrals
 cathedralwise
 cathedras
@@ -17903,7 +17873,6 @@ chambray
 chambrays
 chameleon
 chameleonic
-chameleonlike
 chameleons
 chamfer
 chamfered
@@ -17935,7 +17904,6 @@ championess
 championesses
 championing
 championless
-championlike
 champions
 championship
 championships
@@ -18518,7 +18486,6 @@ cherries
 cherriest
 cherry
 cherrying
-cherrylike
 cherrypick
 cherrypicked
 cherrypicking
@@ -82505,7 +82472,6 @@ newcastle
 newcome
 newcomer
 newcomers
-newed
 newer
 newest
 newfangle
@@ -137335,8 +137301,6 @@ tunable
 tunableness
 tunablenesses
 tunably
-tunaburger
-tunal
 tunas
 tundra
 tundras
@@ -137429,8 +137393,6 @@ turbinatostipitate
 turbine
 turbinectomy
 turbined
-turbinelike
-turbinelloid
 turbiner
 turbines
 turbiniform
@@ -137478,8 +137440,6 @@ turds
 turducken
 turduckens
 turf
-turfage
-turfan
 turfdom
 turfed
 turfen
@@ -137573,7 +137533,6 @@ turnings
 turnip
 turniped
 turniping
-turniplike
 turnips
 turnipy
 turnkey
@@ -137612,7 +137571,6 @@ turrethead
 turretheads
 turreting
 turretless
-turretlike
 turrets
 turtle
 turtleback
@@ -137640,11 +137598,6 @@ tushes
 tushie
 tushies
 tushing
-tushkar
-tushkars
-tushker
-tushkers
-tushs
 tushy
 tusk
 tuskar
@@ -137861,7 +137814,6 @@ twilight
 twilighted
 twilighting
 twilightless
-twilightlike
 twilights
 twilighty
 twill
@@ -137880,7 +137832,6 @@ twinborn
 twine
 twined
 twineless
-twinelike
 twinemaker
 twinemaking
 twiner
@@ -138131,7 +138082,6 @@ typhlon
 typhoid
 typhoidal
 typhoidin
-typhoidlike
 typhoids
 typhon
 typhonia
@@ -138232,7 +138182,6 @@ tyrans
 tyrant
 tyranted
 tyranting
-tyrantlike
 tyrants
 tzarevich
 tzarevitch
@@ -138297,8 +138246,6 @@ ugliness
 uglinesses
 ugly
 uglying
-uh
-uhs
 uk
 ukraine
 ukrainian
@@ -139557,7 +139504,6 @@ undertakement
 undertaken
 undertaker
 undertakerish
-undertakerlike
 undertakerly
 undertakers
 undertakery
@@ -139599,7 +139545,6 @@ undervaluer
 undervaluers
 undervalues
 undervaluing
-undervaluinglike
 undervaluingly
 undervalve
 undervoltage
@@ -140228,7 +140173,6 @@ unfriendednesses
 unfriending
 unfriendlier
 unfriendliest
-unfriendlike
 unfriendlily
 unfriendliness
 unfriendlinesses
@@ -140265,7 +140209,6 @@ ungainfulness
 ungaining
 ungainlier
 ungainliest
-ungainlike
 ungainliness
 ungainlinesses
 ungainly
@@ -140273,7 +140216,6 @@ ungainness
 ungentle
 ungentled
 ungentleman
-ungentlemanlike
 ungentlemanlikeness
 ungentlemanliness
 ungentlemanlinesses
@@ -140454,7 +140396,6 @@ unhooding
 unhoods
 unhouse
 unhoused
-unhouselike
 unhouses
 unhurdled
 unhurried
@@ -141260,7 +141201,6 @@ unoffensiveness
 unoffered
 unofficed
 unofficered
-unofficerlike
 unofficial
 unofficialdom
 unofficially
@@ -141377,7 +141317,6 @@ unpile
 unpiled
 unpiles
 unpilfered
-unpilgrimlike
 unpiling
 unpin
 unpinned
@@ -142879,9 +142818,6 @@ usage
 usager
 usagers
 usages
-usance
-usances
-usant
 use
 useableness
 useablenesses
@@ -142929,7 +142865,6 @@ usufructuary
 usure
 usured
 usurer
-usurerlike
 usurers
 usures
 usuress
@@ -143151,7 +143086,6 @@ vagrancies
 vagrancy
 vagrant
 vagrantism
-vagrantlike
 vagrantly
 vagrantness
 vagrants
@@ -143484,7 +143418,6 @@ varnishers
 varnishes
 varnishing
 varnishings
-varnishlike
 varnishment
 varnishy
 vars
@@ -143627,7 +143560,6 @@ vegeburger
 vegeburgers
 vegetability
 vegetable
-vegetablelike
 vegetables
 vegetablewise
 vegetably
@@ -143675,7 +143607,6 @@ veilier
 veiliest
 veiling
 veilings
-veillike
 veilmaker
 veilmaking
 veils
@@ -143938,7 +143869,6 @@ verbatim
 verbena
 verbenaceae
 verbenaceous
-verbenalike
 verbenalin
 verbenas
 verbenate
@@ -144083,7 +144013,6 @@ verminer
 verminicidal
 verminicide
 verminiferous
-verminlike
 verminly
 verminosis
 verminous
@@ -144364,7 +144293,6 @@ vetch
 vetches
 vetchier
 vetchiest
-vetchlike
 vetchling
 vetchlings
 vetchworm
@@ -144533,7 +144461,6 @@ vicary
 vice
 viced
 viceless
-vicelike
 vicepresidence
 vicepresident
 vicepresidents
@@ -144702,7 +144629,6 @@ vigorousnesses
 viking
 vikingism
 vikingisms
-vikinglike
 vikings
 vikingship
 vile
@@ -144734,7 +144660,6 @@ villageful
 villagehood
 villageless
 villagelet
-villagelike
 villageous
 villager
 villageress
@@ -144835,7 +144760,6 @@ vinegaring
 vinegarish
 vinegarishness
 vinegarist
-vinegarlike
 vinegarrette
 vinegarrettes
 vinegarroon
@@ -144922,7 +144846,6 @@ violer
 violers
 violet
 violetish
-violetlike
 violets
 violin
 violina
@@ -144937,7 +144860,6 @@ violinistic
 violinistically
 violinists
 violinless
-violinlike
 violinmaker
 violinmakers
 violinmaking
@@ -145059,7 +144981,6 @@ virtuoso
 virtuosoship
 virtuosoships
 virtuous
-virtuouslike
 virtuously
 virtuousness
 virtuousnesses
@@ -145081,7 +145002,6 @@ viruscidal
 viruscide
 virusemic
 viruses
-viruslike
 virusoid
 virusoids
 virustatic
@@ -145311,7 +145231,6 @@ vitreosities
 vitreosity
 vitreous
 vitreouses
-vitreouslike
 vitreously
 vitreousness
 vitreousnesses
@@ -145852,7 +145771,6 @@ vowelist
 vowelled
 vowelless
 vowellessness
-vowellike
 vowelling
 vowelly
 vowels
@@ -146020,7 +145938,6 @@ wafflers
 waffles
 wafflier
 waffliest
-wafflike
 waffling
 wafflingly
 wafflings
@@ -146163,7 +146080,6 @@ waiter
 waitered
 waitering
 waiterings
-waiterlike
 waiters
 waitership
 waiting
@@ -146382,7 +146298,6 @@ wantoner
 wantoners
 wantonest
 wantoning
-wantonlike
 wantonly
 wantonness
 wantonnesses
@@ -146402,9 +146317,7 @@ war
 warbird
 warble
 warbled
-warblelike
 warbler
-warblerlike
 warblers
 warbles
 warblet
@@ -146958,7 +146871,6 @@ waxinesses
 waxing
 waxingly
 waxings
-waxlike
 waxwork
 waxworker
 waxworkers
@@ -147137,7 +147049,6 @@ weaselers
 weaselfish
 weaseller
 weasellers
-weasellike
 weaselly
 weasels
 weasely
@@ -147291,7 +147202,6 @@ weedish
 weedkiller
 weedkillers
 weedless
-weedlike
 weedling
 weedproof
 weeds
@@ -147342,7 +147252,6 @@ weeply
 weeps
 weepy
 weevil
-weevillike
 weevilproof
 weevils
 weevily
@@ -147424,7 +147333,6 @@ weirding
 weirdish
 weirdless
 weirdlessness
-weirdlike
 weirdliness
 weirdly
 weirdness
@@ -147516,7 +147424,6 @@ wenchers
 wenches
 wenching
 wenchless
-wenchlike
 wendigo
 wendigoes
 wendigos
@@ -147622,7 +147529,6 @@ whalebones
 whaled
 whaledom
 whalehead
-whalelike
 whaleman
 whalemen
 whaler
@@ -147734,7 +147640,6 @@ wheeling
 wheelingly
 wheelings
 wheelless
-wheellike
 wheelmaker
 wheelmaking
 wheels
@@ -147833,7 +147738,6 @@ wheyish
 wheyishness
 wheyishnesses
 wheyisness
-wheylike
 wheyness
 wheys
 which
@@ -148053,7 +147957,6 @@ whiskered
 whiskerer
 whiskerette
 whiskerless
-whiskerlike
 whiskers
 whiskery
 whisket
@@ -148067,7 +147970,6 @@ whisking
 whiskingly
 whisks
 whiskyfied
-whiskylike
 whiskys
 whisp
 whisper
@@ -148098,7 +148000,6 @@ whistleblowings
 whistled
 whistlefish
 whistlefishes
-whistlelike
 whistler
 whistlerism
 whistlers
@@ -148268,7 +148169,6 @@ whoopingly
 whoopings
 whoopla
 whooplas
-whooplike
 whoops
 whoopsie
 whoopsies
@@ -148325,7 +148225,6 @@ wicked
 wickeder
 wickedest
 wickedish
-wickedlike
 wickedly
 wickedness
 wickednesses
@@ -148388,7 +148287,6 @@ widowhood
 widowhoods
 widowing
 widowish
-widowlike
 widowly
 widows
 widowy
@@ -148548,7 +148446,6 @@ willowiest
 willowiness
 willowing
 willowish
-willowlike
 willows
 willowware
 willowwares
@@ -148665,7 +148562,6 @@ windowless
 windowlessness
 windowlet
 windowlight
-windowlike
 windowmaker
 windowmaking
 windowpane
@@ -148715,7 +148611,6 @@ wineglassfuls
 wineier
 wineiest
 wineless
-winelike
 winemake
 winemaker
 winemakers
@@ -148860,7 +148755,6 @@ wirelesses
 wirelessing
 wirelessly
 wirelessness
-wirelike
 wiremaker
 wiremaking
 wires
@@ -148898,7 +148792,6 @@ wiseguy
 wiseguys
 wiselier
 wiseliest
-wiselike
 wiseling
 wiselings
 wisely
@@ -148934,7 +148827,6 @@ wispiness
 wispinesses
 wisping
 wispish
-wisplike
 wisps
 wispy
 wist
@@ -149059,7 +148951,6 @@ wiz
 wizard
 wizardess
 wizardism
-wizardlike
 wizardly
 wizardries
 wizardry
@@ -149119,7 +149010,6 @@ wolfishnesses
 wolfkin
 wolfkins
 wolfless
-wolflike
 wolfling
 wolflings
 wolfram
@@ -149162,8 +149052,6 @@ womanless
 womanlier
 womanliest
 womanlihood
-womanlike
-womanlikeness
 womanliness
 womanlinesses
 womanly
@@ -149184,7 +149072,6 @@ wombed
 wombier
 wombiest
 wombing
-womblike
 wombs
 womby
 women
@@ -149534,7 +149421,6 @@ worldless
 worldlet
 worldlier
 worldliest
-worldlike
 worldlily
 worldliness
 worldlinesses
@@ -149734,7 +149620,6 @@ wrathiness
 wrathinesses
 wrathing
 wrathless
-wrathlike
 wraths
 wrathy
 wreak
@@ -149758,7 +149643,6 @@ wreathing
 wreathingly
 wreathless
 wreathlet
-wreathlike
 wreathmaker
 wreathmaking
 wreathpiece
@@ -149799,7 +149683,6 @@ wrestingly
 wrestle
 wrestled
 wrestler
-wrestlerlike
 wrestlers
 wrestles
 wrestling
@@ -150248,7 +150131,6 @@ yeastiness
 yeastinesses
 yeasting
 yeastless
-yeastlike
 yeasts
 yeasty
 yecch
@@ -150492,8 +150374,6 @@ youthhood
 youthhoods
 youthless
 youthlessness
-youthlike
-youthlikeness
 youths
 youthsome
 youve
@@ -150658,7 +150538,6 @@ zephyranth
 zephyrean
 zephyrian
 zephyrless
-zephyrlike
 zephyrous
 zephyrs
 zephyrus
@@ -150821,7 +150700,6 @@ zone
 zoned
 zoneless
 zonelet
-zonelike
 zoner
 zoners
 zones
