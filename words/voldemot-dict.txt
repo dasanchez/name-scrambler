@@ -18499,7 +18499,6 @@ cherubimic
 cherubimical
 cherubin
 cherubins
-cherublike
 cherubs
 chesapeake
 cheshire
@@ -19184,7 +19183,6 @@ christian
 christianism
 christianite
 christianity
-christianlike
 christianly
 christians
 christmas
@@ -19532,7 +19530,6 @@ cinder
 cindered
 cinderella
 cindering
-cinderlike
 cinderous
 cinders
 cindery
@@ -20309,7 +20306,6 @@ clayiest
 clayiness
 claying
 clayish
-claylike
 claymation
 claymations
 claymore
@@ -20449,7 +20445,6 @@ cleptomaniac
 cleptomanias
 clergy
 clergyable
-clergylike
 clergyman
 clergymen
 clergywoman
@@ -20485,7 +20480,6 @@ clerkish
 clerkless
 clerklier
 clerkliest
-clerklike
 clerkliness
 clerklinesses
 clerkling
@@ -20547,7 +20541,6 @@ cliffiest
 cliffing
 cliffless
 clifflet
-clifflike
 cliffs
 cliffside
 clifftop
@@ -20743,7 +20736,6 @@ cloddishly
 cloddishness
 cloddishnesses
 cloddy
-clodlike
 clodly
 clods
 clog
@@ -20838,7 +20830,6 @@ clothiers
 clothify
 clothing
 clothings
-clothlike
 cloths
 clothy
 clots
@@ -20964,7 +20955,6 @@ clumpinesses
 clumping
 clumpish
 clumpishness
-clumplike
 clumproot
 clumps
 clumpst
@@ -21997,7 +21987,6 @@ coltish
 coltishly
 coltishness
 coltishnesses
-coltlike
 colts
 columbia
 columbian
@@ -22030,7 +22019,6 @@ columning
 columnist
 columnistic
 columnists
-columnlike
 columns
 coma
 comake
@@ -26900,7 +26888,6 @@ courting
 courtings
 courtlier
 courtliest
-courtlike
 courtliness
 courtlinesses
 courtling
@@ -27135,7 +27122,6 @@ cradlechild
 cradled
 cradlefellow
 cradleland
-cradlelike
 cradlemaker
 cradlemaking
 cradleman
@@ -27600,7 +27586,6 @@ crescentia
 crescentic
 crescentiform
 crescenting
-crescentlike
 crescentoid
 crescents
 cress
@@ -27664,7 +27649,6 @@ cricketer
 cricketers
 cricketing
 cricketings
-cricketlike
 crickets
 crickety
 crickey
@@ -28190,7 +28174,6 @@ crustiness
 crustinesses
 crusting
 crustless
-crustlike
 crusts
 crusty
 crusy
@@ -28199,7 +28182,6 @@ crutched
 crutcher
 crutches
 crutching
-crutchlike
 crux
 cruxes
 cry
@@ -28336,7 +28318,6 @@ crystallic
 crystalliferous
 crystalliform
 crystalligerous
-crystallike
 crystallin
 crystalline
 crystallines
@@ -28747,7 +28728,6 @@ curlew
 curlews
 curlier
 curliest
-curlike
 curliness
 curlinesses
 curling
@@ -28912,7 +28892,6 @@ cushionflower
 cushioniness
 cushioning
 cushionless
-cushionlike
 cushions
 cushiony
 cushy
@@ -29242,7 +29221,6 @@ cylinder
 cylindered
 cylinderer
 cylindering
-cylinderlike
 cylinders
 cylindric
 cylindrical
@@ -29267,7 +29245,6 @@ cymbaline
 cymbalist
 cymbalists
 cymballed
-cymballike
 cymballing
 cymbals
 cynic
@@ -29997,7 +29974,6 @@ dawners
 dawning
 dawnings
 dawnlight
-dawnlike
 dawns
 dawny
 daws
@@ -30011,7 +29987,6 @@ daydreamed
 daydreamer
 daydreamers
 daydreaming
-daydreamlike
 daydreams
 daydreamy
 daylight
@@ -33384,7 +33359,6 @@ detecting
 detection
 detections
 detective
-detectivelike
 detectives
 detectivism
 detectivist
@@ -33690,7 +33664,6 @@ devilized
 devilizing
 devilkin
 devilkins
-devillike
 devilman
 devilment
 devilments
@@ -35071,7 +35044,6 @@ discharging
 discharity
 disciple
 discipled
-disciplelike
 disciples
 discipleship
 discipleships
@@ -35663,7 +35635,6 @@ diskindness
 disking
 diskjockey
 diskless
-disklike
 disks
 dislikable
 dislike
@@ -37597,7 +37568,6 @@ doughiest
 doughiness
 doughinesses
 doughnut
-doughnutlike
 doughnuts
 doughnutted
 doughnutting
@@ -37850,7 +37820,6 @@ dragonish
 dragonism
 dragonisms
 dragonkind
-dragonlike
 dragonnade
 dragonnades
 dragons
@@ -38516,7 +38485,6 @@ duchery
 duchess
 duchesse
 duchesses
-duchesslike
 duchies
 duchy
 duck
@@ -38704,7 +38672,6 @@ dungeoned
 dungeoner
 dungeoners
 dungeoning
-dungeonlike
 dungeons
 dunger
 dungheap
@@ -38865,7 +38832,6 @@ dwarfishness
 dwarfishnesses
 dwarfism
 dwarfisms
-dwarflike
 dwarfling
 dwarfness
 dwarfnesses
@@ -45551,7 +45517,6 @@ fairyism
 fairyisms
 fairyland
 fairylands
-fairylike
 faith
 faithful
 faithfully
@@ -45994,7 +45959,6 @@ fateful
 fatefully
 fatefulness
 fatefulnesses
-fatelike
 fates
 father
 fathered
@@ -46144,7 +46108,6 @@ fawningly
 fawningness
 fawningnesses
 fawnings
-fawnlike
 fawns
 fawny
 fax
@@ -46651,7 +46614,6 @@ fetishist
 fetishistic
 fetishistically
 fetishists
-fetishlike
 fetishmonger
 fetishry
 fetter
@@ -46886,7 +46848,6 @@ fiendishnesses
 fiendism
 fiendlier
 fiendliest
-fiendlike
 fiendliness
 fiendly
 fiends
@@ -47029,7 +46990,6 @@ fillet
 filleted
 filleter
 filleting
-filletlike
 fillets
 filling
 fillingly
@@ -47515,7 +47475,6 @@ flags
 flail
 flailed
 flailing
-flaillike
 flails
 flair
 flairs
@@ -47774,7 +47733,6 @@ fleece
 fleeceable
 fleeced
 fleeceless
-fleecelike
 fleecer
 fleecers
 fleeces
@@ -48001,7 +47959,6 @@ flockiest
 flocking
 flockings
 flockless
-flocklike
 flockling
 flocks
 flocky
@@ -48390,7 +48347,6 @@ foaming
 foamingly
 foamings
 foamless
-foamlike
 foams
 foamy
 fob
@@ -49201,7 +49157,6 @@ fortress
 fortressed
 fortresses
 fortressing
-fortresslike
 forts
 fortuities
 fortuitism
@@ -49263,7 +49218,6 @@ fossilification
 fossilify
 fossilism
 fossilist
-fossillike
 fossilogist
 fossilogy
 fossilological
@@ -49347,7 +49301,6 @@ fountainheads
 fountaining
 fountainless
 fountainlet
-fountainlike
 fountainous
 fountainously
 fountains
@@ -49397,7 +49350,6 @@ foxing
 foxings
 foxish
 foxite
-foxlike
 foxly
 foxy
 foy
@@ -49914,7 +49866,6 @@ friendlessnesses
 friendlier
 friendlies
 friendliest
-friendlike
 friendlily
 friendliness
 friendlinesses
@@ -50070,7 +50021,6 @@ frocked
 frocking
 frockings
 frockless
-frocklike
 frockmaker
 frocks
 frog
@@ -50131,7 +50081,6 @@ frontier
 frontiered
 frontiering
 frontierless
-frontierlike
 frontierman
 frontiers
 fronting
@@ -50157,7 +50106,6 @@ frostinesses
 frosting
 frostings
 frostless
-frostlike
 frosts
 frosty
 froth
@@ -50660,7 +50608,6 @@ furloughs
 furls
 furnace
 furnaced
-furnacelike
 furnaceman
 furnacemen
 furnacer
@@ -50702,7 +50649,6 @@ furrower
 furrowers
 furrowing
 furrowless
-furrowlike
 furrows
 furrowy
 furrs
@@ -51190,7 +51136,6 @@ garlandages
 garlanded
 garlanding
 garlandless
-garlandlike
 garlandries
 garlandry
 garlands
@@ -52079,8 +52024,6 @@ giantism
 giantisms
 giantlier
 giantliest
-giantlike
-giantlikeness
 giantly
 giants
 gibber
@@ -52963,7 +52906,6 @@ goa
 goad
 goaded
 goading
-goadlike
 goads
 goaf
 goafs
@@ -52985,7 +52927,6 @@ goatishly
 goatishness
 goatishnesses
 goatland
-goatlike
 goatling
 goatlings
 goatly
@@ -53265,7 +53206,6 @@ goshawk
 goshawks
 gospel
 gospelist
-gospellike
 gospelly
 gospels
 gossamer
@@ -53418,7 +53358,6 @@ graceless
 gracelessly
 gracelessness
 gracelessnesses
-gracelike
 gracer
 graces
 gracing
@@ -54219,7 +54158,6 @@ grottiness
 grottinesses
 grotto
 grottoes
-grottolike
 grottowork
 grotty
 grouch
@@ -54267,7 +54205,6 @@ groupy
 grouse
 groused
 grouseless
-grouselike
 grouser
 grousers
 grouses
@@ -54625,7 +54562,6 @@ gulfed
 gulfier
 gulfiest
 gulfing
-gulflike
 gulfs
 gulfy
 gull
@@ -54797,7 +54733,6 @@ guttered
 guttering
 gutterings
 gutterize
-gutterlike
 gutterling
 gutterman
 gutters
@@ -55607,7 +55542,6 @@ harpooneers
 harpooner
 harpooners
 harpooning
-harpoonlike
 harpoons
 harps
 harpsichord
@@ -55741,7 +55675,6 @@ hatches
 hatchet
 hatcheted
 hatcheting
-hatchetlike
 hatchets
 hatchety
 hatching
@@ -56045,7 +55978,6 @@ heavenishly
 heavenless
 heavenlier
 heavenliest
-heavenlike
 heavenliness
 heavenlinesses
 heavenly
@@ -56624,7 +56556,6 @@ hermitish
 hermitism
 hermitisms
 hermitize
-hermitlike
 hermitries
 hermitry
 hermits
@@ -56699,7 +56630,6 @@ herringbones
 herringboning
 herringer
 herringers
-herringlike
 herrings
 hers
 hershey
@@ -57978,7 +57908,6 @@ horizontals
 hormonal
 hormonally
 hormone
-hormonelike
 hormones
 hormonic
 hormonogenesis
@@ -62816,7 +62745,6 @@ influentials
 influents
 influenza
 influenzal
-influenzalike
 influenzas
 influenzic
 influx
@@ -65684,7 +65612,6 @@ islandic
 islanding
 islandish
 islandless
-islandlike
 islandman
 islandmen
 islandologist
@@ -66024,7 +65951,6 @@ jacket
 jacketed
 jacketing
 jacketless
-jacketlike
 jackets
 jackety
 jackey
@@ -66237,7 +66163,6 @@ jars
 jasmin
 jasmine
 jasmined
-jasminelike
 jasmines
 jasminewood
 jasmins
@@ -66321,7 +66246,6 @@ jazzinesses
 jazzing
 jazzish
 jazzist
-jazzlike
 jazzy
 jealous
 jealouse
@@ -66706,7 +66630,6 @@ jockeying
 jockeyish
 jockeyism
 jockeyisms
-jockeylike
 jockeys
 jocking
 jockney
@@ -67066,7 +66989,6 @@ judge
 judgeable
 judged
 judgeless
-judgelike
 judger
 judgers
 judges
@@ -67240,7 +67162,6 @@ june
 jungle
 jungled
 junglegym
-junglelike
 jungles
 jungly
 junior
@@ -67361,7 +67282,6 @@ justness
 justnesses
 jut
 jute
-jutelike
 jutes
 juts
 jutted
@@ -67454,7 +67374,6 @@ kangaroo
 kangarooed
 kangarooer
 kangarooing
-kangaroolike
 kangaroos
 kanji
 kanjis
@@ -67688,7 +67607,6 @@ keyway
 keyways
 khaki
 khakied
-khakilike
 khakis
 khalifa
 khalifah
@@ -67885,7 +67803,6 @@ kiltie
 kilties
 kilting
 kiltings
-kiltlike
 kilts
 kilty
 kimchee
@@ -68109,7 +68026,6 @@ kittenishly
 kittenishness
 kittenishnesses
 kittenless
-kittenlike
 kittens
 kittenship
 kitteny
@@ -68276,7 +68192,6 @@ knife
 knifed
 knifeful
 knifeless
-knifelike
 knifeman
 knifer
 knifers
@@ -68298,7 +68213,6 @@ knightless
 knightlier
 knightliest
 knightlihood
-knightlike
 knightliness
 knightlinesses
 knightling
@@ -69154,7 +69068,6 @@ lance
 lanced
 lancelet
 lancelets
-lancelike
 lancelot
 lancely
 lancer
@@ -69349,14 +69262,12 @@ larderer
 larderers
 larderful
 larderie
-larderlike
 larders
 lardier
 lardiest
 lardiform
 larding
 lardite
-lardlike
 lardry
 lards
 lardy
@@ -69397,7 +69308,6 @@ larkingly
 larkish
 larkishly
 larkishness
-larklike
 larkling
 larks
 larky
@@ -69765,7 +69675,6 @@ laureating
 laureation
 laureations
 laurel
-laurellike
 laurels
 lava
 lavash
@@ -69806,7 +69715,6 @@ lawnier
 lawniest
 lawnleaf
 lawnlet
-lawnlike
 lawnmower
 lawnmowers
 lawns
@@ -69823,7 +69731,6 @@ lawyeresses
 lawyering
 lawyerings
 lawyerism
-lawyerlike
 lawyerling
 lawyerly
 lawyers
@@ -70078,8 +69985,6 @@ leatherjack
 leatherjacket
 leatherleaf
 leatherleaves
-leatherlike
-leatherlikeness
 leathermaker
 leathermaking
 leathern
@@ -70375,7 +70280,6 @@ leitmotifs
 leitmotiv
 leitmotivs
 lemming
-lemminglike
 lemmings
 lemon
 lemonade
@@ -70390,7 +70294,6 @@ lemonier
 lemoniest
 lemoning
 lemonish
-lemonlike
 lemons
 lemony
 lemur
@@ -70402,7 +70305,6 @@ lemuridae
 lemuriform
 lemurine
 lemurines
-lemurlike
 lemuroid
 lemuroidea
 lemuroids
@@ -70704,7 +70606,6 @@ leverer
 leveret
 leverets
 levering
-leverlike
 leverman
 levers
 levi
@@ -70963,7 +70864,6 @@ lichenisms
 lichenist
 lichenists
 lichenivorous
-lichenlike
 lichenographer
 lichenographic
 lichenographical
@@ -71385,7 +71285,6 @@ lioness
 lionesses
 lionism
 lionisms
-lionlike
 lions
 lip
 lipid
@@ -71989,7 +71888,6 @@ loftiness
 loftinesses
 lofting
 loftless
-loftlike
 loftman
 loftmen
 lofts
@@ -72189,7 +72087,6 @@ looping
 loopings
 loopist
 looplet
-looplike
 loops
 loopy
 loos
@@ -72259,7 +72156,6 @@ lording
 lordings
 lordlier
 lordliest
-lordlike
 lordlily
 lordliness
 lordlinesses
@@ -72409,7 +72305,6 @@ lovely
 lover
 lovering
 loverless
-loverlike
 loverliness
 loverly
 lovers
@@ -73156,7 +73051,6 @@ mackinaws
 mackle
 mackled
 mackles
-macklike
 mackling
 macro
 macrocosm
@@ -74630,7 +74524,6 @@ martyries
 martyring
 martyrish
 martyrium
-martyrlike
 martyrly
 martyrolatry
 martyrs
@@ -74801,7 +74694,6 @@ mastering
 masterings
 masterless
 masterlessness
-masterlike
 masterlily
 masterliness
 masterlinesses
@@ -75012,7 +74904,6 @@ matronal
 matronhood
 matronhoods
 matronism
-matronlike
 matronliness
 matronlinesses
 matronly
@@ -75195,7 +75086,6 @@ mazed
 mazedly
 mazedness
 mazeful
-mazelike
 mazeltov
 mazement
 mazements
@@ -75474,7 +75364,6 @@ medicinals
 medicinary
 medicine
 medicined
-medicinelike
 medicinemonger
 mediciner
 mediciners
@@ -75836,7 +75725,6 @@ membranate
 membrane
 membraned
 membraneless
-membranelike
 membranella
 membranelle
 membraneous
@@ -76086,7 +75974,6 @@ merchanthood
 merchanting
 merchantings
 merchantish
-merchantlike
 merchantly
 merchantman
 merchantmen
@@ -76400,7 +76287,6 @@ metallification
 metalliform
 metallify
 metallik
-metallike
 metalline
 metallings
 metallish
@@ -77066,7 +76952,6 @@ milkinesses
 milking
 milkings
 milkless
-milklike
 milkmaid
 milkmaids
 milkman
@@ -77210,7 +77095,6 @@ milters
 miltier
 miltiest
 milting
-miltlike
 miltomate
 milton
 miltonia
@@ -78548,8 +78432,6 @@ mizzling
 mizzlings
 mizzly
 mkay
-mls
-mmHg
 mnemon
 mnemonic
 mnemonical
@@ -79020,7 +78902,6 @@ monarchisms
 monarchist
 monarchistic
 monarchists
-monarchlike
 monarchs
 monarchy
 monasterial
@@ -79127,7 +79008,6 @@ monkeyishly
 monkeyishness
 monkeyism
 monkeyisms
-monkeylike
 monkeynut
 monkeynuts
 monkeypod
@@ -79509,7 +79389,6 @@ monumentary
 monumented
 monumenting
 monumentless
-monumentlike
 monuments
 moo
 mooch
@@ -79869,7 +79748,6 @@ mosaicist
 mosaicists
 mosaicked
 mosaicking
-mosaiclike
 mosaics
 moscow
 mosh
@@ -80046,7 +79924,6 @@ mountainer
 mountainet
 mountainette
 mountainless
-mountainlike
 mountainous
 mountainously
 mountainousness
@@ -80532,7 +80409,6 @@ mumms
 mummy
 mummying
 mummyings
-mummylike
 mumness
 mump
 mumped
@@ -80780,7 +80656,6 @@ mushroomer
 mushroomers
 mushroomic
 mushrooming
-mushroomlike
 mushrooms
 mushroomy
 mushy
@@ -81690,7 +81565,6 @@ navally
 nave
 navel
 naveled
-navellike
 navels
 navely
 naveness
@@ -81907,7 +81781,6 @@ nectarines
 nectarious
 nectarium
 nectarivorous
-nectarlike
 nectarous
 nectars
 nectary
@@ -82308,7 +82181,6 @@ nettled
 nettlefire
 nettlefish
 nettlefoot
-nettlelike
 nettlemonger
 nettler
 nettlerash
@@ -82328,7 +82200,6 @@ networker
 networkers
 networking
 networkings
-networklike
 networks
 neural
 neuralgia
@@ -82432,7 +82303,6 @@ neuter
 neuterdom
 neutered
 neutering
-neuterlike
 neuterly
 neuterness
 neuters
@@ -82585,7 +82455,6 @@ nickelic
 nickeliferous
 nickeline
 nickelines
-nickellike
 nickelodeon
 nickelodeons
 nickels
@@ -83151,7 +83020,6 @@ nookies
 nookiest
 nooking
 nooklet
-nooklike
 nooks
 nooky
 noon
@@ -83492,7 +83360,6 @@ novella
 novellae
 novellas
 novelless
-novellike
 novelly
 novelness
 novelry
@@ -83940,7 +83807,6 @@ nymphine
 nymphiparous
 nymphish
 nymphitis
-nymphlike
 nymphlin
 nymphly
 nympho
@@ -84652,7 +84518,6 @@ oceanides
 oceanids
 oceanites
 oceanity
-oceanlike
 oceanographer
 oceanographers
 oceanographic
@@ -85350,7 +85215,6 @@ onionet
 onionier
 onioniest
 onioning
-onionlike
 onionpeel
 onions
 onionskin
@@ -86003,7 +85867,6 @@ oratories
 oratorio
 oratorios
 oratorium
-oratorlike
 orators
 oratorship
 oratory
@@ -86101,7 +85964,6 @@ orchideously
 orchidist
 orchidists
 orchiditis
-orchidlike
 orchidocele
 orchidocelioplasty
 orchidologies
@@ -86893,7 +86755,6 @@ outland
 outlander
 outlanders
 outlandish
-outlandishlike
 outlandishly
 outlandishness
 outlandishnesses
@@ -87043,7 +86904,6 @@ ovenable
 ovened
 ovenful
 ovening
-ovenlike
 ovenly
 ovens
 over
@@ -88165,7 +88025,6 @@ pakistanis
 pal
 palace
 palaced
-palacelike
 palaceous
 palaces
 paladin
@@ -88193,7 +88052,6 @@ palated
 palateful
 palatefulness
 palateless
-palatelike
 palates
 palatial
 palatially
@@ -88750,7 +88608,6 @@ papist
 papistic
 papistical
 papistically
-papistlike
 papistly
 papistries
 papistry
@@ -89126,7 +88983,6 @@ parching
 parchingly
 parchment
 parchmenter
-parchmentlike
 parchments
 parchmenty
 parchy
@@ -89586,7 +89442,6 @@ pastas
 paste
 pasted
 pastel
-pastelike
 pastels
 paster
 pasterer
@@ -89640,7 +89495,6 @@ pastorita
 pastorium
 pastoriums
 pastorless
-pastorlike
 pastorling
 pastorly
 pastors
@@ -89919,7 +89773,6 @@ patterner
 patterning
 patternings
 patternless
-patternlike
 patterns
 patters
 patties
@@ -90083,7 +89936,6 @@ peacekeepings
 peaceless
 peacelessness
 peacelessnesses
-peacelike
 peaces
 peacetime
 peacetimes
@@ -90113,7 +89965,6 @@ peacockish
 peacockishly
 peacockishness
 peacockism
-peacocklike
 peacockly
 peacocks
 peacocky
@@ -90134,7 +89985,6 @@ peakish
 peakishly
 peakishness
 peakless
-peaklike
 peaks
 peaky
 peakyish
@@ -90172,7 +90022,6 @@ peas
 peasant
 peasantess
 peasantism
-peasantlike
 peasantly
 peasantries
 peasantry
@@ -90449,7 +90298,6 @@ pelletify
 pelletifying
 pelleting
 pelletizers
-pelletlike
 pellets
 pellicle
 pellicles
@@ -90503,7 +90351,6 @@ penchant
 penchants
 pencil
 penciliform
-pencillike
 pencilry
 pencils
 pendant
@@ -92079,7 +91926,6 @@ phantomical
 phantomically
 phantomish
 phantomland
-phantomlike
 phantomnation
 phantomry
 phantoms
@@ -92379,7 +92225,6 @@ phoenixes
 phoenixism
 phoenixisms
 phoenixity
-phoenixlike
 phonal
 phonasthenia
 phonasthenias
@@ -93247,7 +93092,6 @@ pilgrimer
 pilgrimers
 pilgrimess
 pilgrimism
-pilgrimlike
 pilgrims
 piling
 pilings
@@ -93268,7 +93112,6 @@ pillarist
 pillarists
 pillarless
 pillarlet
-pillarlike
 pillars
 pillarwise
 pillary
@@ -93296,7 +93139,6 @@ pillowcases
 pillowed
 pillowing
 pillowless
-pillowlike
 pillows
 pillowy
 pills
@@ -93345,7 +93187,6 @@ pincases
 pincer
 pincered
 pincering
-pincerlike
 pincers
 pinch
 pinchable
@@ -93409,7 +93250,6 @@ pinion
 pinioned
 pinioning
 pinionless
-pinionlike
 pinions
 pink
 pinked
@@ -93647,7 +93487,6 @@ pitcher
 pitchered
 pitcherful
 pitcherfuls
-pitcherlike
 pitcherman
 pitchers
 pitchersful
@@ -93686,7 +93525,6 @@ pithinesses
 pithing
 pithless
 pithlessly
-pithlike
 pithole
 piths
 pithsome
@@ -93856,7 +93694,6 @@ plague
 plagued
 plagueful
 plagueless
-plaguelike
 plagueproof
 plaguer
 plaguers
@@ -93960,7 +93797,6 @@ planker
 planking
 plankings
 plankless
-planklike
 planks
 planktologist
 planktology
@@ -93993,7 +93829,6 @@ plantains
 plantal
 plantar
 plantation
-plantationlike
 plantations
 plantator
 plantdom
@@ -94417,7 +94252,6 @@ plinth
 plinther
 plinthiform
 plinthless
-plinthlike
 plinths
 pliocene
 plod
@@ -94536,7 +94370,6 @@ plumed
 plumeless
 plumelet
 plumelets
-plumelike
 plumemaker
 plumemaking
 plumeous
@@ -94650,7 +94483,6 @@ plushiest
 plushily
 plushiness
 plushinesses
-plushlike
 plushly
 plushness
 plushnesses
@@ -94912,7 +94744,6 @@ pokerface
 pokerish
 pokerishly
 pokerishness
-pokerlike
 pokers
 pokes
 pokey
@@ -95685,14 +95516,12 @@ porched
 porches
 porching
 porchless
-porchlike
 porcine
 porcini
 porcupine
 porcupines
 pore
 pored
-porelike
 pores
 porier
 poriest
@@ -95752,10 +95581,8 @@ porphyries
 porphyry
 porpoise
 porpoised
-porpoiselike
 porpoises
 porridge
-porridgelike
 porridges
 porridgy
 port
@@ -95804,7 +95631,6 @@ porteresses
 porterhouse
 porterhouses
 portering
-porterlike
 porterly
 porters
 portfolio
@@ -95855,7 +95681,6 @@ portraited
 portraiting
 portraitist
 portraitists
-portraitlike
 portraits
 portraiture
 portraitures
@@ -96015,7 +95840,6 @@ postcarded
 postcardiac
 postcardinal
 postcarding
-postcardlike
 postcards
 postcode
 postcoded
@@ -96284,7 +96108,6 @@ pouchier
 pouchiest
 pouching
 pouchless
-pouchlike
 pouchy
 poulter
 poulterer
@@ -96348,7 +96171,6 @@ powderiest
 powderiness
 powdering
 powderless
-powderlike
 powders
 powdery
 power
@@ -96455,7 +96277,6 @@ prague
 prairie
 prairied
 prairiedom
-prairielike
 prairies
 prairieweed
 prairillon
@@ -98387,7 +98208,6 @@ princes
 princess
 princessdom
 princesses
-princesslike
 princessly
 princeton
 princify
@@ -98910,7 +98730,6 @@ professoriat
 professoriate
 professoriates
 professoriats
-professorlike
 professorling
 professors
 professorship
@@ -99227,7 +99046,6 @@ prolocutrix
 prolocutrixes
 prologue
 prologued
-prologuelike
 prologuer
 prologues
 prologuing
@@ -99374,7 +99192,6 @@ pronger
 pronghorn
 pronghorns
 pronging
-pronglike
 prongs
 prongy
 pronk
@@ -99421,7 +99238,6 @@ proofing
 proofings
 proofless
 prooflessly
-prooflike
 proofness
 proofread
 proofreaded
@@ -99525,7 +99341,6 @@ propheticly
 prophetism
 prophetisms
 prophetless
-prophetlike
 prophetry
 prophets
 prophylactic
@@ -99714,7 +99529,6 @@ prosecutrix
 prosecutrixes
 prosed
 proseity
-proselike
 prosely
 proselyte
 proselyted
@@ -100154,7 +99968,6 @@ proxying
 prozac
 prp
 prude
-prudelike
 prudely
 prudence
 prudences
@@ -100807,7 +100620,6 @@ punchiness
 punchinesses
 punching
 punchless
-punchlike
 punchline
 punchlines
 punchproof
@@ -100990,7 +100802,6 @@ puppethead
 puppethood
 puppetish
 puppetism
-puppetlike
 puppetly
 puppetries
 puppetry
@@ -101080,7 +100891,6 @@ puritanicalness
 puritanicalnesses
 puritanism
 puritanisms
-puritanlike
 puritans
 purities
 purity
@@ -101129,7 +100939,6 @@ purposeless
 purposelessly
 purposelessness
 purposelessnesses
-purposelike
 purposely
 purposer
 purposes
@@ -101265,7 +101074,6 @@ pustulations
 pustulatous
 pustule
 pustuled
-pustulelike
 pustules
 pustuliform
 pustulose
@@ -101400,7 +101208,6 @@ pyramidion
 pyramidions
 pyramidist
 pyramidists
-pyramidlike
 pyramidoattenuate
 pyramidoid
 pyramidoidal
@@ -101591,7 +101398,6 @@ quadrant
 quadrantal
 quadrantes
 quadrantile
-quadrantlike
 quadrantly
 quadrants
 quadraphonic
@@ -102169,7 +101975,6 @@ quietistic
 quietists
 quietive
 quietives
-quietlike
 quietly
 quietness
 quietnesses
@@ -102413,7 +102218,6 @@ rabbited
 rabbiter
 rabbiters
 rabbiting
-rabbitlike
 rabbitries
 rabbitry
 rabbits
@@ -102519,7 +102323,6 @@ racketier
 racketiest
 racketiness
 racketing
-racketlike
 racketproof
 racketries
 racketry
@@ -102786,7 +102589,6 @@ railways
 rain
 rainbow
 rainbowed
-rainbowlike
 rainbows
 rainbowy
 raincloud
@@ -102931,7 +102733,6 @@ ramrod
 ramrodded
 ramrodding
 ramroddy
-ramrodlike
 ramrods
 rams
 ramshackle
@@ -102948,7 +102749,6 @@ ranchings
 ranchland
 ranchlands
 ranchless
-ranchlike
 rancho
 ranchos
 rancid
@@ -103150,7 +102950,6 @@ rascalisms
 rascalities
 rascality
 rascalliest
-rascallike
 rascallion
 rascallions
 rascally
@@ -103222,7 +103021,6 @@ ratches
 ratchet
 ratcheted
 ratcheting
-ratchetlike
 ratchets
 ratchety
 ratching
@@ -103368,7 +103166,6 @@ ravening
 raveningly
 ravenings
 ravenish
-ravenlike
 ravenous
 ravenously
 ravenousness
@@ -103883,7 +103680,6 @@ rebel
 rebelled
 rebeller
 rebellers
-rebellike
 rebelling
 rebellion
 rebellions
@@ -104134,7 +103930,6 @@ recessiveness
 recessivenesses
 recessives
 recessivity
-recesslike
 recessor
 rechabite
 recharge
@@ -107348,7 +107143,6 @@ reptatorial
 reptatory
 reptile
 reptiledom
-reptilelike
 reptiles
 reptilferous
 reptilia
@@ -109567,7 +109361,6 @@ ripcord
 ripcords
 ripe
 riped
-ripelike
 ripely
 ripen
 ripened
@@ -109716,7 +109509,6 @@ riveting
 rivetingly
 rivetings
 rivetless
-rivetlike
 rivets
 rivetter
 rivulation
@@ -109990,7 +109782,6 @@ romanceish
 romanceishness
 romanceless
 romancelet
-romancelike
 romancemonger
 romanceproof
 romancer
@@ -110073,7 +109864,6 @@ rookiest
 rooking
 rookish
 rooklet
-rooklike
 rooks
 rooky
 room
@@ -110473,7 +110263,6 @@ ruefulness
 ruefulnesses
 rueing
 rueings
-ruelike
 ruely
 ruer
 ruers
@@ -110491,7 +110280,6 @@ ruffianing
 ruffianish
 ruffianism
 ruffianisms
-ruffianlike
 ruffians
 ruffing
 ruffins
@@ -110504,7 +110292,6 @@ rufflers
 ruffles
 rufflier
 ruffliest
-rufflike
 ruffliness
 ruffling
 rufflings
@@ -110546,7 +110333,6 @@ ruiner
 ruiners
 ruining
 ruinings
-ruinlike
 ruinous
 ruinously
 ruinousness
@@ -110737,7 +110523,6 @@ russeted
 russeting
 russetings
 russetish
-russetlike
 russets
 russetting
 russettings
@@ -110915,7 +110700,6 @@ sackfuls
 sacking
 sackings
 sackless
-sacklike
 sackmaker
 sackmaking
 sackman
@@ -111166,8 +110950,6 @@ sainthood
 sainthoods
 saintlier
 saintliest
-saintlike
-saintlikeness
 saintlily
 saintliness
 saintlinesses
@@ -111187,7 +110969,6 @@ salacity
 salad
 salads
 salamander
-salamanderlike
 salamanders
 salami
 salamis
@@ -111963,7 +111744,6 @@ satyrids
 satyrine
 satyrion
 satyrism
-satyrlike
 satyrs
 sauce
 sauced
@@ -111976,7 +111756,6 @@ saucerize
 saucerized
 saucerleaf
 saucerless
-saucerlike
 saucers
 saucery
 sauces
@@ -112054,7 +111833,6 @@ sawdust
 sawdusted
 sawdusting
 sawdustish
-sawdustlike
 sawdusts
 sawdusty
 sawed
@@ -112586,7 +112364,6 @@ scholarity
 scholarless
 scholarlier
 scholarliest
-scholarlike
 scholarliness
 scholarlinesses
 scholarly
@@ -112722,8 +112499,6 @@ scissored
 scissorer
 scissorers
 scissoring
-scissorlike
-scissorlikeness
 scissors
 sclera
 scleral
@@ -113291,7 +113066,6 @@ scrubboard
 scrubby
 scrubland
 scrublands
-scrublike
 scrubs
 scruf
 scruff
@@ -113453,7 +113227,6 @@ scurfiest
 scurfily
 scurfiness
 scurfinesses
-scurflike
 scurfs
 scurfy
 scurry
@@ -113495,7 +113268,6 @@ scuzzy
 scythe
 scythed
 scytheless
-scythelike
 scyther
 scythers
 scythes
@@ -113563,7 +113335,6 @@ searchant
 searched
 searcher
 searcheress
-searcherlike
 searchers
 searchership
 searches
@@ -113619,7 +113390,6 @@ seasonedly
 seasoner
 seasoners
 seasoning
-seasoninglike
 seasonings
 seasonless
 seasons
@@ -114782,7 +114552,6 @@ serpentinites
 serpentinoid
 serpentinous
 serpentivorous
-serpentlike
 serpently
 serpentoid
 serpentries
@@ -114808,7 +114577,6 @@ servanthood
 servanthoods
 servanting
 servantless
-servantlike
 servantries
 servantry
 servants
@@ -114975,7 +114743,6 @@ sewered
 sewering
 sewerings
 sewerless
-sewerlike
 sewerman
 sewers
 sewery
@@ -115015,7 +114782,6 @@ sexless
 sexlessly
 sexlessness
 sexlessnesses
-sexlike
 sexologic
 sexological
 sexologies
@@ -115130,7 +114896,6 @@ shadowland
 shadowlands
 shadowless
 shadowlessness
-shadowlike
 shadowly
 shadows
 shadowy
@@ -115293,7 +115058,6 @@ shantey
 shanteys
 shanty
 shantying
-shantylike
 shantyman
 shantymen
 shantytown
@@ -115456,7 +115220,6 @@ sheathiest
 sheathing
 sheathings
 sheathless
-sheathlike
 sheaths
 sheathy
 sheave
@@ -115610,7 +115373,6 @@ shepherding
 shepherdish
 shepherdism
 shepherdless
-shepherdlike
 shepherdling
 shepherdlings
 shepherdly
@@ -116071,7 +115833,6 @@ showerinesses
 showering
 showerings
 showerless
-showerlike
 showerproof
 showers
 showery
@@ -116137,7 +115898,6 @@ shrewish
 shrewishly
 shrewishness
 shrewishnesses
-shrewlike
 shrewly
 shrews
 shriek
@@ -116180,17 +115940,15 @@ shrimpier
 shrimpiest
 shrimpiness
 shrimping
-shrimpings
+shrimping
 shrimpish
 shrimpishness
-shrimplike
 shrimps
 shrimpy
 shrine
 shrined
 shrineless
 shrinelet
-shrinelike
 shrines
 shrining
 shrink
@@ -116222,7 +115980,6 @@ shroudiest
 shrouding
 shroudings
 shroudless
-shroudlike
 shrouds
 shroudy
 shrub
@@ -116530,8 +116287,6 @@ siestas
 sieve
 sieved
 sieveful
-sievelike
-sievelikeness
 siever
 sievert
 sieverts
@@ -116773,7 +116528,6 @@ silted
 siltier
 siltiest
 silting
-siltlike
 silts
 silty
 silver
@@ -117067,7 +116821,6 @@ sinus
 sinuses
 sinusitis
 sinusitises
-sinuslike
 sinusoid
 sinusoidal
 sinusoidally
@@ -117290,7 +117043,6 @@ skeleton
 skeletonian
 skeletonic
 skeletonless
-skeletonlike
 skeletons
 skell
 skellier
@@ -117334,7 +117086,6 @@ sketchinesses
 sketching
 sketchingly
 sketchist
-sketchlike
 sketchpad
 sketchpads
 sketchy
@@ -117493,7 +117244,6 @@ skirting
 skirtingly
 skirtings
 skirtless
-skirtlike
 skirts
 skirty
 skis
@@ -118084,7 +117834,6 @@ slipperily
 slipperiness
 slipperinesses
 slippering
-slipperlike
 slippers
 slippery
 slippier
@@ -118132,7 +117881,6 @@ slivered
 sliverer
 sliverers
 slivering
-sliverlike
 sliverproof
 slivers
 slivery
@@ -118255,7 +118003,6 @@ slovenia
 slovenian
 slovenlier
 slovenliest
-slovenlike
 slovenliness
 slovenlinesses
 slovenly
@@ -118340,7 +118087,6 @@ sluice
 sluiced
 sluicegate
 sluicegates
-sluicelike
 sluicer
 sluices
 sluiceway
@@ -118842,7 +118588,6 @@ snailfish
 snailfishes
 snailish
 snailishly
-snaillike
 snails
 snaily
 snake
@@ -119239,7 +118984,6 @@ snoutiest
 snouting
 snoutish
 snoutless
-snoutlike
 snouts
 snouty
 snow
@@ -119439,7 +119183,6 @@ soberer
 soberest
 sobering
 soberingly
-soberlike
 soberly
 soberness
 sobernesses
@@ -120077,7 +119820,6 @@ sonnetings
 sonnetish
 sonnetist
 sonnetists
-sonnetlike
 sonnetry
 sonnets
 sonogram
@@ -120154,7 +119896,6 @@ sootinesses
 sooting
 sootish
 sootless
-sootlike
 soots
 sooty
 sop
@@ -120648,7 +120389,6 @@ spaniard
 spaniards
 spaniel
 spanielled
-spaniellike
 spanielling
 spaniels
 spanish
@@ -120724,7 +120464,6 @@ sparkless
 sparklessly
 sparklier
 sparkliest
-sparklike
 sparkling
 sparklingly
 sparklingness
@@ -120976,7 +120715,6 @@ specs
 spectacle
 spectacled
 spectacleless
-spectaclelike
 spectacles
 spectactularly
 spectacular
@@ -121296,7 +121034,6 @@ sphinxes
 sphinxian
 sphinxianness
 sphinxine
-sphinxlike
 sphygmia
 sphygmic
 sphygmochronograph
@@ -121444,7 +121181,6 @@ spindled
 spindleful
 spindlehead
 spindlelegs
-spindlelike
 spindler
 spindlers
 spindles
@@ -121495,7 +121231,6 @@ spinsterian
 spinsterish
 spinsterishly
 spinsterism
-spinsterlike
 spinsterly
 spinsterous
 spinsters
@@ -121563,7 +121298,6 @@ spiritlessly
 spiritlessness
 spiritlessnesses
 spiritlevel
-spiritlike
 spiritous
 spirits
 spiritual
@@ -121904,7 +121638,6 @@ spoolers
 spoolful
 spooling
 spoolings
-spoollike
 spools
 spoon
 spooned
@@ -121931,7 +121664,6 @@ spooniness
 spooning
 spoonism
 spoonless
-spoonlike
 spoons
 spoony
 spoor
@@ -122032,7 +121764,6 @@ spotlighted
 spotlighter
 spotlighting
 spotlights
-spotlike
 spots
 spottable
 spotted
@@ -122072,7 +121803,6 @@ spoutiness
 spouting
 spoutings
 spoutless
-spoutlike
 spoutman
 spouts
 spouty
@@ -122128,7 +121858,6 @@ sprayier
 sprayiest
 spraying
 sprayless
-spraylike
 sprayproof
 sprays
 spread
@@ -122232,7 +121961,6 @@ spritehood
 spriteless
 spritelier
 spriteliest
-spritelike
 spriteliness
 spritely
 sprites
@@ -122456,7 +122184,6 @@ squanders
 square
 squared
 squaredly
-squarelike
 squarely
 squareness
 squarenesses
@@ -122644,7 +122371,6 @@ squirrel
 squirrelfish
 squirrelfishes
 squirrelish
-squirrellike
 squirrelly
 squirrels
 squirrely
@@ -122891,7 +122617,6 @@ stalking
 stalkingly
 stalkings
 stalkless
-stalklike
 stalks
 stalky
 stall
@@ -123029,7 +122754,6 @@ starchiness
 starchinesses
 starching
 starchless
-starchlike
 starchly
 starchy
 starcraft
@@ -123326,7 +123050,6 @@ stealthinesses
 stealthing
 stealthings
 stealthless
-stealthlike
 stealths
 stealthwise
 stealthy
@@ -123401,7 +123124,6 @@ steelinesses
 steeling
 steelings
 steelless
-steellike
 steels
 steelware
 steelwares
@@ -123742,7 +123464,6 @@ stickler
 sticklers
 stickles
 stickless
-sticklike
 stickling
 stickly
 sticks
@@ -123841,7 +123562,6 @@ stiltinesses
 stilting
 stiltings
 stiltish
-stiltlike
 stilton
 stilts
 stilty
@@ -124521,7 +124241,6 @@ strawier
 strawiest
 strawing
 strawish
-strawlike
 strawn
 straws
 strawy
@@ -124545,7 +124264,6 @@ streakiness
 streakinesses
 streaking
 streakings
-streaklike
 streaks
 streakwise
 streaky
@@ -124863,7 +124581,6 @@ stronghearted
 stronghold
 strongholds
 strongish
-stronglike
 strongly
 strongness
 strontia
@@ -124923,7 +124640,6 @@ strumousness
 strumpet
 strumpeted
 strumpeting
-strumpetlike
 strumpetry
 strumpets
 strums
@@ -125062,7 +124778,6 @@ stumpinesses
 stumping
 stumpish
 stumpless
-stumplike
 stumps
 stumpwork
 stumpworks
@@ -125452,7 +125167,6 @@ subjectivities
 subjectivity
 subjectivoidealistic
 subjectless
-subjectlike
 subjectness
 subjects
 subjectship
@@ -126129,7 +125843,6 @@ suckerel
 suckerfish
 suckerfishes
 suckering
-suckerlike
 suckers
 sucking
 suckings
@@ -126382,7 +126095,6 @@ suiters
 suites
 suiting
 suitings
-suitlike
 suitly
 suitor
 suitored
@@ -126567,7 +126279,6 @@ summerite
 summerland
 summerlay
 summerless
-summerlike
 summerliness
 summerling
 summerlong
@@ -127869,7 +127580,6 @@ swallowed
 swallower
 swallowers
 swallowing
-swallowlike
 swallowling
 swallowpipe
 swallows
@@ -128164,7 +127874,6 @@ swiftlet
 swiftlets
 swiftlier
 swiftliest
-swiftlike
 swiftly
 swiftness
 swiftnesses
@@ -128314,7 +128023,6 @@ switchier
 switchiest
 switching
 switchings
-switchlike
 switchover
 switchy
 switzerland
@@ -128469,7 +128177,6 @@ sylphiest
 sylphine
 sylphish
 sylphize
-sylphlike
 sylphs
 sylphy
 sylva
@@ -128838,7 +128545,6 @@ syrupier
 syrupiest
 syrupiness
 syruping
-syruplike
 syrups
 syrupy
 sysadmin
@@ -129126,7 +128832,6 @@ tad
 tadpole
 tadpoledom
 tadpolehood
-tadpolelike
 tadpoles
 tadpolism
 tads
@@ -129208,7 +128913,6 @@ taillamp
 taillamps
 taillight
 taillights
-taillike
 tailor
 tailorable
 tailorage
@@ -129224,7 +128928,6 @@ tailoring
 tailorings
 tailorism
 tailorless
-tailorlike
 tailorly
 tailormade
 tailormake
@@ -129309,7 +129012,6 @@ talckier
 talckiest
 talcking
 talcky
-talclike
 talcoid
 talcs
 talcum
@@ -129397,7 +129099,6 @@ tallower
 tallowiness
 tallowing
 tallowish
-tallowlike
 tallowmaker
 tallowmaking
 tallowman
@@ -129637,7 +129338,6 @@ tape
 tapeable
 taped
 tapeless
-tapelike
 tapeline
 tapelines
 tapemaker
@@ -129663,7 +129363,6 @@ tapestries
 tapestring
 tapestry
 tapestrying
-tapestrylike
 tapeworm
 tapeworms
 taphole
@@ -129728,7 +129427,6 @@ targeteers
 targetier
 targeting
 targetless
-targetlike
 targetman
 targets
 tariff
@@ -129818,7 +129516,6 @@ taskforce
 tasking
 taskings
 taskless
-tasklike
 taskmaster
 taskmasters
 taskmastership
@@ -130018,7 +129715,6 @@ tavern
 taverner
 taverners
 tavernless
-tavernlike
 tavernly
 tavernous
 tavernry
@@ -130143,7 +129839,6 @@ teakwoods
 teal
 tealeafy
 tealeaves
-tealike
 teals
 team
 teamaker
@@ -130222,7 +129917,6 @@ teaseler
 teaselers
 teaseling
 teaselings
-teasellike
 teasels
 teasement
 teaser
@@ -130697,8 +130391,6 @@ tempesty
 templar
 templardom
 templarism
-templarlike
-templarlikeness
 templars
 templary
 template
@@ -130708,7 +130400,6 @@ temple
 templed
 templeful
 templeless
-templelike
 temples
 tempo
 temporal
@@ -130793,7 +130484,6 @@ tenanter
 tenanting
 tenantism
 tenantless
-tenantlike
 tenantries
 tenantry
 tenants
@@ -130982,7 +130672,6 @@ tentability
 tentable
 tentacle
 tentacled
-tentaclelike
 tentacles
 tentacula
 tentacular
@@ -131193,7 +130882,6 @@ terriblenesses
 terribles
 terribly
 terrier
-terrierlike
 terriers
 terrific
 terrifical
@@ -131958,7 +131646,6 @@ thimbled
 thimbleflower
 thimbleful
 thimblefuls
-thimblelike
 thimblemaker
 thimblemaking
 thimbleman
@@ -132074,7 +131761,6 @@ thistlebird
 thistled
 thistledown
 thistledowns
-thistlelike
 thistleproof
 thistlery
 thistles
@@ -132126,7 +131812,6 @@ thorning
 thornless
 thornlessness
 thornlet
-thornlike
 thornproof
 thornproofs
 thorns
@@ -132203,7 +131888,6 @@ thrashings
 thraw
 thraward
 thrawart
-thrawartlike
 thrawartness
 thrawcrook
 thrawed
@@ -132365,7 +132049,6 @@ throatlatch
 throatlatches
 throatless
 throatlet
-throatlike
 throatroot
 throats
 throatstrap
@@ -132398,7 +132081,6 @@ throned
 thronedom
 throneless
 thronelet
-thronelike
 thrones
 throng
 thronged
@@ -132511,7 +132193,6 @@ thumbing
 thumbkin
 thumbkins
 thumbless
-thumblike
 thumbling
 thumblings
 thumbmark
@@ -132913,7 +132594,6 @@ tilter
 tilters
 tilting
 tiltings
-tiltlike
 tiltmeter
 tiltmeters
 tilts
@@ -132929,7 +132609,6 @@ timberjack
 timberland
 timberlands
 timberless
-timberlike
 timberline
 timberlines
 timberling
@@ -133073,7 +132752,6 @@ tinkerer
 tinkerers
 tinkering
 tinkerings
-tinkerlike
 tinkerly
 tinkers
 tinkle
@@ -133116,7 +132794,6 @@ tinpot
 tinpots
 tins
 tinsel
-tinsellike
 tinselly
 tinselmaker
 tinselmaking
@@ -133353,7 +133030,6 @@ toadish
 toadless
 toads
 toadstool
-toadstoollike
 toadstools
 toady
 toadying
@@ -133388,7 +133064,6 @@ tobaccofied
 tobaccoism
 tobaccoite
 tobaccoless
-tobaccolike
 tobaccoman
 tobaccomen
 tobacconalian
@@ -133453,7 +133128,6 @@ tofu
 tofus
 toga
 togaed
-togalike
 togas
 together
 togetherhood
@@ -134016,7 +133690,6 @@ torrentiality
 torrentially
 torrentine
 torrentless
-torrentlike
 torrents
 torrentuous
 torrid
@@ -134052,7 +133725,6 @@ tortellinis
 tortilla
 tortillas
 tortoise
-tortoiselike
 tortoises
 tortoiseshell
 tortoiseshells
@@ -134742,7 +134414,6 @@ traitorhood
 traitorhoods
 traitorism
 traitorisms
-traitorlike
 traitorling
 traitorly
 traitorous
@@ -134812,7 +134483,6 @@ trampled
 trampler
 tramplers
 tramples
-tramplike
 trampling
 tramplings
 trampolin
@@ -135500,7 +135170,6 @@ trappable
 trappean
 trapped
 trapper
-trapperlike
 trappers
 trappier
 trappiest
@@ -135565,7 +135234,6 @@ travelability
 travelable
 traveldom
 traveleress
-travelerlike
 travellability
 travellable
 travelogue
@@ -135614,7 +135282,6 @@ trawls
 tray
 trayful
 trayfuls
-traylike
 trays
 treacher
 treacherer
@@ -135634,7 +135301,6 @@ treacle
 treacleberries
 treacleberry
 treacled
-treaclelike
 treacles
 treaclewort
 treaclier
@@ -135741,7 +135407,6 @@ trellis
 trellised
 trellises
 trellising
-trellislike
 trelliswork
 trellisworks
 tremblant
@@ -135862,7 +135527,6 @@ tressilation
 tressing
 tressless
 tresslet
-tresslike
 tresson
 tressour
 tressours
@@ -135968,7 +135632,6 @@ tribbles
 tribe
 tribeless
 tribelet
-tribelike
 tribes
 tribesfolk
 tribeship
@@ -136059,7 +135722,6 @@ tricklet
 tricklets
 tricklier
 trickliest
-tricklike
 trickling
 tricklingly
 tricklings
@@ -136101,7 +135763,6 @@ tridentated
 tridented
 tridentiferous
 tridentine
-tridentlike
 tridents
 tridimensional
 tridimensionalities
@@ -136694,7 +136355,6 @@ trough
 troughed
 troughful
 troughing
-troughlike
 troughs
 troughster
 troughway
@@ -136738,7 +136398,6 @@ troutings
 troutless
 troutlet
 troutlets
-troutlike
 troutling
 troutlings
 troutperch
@@ -136752,7 +136411,6 @@ truantcy
 truanted
 truanting
 truantism
-truantlike
 truantly
 truantness
 truantries
@@ -136783,7 +136441,6 @@ truckled
 truckler
 trucklers
 truckles
-trucklike
 truckline
 trucklines
 truckling
@@ -136814,7 +136471,6 @@ truest
 truewood
 truffle
 truffled
-trufflelike
 truffler
 truffles
 trufflesque
@@ -136846,7 +136502,6 @@ trumpeting
 trumpetings
 trumpetleaf
 trumpetless
-trumpetlike
 trumpetry
 trumpets
 trumpety
@@ -137070,7 +136725,6 @@ tubefuls
 tuber
 tubercle
 tubercled
-tuberclelike
 tubercles
 tubercula
 tubercular
@@ -137243,7 +136897,6 @@ tumblehomes
 tumbler
 tumblerful
 tumblerfuls
-tumblerlike
 tumblers
 tumblerwise
 tumbles
@@ -137339,7 +136992,6 @@ tunisians
 tunnel
 tunnelist
 tunnelite
-tunnellike
 tunnellite
 tunnelly
 tunnelmaker
@@ -137359,7 +137011,6 @@ turbaned
 turbanesque
 turbanette
 turbanless
-turbanlike
 turbanned
 turbans
 turbid
@@ -137611,7 +137262,6 @@ tusking
 tuskings
 tuskish
 tuskless
-tusklike
 tusks
 tuskwise
 tusky
@@ -140216,13 +139866,11 @@ ungainness
 ungentle
 ungentled
 ungentleman
-ungentlemanlikeness
 ungentlemanliness
 ungentlemanlinesses
 ungentlemanly
 ungentleness
 ungentlenesses
-ungentlewomanlike
 ungently
 ungift
 ungifted
@@ -145381,7 +145029,6 @@ vixenish
 vixenishly
 vixenishness
 vixenishnesses
-vixenlike
 vixenly
 vixens
 vizier
@@ -145840,7 +145487,6 @@ vulgarisms
 vulgarist
 vulgarities
 vulgarity
-vulgarlike
 vulgarly
 vulgarness
 vulgarnesses
@@ -145924,7 +145570,6 @@ wafered
 waferer
 wafering
 waferish
-waferlike
 wafermaker
 wafermaking
 wafers
@@ -146026,7 +145671,6 @@ waif
 waifed
 waifing
 waifish
-waiflike
 waifs
 waift
 waifts
@@ -146214,7 +145858,6 @@ waltzers
 waltzes
 waltzing
 waltzings
-waltzlike
 wamble
 wambled
 wambles
@@ -146510,7 +146153,6 @@ warrioress
 warrioresses
 warriorhood
 warriorism
-warriorlike
 warriors
 warriorship
 warriorwise
@@ -146602,7 +146244,6 @@ waspish
 waspishly
 waspishness
 waspishnesses
-wasplike
 waspnest
 waspnesting
 waspnests
@@ -148407,7 +148048,6 @@ wildland
 wildlands
 wildlife
 wildlifes
-wildlike
 wildling
 wildlings
 wildly
