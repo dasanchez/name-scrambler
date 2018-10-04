@@ -59,21 +59,13 @@ def main(args):
     wordsFound = vol.findWords(wordFileName, letters, worddb)
     print("Found " + str(len(wordsFound)) + " words.")
 
-    # wordDict = { word: len(word) for word in wordsFound }
-
     start = time.time()
 
-    # print("1-word matches:")
-    # for word in getWordsOfLength(wordDict, len(letters)):
-    #     if sorted(letters) == sorted(word):
-    #         fullMatch.append(word)
-
+    fullMatch = []
     # # generate all possible and put them in the fullMatch list
     loop = asyncio.get_event_loop()
-    # fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
-    fullMatch = loop.run_until_complete(fourWordCombinations(wordsFound, letters))
-    # loop.close()
-
+    loop.run_until_complete(wordCombinationsRec(wordsFound, letters, wordCount, fullMatch))
+    # fullMatch = loop.run_until_complete(wordCombinationsSeq(wordsFound, letters, wordCount))
     end = time.time()
     print(f"{(end-start):.2f} seconds elapsed.")
     print(f"There are {len(fullMatch)} full matches.")
@@ -81,21 +73,63 @@ def main(args):
     # for entry in fullMatch:
         # print(entry)
 
-    start = time.time()
+    # start = time.time()
     # generate all possible and put them in the fullMatch list
-    loop = asyncio.get_event_loop()
-    fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
-    loop.close()
+    # loop = asyncio.get_event_loop()
+    # fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
+    # fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
+    # loop.close()
 
-    end = time.time()
-    print(f"{(end-start):.2f} seconds elapsed")
-    print("There are " + str(len(fullMatch)) + " full matches.")
+    # end = time.time()
+    # print(f"{(end-start):.2f} seconds elapsed")
+    # print("There are " + str(len(fullMatch)) + " full matches.")
 
     # for entry in fullMatch:
     #     myStr = ""
     #     for word in entry:
     #         myStr = myStr + word + " "
     #     print(myStr)
+
+async def wordCombinationsSeq(wordsFound, targetMatch, wordCount):
+    """ find all word combinations given a list and length """
+    fullMatch = []
+    comboCount = 1
+    wordList = wordsFound.copy()
+    for _ in wordsFound:
+        combo = ''
+        while comboCount <= wordCount:
+            if comboCount == wordCount:
+                for lastWord in getWordsEqualTo(wordList, len(targetMatch) - len(combo)):
+                    combo = combo + lastWord
+                    if sorted(combo) == sorted(targetMatch):
+                        print(combo)
+            comboCount += 1
+    return fullMatch
+    # for word in getWordsEqualTo(wordsFound, 1)
+
+async def wordCombinationsRec(wordsFound, targetMatch, spotsLeft, matchList, baggage=''):
+    """ find all word combinations given a list and length """
+    if spotsLeft == 1:
+        # One word left
+        for word in getWordsEqualTo(wordsFound, len(targetMatch) - len(baggage)):
+            tempCombo = baggage + word
+            if sorted(tempCombo) == sorted(targetMatch):
+                matchList.append(tempCombo)
+    else:
+        trimmedList = wordsFound.copy()
+        if not baggage:
+            total = 0
+        for word in getWordsUnder(trimmedList, len(targetMatch) - len(baggage) - (spotsLeft-2)):
+            if not baggage:
+                total += 1
+                # tempCombo = word
+            tempCombo = baggage + word
+            if vol.wordIsPresent(tempCombo, targetMatch):
+                await wordCombinationsRec(trimmedList, targetMatch, spotsLeft-1,
+                                          matchList, tempCombo)
+            trimmedList.remove(word)
+            if not baggage:
+                print(f"{(total * 100)/len(wordsFound):.2f}% done.")
 
 async def twoWordCombinations(wordsFound, letters):
     """ return a list of two-word combinations """
@@ -110,7 +144,7 @@ async def twoWordCombinations(wordsFound, letters):
                 # await asyncio.sleep(0.05)
                 fullMatch.append(f"{first} {second}")
         firstList.remove(first)
-        print(f"{(total * 100)/len(wordsFound):.2f}% done.")
+        # print(f"{(total * 100)/len(wordsFound):.2f}% done.")
     return fullMatch
 
 async def threeWordCombinations(wordsFound, letters):
@@ -131,7 +165,7 @@ async def threeWordCombinations(wordsFound, letters):
                         fullMatch.append(f"{first} {second} {third}")
             secondList.remove(second)
         firstList.remove(first)
-        print(f"{(total * 100)/len(wordsFound):.2f}% done.")
+        # print(f"{(total * 100)/len(wordsFound):.2f}% done.")
     return fullMatch
 
 async def fourWordCombinations(wordsFound, letters):
@@ -165,7 +199,7 @@ async def fourWordCombinations(wordsFound, letters):
                     thirdList.remove(third)
             secondList.remove(second)
         firstList.remove(first)
-        print(f"{(total * 100)/len(wordsFound):.2f}% done.")
+        # print(f"{(total * 100)/len(wordsFound):.2f}% done.")
     return fullMatch
 
 def getWordsEqualTo(wordList, targetLength):
