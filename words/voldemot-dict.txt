@@ -31582,7 +31582,6 @@ dejectly
 dejectory
 dejects
 dejecture
-del
 delace
 delacerate
 delaminate
@@ -31828,7 +31827,6 @@ delphi
 delphian
 delphic
 delphically
-dels
 delta
 deltas
 deltoid
