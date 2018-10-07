@@ -11,6 +11,7 @@ var names = ['isaacasimov', 'iainmbanks', 'arthurclarke',
 var progress=0;
 var total = 0;
 
+var currentRequest = '';
 var progressContainer = document.getElementById("progCon");
 var progressBar = document.getElementById("progBar");
 var progressText = document.querySelector(".prog-text");
@@ -77,9 +78,10 @@ process.onclick = function (event) {
             } else if (data['match']) {
                  var combo = document.createElement('div');
                 combo.className = 'match';
-                combo.textContent = data['value'].join(' ');
+                combo.textContent = data['value'];
                 combinations.appendChild(combo);
                 total += 1;
+                results.textContent = currentRequest + ':' + total + ' combinations found';
             } else if (data['percent']) {
                 console.log('percent done: ' + data['value']);
                 progress=data['value']
@@ -90,7 +92,8 @@ process.onclick = function (event) {
                 }
                 console.log('Connection rejected: ' + data['reason']);
             } else if (data['input']) {
-                results.textContent = 'Processing ' + data['value'] + ':';
+                currentRequest = data['value'];
+                results.textContent = 'Processing ' + currentRequest + '...';
                 console.log('Processing ' + data['value']);
             }
         };

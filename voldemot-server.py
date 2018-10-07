@@ -15,7 +15,7 @@ import voldemot_utils as vol
 import wordDB
 
 pauseInterval = 10000
-pauseLength = 0.05
+pauseLength = 0.025
 USERS = set()
 
 def main(args):
@@ -72,20 +72,139 @@ async def handler(websocket, path):
         try:
             async for message in websocket:
                 start = time.time()
-
                 data = json.loads(message)
                 fullMatch = await handle_message(websocket, data)
                 response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
-                print(response)
                 await websocket.send(response)
                 await asyncio.sleep(0.5)
                 
                 end = time.time()
-                print(f"Processed request for {data['input']} in {(end-start):.2f} seconds")
+                print(f"Processed request for {data['input']} in {(end-start):.2f} seconds," +
+                      f"generating {len(fullMatch)} combinations.")
                 return 'done'
         finally:
             await unregister(websocket)
-        
+
+async def twoWordCombinations(wordsFound, letters, websocket):
+    """ return a list of two-word combinations """
+    global pauseInterval
+    global pauseLength
+    pause = pauseInterval
+    
+    fullMatch = []
+    firstList = wordsFound.copy()
+    total = 0
+    percent = 0
+    rootList = vol.getWordsUnder(firstList, len(letters) - 1)
+    for first in rootList:
+        total += 1
+        secondList = firstList.copy()
+        for second in vol.getWordsEqualTo(secondList, len(letters) - len(first)):
+            testCombo = first + second
+            if sorted(testCombo) == sorted(letters):
+                testComboStr = str(f"{first} {second}")
+                fullMatch.append(testComboStr)
+                response = json.dumps({'match': True, 'value': testComboStr})
+                await websocket.send(response)
+            
+            pause -= 1
+            if pause == 0:
+                await asyncio.sleep(pauseLength)
+                pause = pauseInterval
+
+        firstList.remove(first)
+        newPercent = int(total * 100 / len(rootList))
+        if newPercent != percent:
+            percent = newPercent
+            response = json.dumps({'percent': True, 'value': percent})
+            await websocket.send(response)
+    return fullMatch
+
+async def threeWordCombinations(wordsFound, letters, websocket):
+    """ return a list of three-word combinations """
+    global pauseInterval
+    global pauseLength
+    pause = pauseInterval
+    
+    fullMatch = []
+    firstList = wordsFound.copy()
+    total = 0
+    percent = 0
+    rootList = vol.getWordsUnder(firstList, len(letters) - 2)
+    for first in rootList:
+        total += 1
+        secondList = firstList.copy()
+        for second in vol.getWordsUnder(secondList, len(letters) - len(first)):
+            twoWordCombo = first + second
+            if vol.wordIsPresent(twoWordCombo, letters):
+                thirdList = secondList.copy()
+                for third in vol.getWordsEqualTo(thirdList, len(letters) - len(twoWordCombo)):
+                    testCombo = twoWordCombo + third
+                    if sorted(testCombo) == sorted(letters):
+                        testComboStr = str(f"{first} {second} {third}")
+                        fullMatch.append(testComboStr)
+                        response = json.dumps({'match': True, 'value': testComboStr})
+                        await websocket.send(response)
+                    
+                    pause -= 1
+                    if pause == 0:
+                        await asyncio.sleep(pauseLength)
+                        pause = pauseInterval
+
+            secondList.remove(second)
+        firstList.remove(first)
+        newPercent = int(total * 100 / len(rootList))
+        if newPercent != percent:
+            percent = newPercent
+            response = json.dumps({'percent': True, 'value': percent})
+            await websocket.send(response)
+    return fullMatch
+
+async def fourWordCombinations(wordsFound, letters, websocket):
+    """ return a list of four-word combinations """
+    global pauseInterval
+    global pauseLength
+    pause = pauseInterval
+
+    fullMatch = []
+    total = 0
+    percent = 0
+    firstList = wordsFound.copy()
+    rootList = vol.getWordsUnder(firstList, len(letters) - 3)
+    for first in rootList:
+        total += 1
+        secondList = firstList.copy()
+        for second in vol.getWordsUnder(secondList, len(letters) - len(first) - 2):
+            twoWordCombo = first + second
+            if vol.wordIsPresent(twoWordCombo, letters):
+                thirdList = secondList.copy()
+                for third in vol.getWordsUnder(thirdList, len(letters) - len(twoWordCombo)):
+                    threeWordCombo = twoWordCombo + third
+                    if vol.wordIsPresent(threeWordCombo, letters):
+                        fourthList = thirdList.copy()
+                        for fourth in vol.getWordsEqualTo(fourthList, len(letters) - len(threeWordCombo)):
+                            fourWordCombo = threeWordCombo + fourth
+                            if sorted(fourWordCombo) == sorted(letters):
+                                testComboStr = f"{first} {second} {third} {fourth}"
+                                fullMatch.append(testComboStr)
+                                response = json.dumps({'match': True, 'value': testComboStr})
+                                await websocket.send(response)
+
+                            pause -= 1
+                            if pause == 0:
+                                await asyncio.sleep(pauseLength)
+                                pause = pauseInterval
+
+                    thirdList.remove(third)
+            secondList.remove(second)
+        firstList.remove(first)
+        newPercent = int(total * 100 / len(rootList))
+        if newPercent != percent:
+            percent = newPercent
+            response = json.dumps({'percent': True, 'value': percent})
+            await websocket.send(response)
+    return fullMatch
+
 async def handle_message(websocket, data):
     """ handles incoming message from players """
     if data['type'] == 'voldemot-request':
@@ -93,38 +212,31 @@ async def handle_message(websocket, data):
         wordCount = int(data['word-count'])
 
         # START VOLDEMOT ROUTINE
-        worddb = wordDB.wordDB()
-        worddb.query("CREATE TABLE words(word text, length int)")
-
-        # remove spaces and non-alphabetical characters
+        # Remove spaces and non-alphabetical characters
         letters = re.sub(r"\W?\d?", "", letters).lower()
         letters = letters[:16]
         print(f"Processing {letters} for {wordCount}-word combinations.")
 
         response = json.dumps({'input': True, 'value': letters})
-        asyncio.ensure_future(websocket.send(response))
+        await websocket.send(response)
 
         sortedLetters = sorted(list(letters))
-        wordsFound = vol.findWords("words/voldemot-dict.txt", str(letters), worddb)
+        wordsFound = vol.getWordList("words/voldemot-dict.txt", str(letters))
         print("Found " + str(len(wordsFound)) + " words.")
 
-
-        # generate combinations
-        lenCombos = vol.splitOptions(len(letters), wordCount)
-        setList = vol.generateCandidates(lenCombos, worddb)
-        setCount = len(setList)
-
-        if setList:
-            print(f"{setCount} combination sets:")
-            print(lenCombos)
-
-        fullMatch = []
-        lock = asyncio.Lock()
-        progress = [1, setCount]
-
-        for entry in setList:
-            await processClientSet(sortedLetters, entry,
-                                   lock, fullMatch, progress, websocket)
+        if wordCount == 1:
+            fullMatch = []
+            for word in vol.getWordsEqualTo(wordsFound, len(letters)):
+                if sorted(word) == sortedLetters:
+                    response = json.dumps({'match': True, 'value': word})
+                    await websocket.send(response)
+                    fullMatch.append(word)
+        elif wordCount == 2:
+            fullMatch = await twoWordCombinations(wordsFound, str(letters), websocket)
+        elif wordCount == 3:
+            fullMatch = await threeWordCombinations(wordsFound, str(letters), websocket)
+        elif wordCount == 4:
+            fullMatch = await fourWordCombinations(wordsFound, str(letters), websocket)
 
         return fullMatch
 

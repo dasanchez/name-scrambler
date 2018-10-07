@@ -19,17 +19,13 @@ combinations, "a clubmaster" and "cabal muster" to
 import sys
 import re
 import time
+from collections import Counter
 import asyncio
 import voldemot_utils as vol
 import wordDB
 
 def main(args):
     """ main program """
-    start = time.time()
-
-    worddb = wordDB.wordDB()
-    worddb.query("CREATE TABLE words(word text, length int)")
-
     # for i in enumerate(args):
         # print(i)
 
@@ -41,7 +37,6 @@ def main(args):
 
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
-    sortedLetters = sorted(list(letters))
 
     print("Source soup (" + letters + ") has " + str(len(letters)) + " characters")
 
@@ -56,15 +51,29 @@ def main(args):
         wordCount = int(args[3])
 
     # find words present in the soup
-    wordsFound = vol.findWords(wordFileName, letters, worddb)
+    wordsFound = vol.getWordList(wordFileName, letters)
     print("Found " + str(len(wordsFound)) + " words.")
 
-    # generate all possible and put them in the fullMatch list
-    loop = asyncio.get_event_loop()
-    fullMatch = loop.run_until_complete(generateList(sortedLetters, wordCount, worddb))
-    loop.close()
+    start = time.time()
 
-    print("There are " + str(len(fullMatch)) + " full matches.")
+    fullMatch = []
+    # # generate all possible and put them in the fullMatch list
+    loop = asyncio.get_event_loop()
+    if wordCount == 4:
+        fullMatch = loop.run_until_complete(fourWordCombinations(wordsFound, letters))
+    elif wordCount == 3:
+        fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
+    elif wordCount == 2:
+        fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
+    else:
+        # Default to single words:
+        for word in vol.getWordsEqualTo(wordsFound, len(letters)):
+            if sorted(word) == sorted(letters):
+                fullMatch.append(word)
+    loop.close()
+    end = time.time()
+    print(f"{(end-start):.2f} seconds elapsed.")
+    print(f"There are {len(fullMatch)} full matches.")
 
     # for entry in fullMatch:
     #     myStr = ""
@@ -72,44 +81,107 @@ def main(args):
     #         myStr = myStr + word + " "
     #     print(myStr)
 
-    end = time.time()
-    print(str(int(end-start)) + " seconds elapsed")
+async def wordCombinationsRec(wordsFound, targetMatch, spotsLeft, matchList, baggage=''):
+    """ find all word combinations given a list and length using recursion """
+    if spotsLeft == 1:
+        # One word left
+        for word in vol.getWordsEqualTo(wordsFound, len(targetMatch) - len(baggage)):
+            tempCombo = baggage + word
+            if sorted(tempCombo) == sorted(targetMatch):
+                matchList.append(tempCombo)
+    else:
+        trimmedList = wordsFound.copy()
+        if not baggage:
+            total = 0
+        for word in vol.getWordsUnder(trimmedList, len(targetMatch) - len(baggage) - (spotsLeft-2)):
+            if not baggage:
+                total += 1
+            tempCombo = baggage + word
+            if vol.wordIsPresent(tempCombo, targetMatch):
+                await wordCombinationsRec(trimmedList, targetMatch, spotsLeft-1,
+                                          matchList, tempCombo)
+            trimmedList.remove(word)
+            if not baggage:
+                print(f"{(total * 100)/len(wordsFound):.2f}% done.")
 
-def voldemot(letters, wordsRequested):
+async def twoWordCombinations(wordsFound, letters):
+    """ return a list of two-word combinations """
+    fullMatch = []
+    firstList = wordsFound.copy()
+    total = 0
+    for first in wordsFound:
+        total += 1
+        for second in vol.getWordsEqualTo(firstList, len(letters) - len(first)):
+            testCombo = first + second
+            if sorted(testCombo) == sorted(letters):
+                fullMatch.append(f"{first} {second}")
+        firstList.remove(first)
+    return fullMatch
+
+async def threeWordCombinations(wordsFound, letters):
+    """ return a list of three-word combinations """
+    fullMatch = []
+    firstList = wordsFound.copy()
+    total = 0
+    for first in vol.getWordsUnder(firstList, len(letters) - 2):
+        total += 1
+        secondList = firstList.copy()
+        for second in vol.getWordsUnder(secondList, len(letters) - len(first)):
+            twoWordCombo = first + second
+            if vol.wordIsPresent(twoWordCombo, letters):
+                thirdList = secondList.copy()
+                for third in vol.getWordsEqualTo(thirdList, len(letters) - len(twoWordCombo)):
+                    testCombo = twoWordCombo + third
+                    if sorted(testCombo) == sorted(letters):
+                        fullMatch.append(f"{first} {second} {third}")
+            secondList.remove(second)
+        firstList.remove(first)
+    return fullMatch
+
+async def fourWordCombinations(wordsFound, letters):
+    """ return a list of four-word combinations """
+    fullMatch = []
+    total = 0
+    firstList = wordsFound.copy()
+    for first in vol.getWordsUnder(firstList, len(letters) - 3):
+        total += 1
+        secondList = firstList.copy()
+        for second in vol.getWordsUnder(secondList, len(letters) - len(first) - 2):
+            twoWordCombo = first + second
+            if vol.wordIsPresent(twoWordCombo, letters):
+                thirdList = secondList.copy()
+                for third in vol.getWordsUnder(thirdList, len(letters) - len(twoWordCombo)):
+                    threeWordCombo = twoWordCombo + third
+                    if vol.wordIsPresent(threeWordCombo, letters):
+                        fourthList = thirdList.copy()
+                        for fourth in vol.getWordsEqualTo(fourthList, len(letters) - len(threeWordCombo)):
+                            fourWordCombo = threeWordCombo + fourth
+                            if sorted(fourWordCombo) == sorted(letters):
+                                fullMatch.append(f"{first} {second} {third} {fourth}")
+                    thirdList.remove(third)
+            secondList.remove(second)
+        firstList.remove(first)
+    return fullMatch
+
+def voldemot(letters, wordCount):
     """ simplified function call that always goes to the standard dictionary """
-    worddb = wordDB.wordDB()
-    worddb.query("CREATE TABLE words(word text, length int)")
-
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
     letters = letters[:16]
 
-    vol.findWords("words/voldemot-dict.txt", letters, worddb)
-    fullMatch = generateList(sorted(letters), wordsRequested, worddb)
+    wordList = vol.getWordList("words/voldemot-dict.txt", letters)
+    if wordCount == 4:
+        fullMatch = fourWordCombinations(wordList, letters)
+    elif wordCount == 3:
+        fullMatch = threeWordCombinations(wordList, letters)
+    elif wordCount == 2:
+        fullMatch = twoWordCombinations(wordList, letters)
+    else:
+        # Default to single words:
+        for word in vol.getWordsEqualTo(wordList, len(letters)):
+            if sorted(word) == sorted(letters):
+                fullMatch.append(word)
     return letters, fullMatch
-
-async def generateList(sortedSoup, wordCount, worddb):
-    """ Returns a list of valid combinations in fullMatch """
-    fullMatch = []
-
-    # Check for all possible combinations against the soup
-    print("Checking " + str(wordCount) + '-word combinations...')
-    lenCombos = vol.splitOptions(len(sortedSoup), wordCount)
-    print(lenCombos)
-    setList = vol.generateCandidates(lenCombos, worddb)
-    setCount = len(setList)
-
-    if setList:
-        print("setList length: " + str(setCount))
-
-    lock = asyncio.Lock()
-    progress = [1, setCount]
-
-    for entry in setList:
-        asyncio.ensure_future(vol.processSet(sortedSoup, entry,
-                                             lock, fullMatch, progress))
-
-    return fullMatch
 
 if __name__ == "__main__":
     main(sys.argv)
