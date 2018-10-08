@@ -223,11 +223,20 @@ async def handle_message(websocket, data):
 
         if wordCount == 1:
             fullMatch = []
-            for word in vol.getWordsEqualTo(wordsFound, len(letters)):
+            total = 0
+            percent = 0
+            rootList = vol.getWordsEqualTo(wordsFound, len(letters))
+            for word in rootList:
+                total += 1
                 if sorted(word) == sortedLetters:
                     response = json.dumps({'match': True, 'value': word})
                     await websocket.send(response)
                     fullMatch.append(word)
+                newPercent = int(total * 100 / len(rootList))
+                if newPercent != percent:
+                    percent = newPercent
+                    response = json.dumps({'percent': True, 'value': percent})
+                    await websocket.send(response)
         elif wordCount == 2:
             fullMatch = await twoWordCombinations(wordsFound, str(letters), websocket)
         elif wordCount == 3:
