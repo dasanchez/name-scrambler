@@ -22,7 +22,6 @@ import time
 from collections import Counter
 import asyncio
 import voldemot_utils as vol
-import wordDB
 
 def main(args):
     """ main program """

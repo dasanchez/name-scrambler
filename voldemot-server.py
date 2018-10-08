@@ -12,10 +12,9 @@ import time
 from itertools import product
 import websockets
 import voldemot_utils as vol
-import wordDB
 
 pauseInterval = 10000
-pauseLength = 0.025
+pauseLength = 0.04
 USERS = set()
 
 def main(args):
@@ -29,21 +28,19 @@ def main(args):
 
 async def register(websocket):
     """ new websocket client has connected """
-    global pauseInterval
     global pauseLength
 
     USERS.add(websocket)
-    pauseLength += 0.025
+    pauseLength += 0.01
     print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
 async def unregister(websocket):
     """ websocket client has disconnected """
-    global pauseInterval
     global pauseLength
 
     USERS.remove(websocket)
-    pauseLength -= 0.025
+    pauseLength -= 0.01
     print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
