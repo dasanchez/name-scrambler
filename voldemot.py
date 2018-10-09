@@ -11,9 +11,8 @@ python voldemot letters [filename] [slots]
 For example,
 python voldemot.py albertcamus words/voldemot-dict.txt 2
 
-will yield a text file called albert-camus.iter with 1125
-combinations, "a clubmaster" and "cabal muster" to
-"macabre slut" and "tsamba ulcer".
+will yield a text file called albert-camus.iter with 113
+combinations, from "ablate scrum" to "tsamba ulcer".
 """
 
 import sys
@@ -63,7 +62,7 @@ def main(args):
     elif wordCount == 3:
         fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
     elif wordCount == 2:
-        fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
+        fullMatch = loop.run_until_complete(twoWordCombinations(wordsFound, letters))
     else:
         # Default to single words:
         for word in vol.getWordsEqualTo(wordsFound, len(letters)):
@@ -74,11 +73,8 @@ def main(args):
     print(f"{(end-start):.2f} seconds elapsed.")
     print(f"There are {len(fullMatch)} full matches.")
 
-    # for entry in fullMatch:
-    #     myStr = ""
-    #     for word in entry:
-    #         myStr = myStr + word + " "
-    #     print(myStr)
+    for entry in fullMatch:
+        print(entry)
 
 async def wordCombinationsRec(wordsFound, targetMatch, spotsLeft, matchList, baggage=''):
     """ find all word combinations given a list and length using recursion """

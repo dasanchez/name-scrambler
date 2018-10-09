@@ -12,4 +12,5 @@ It uses the English word list from [SCOWL](http://wordlist.aspell.net/).
 
 `python voldemot.py albertcamus words/voldemot-dict.txt 2`
 
-The above example will yield 114 combinations, beginning with _m trabeculas_ and ending with _umbre tascal_. It is up to the user to find the real gems, such as _cabal muster_ and _lust macabre_ in this case.
+The above example will yield 113 combinations, beginning with _ablate scrum_ and ending with _tsamba ulcer_.  
+It is up to the user to find the real gems, such as _cabal muster_ and _lust macabre_ in this case.
