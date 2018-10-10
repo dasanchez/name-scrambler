@@ -17,7 +17,7 @@ var progressBar = document.getElementById("progBar");
 var progressText = document.querySelector(".prog-text");
 var body = document.getElementsByTagName("BODY")[0];
 
-function setProgress(newProgress) {
+async function setProgress(newProgress) {
     contW = progressContainer.clientWidth;
     var pixelValue = (contW*newProgress/100);
     progressBar.style.width = pixelValue+"px";
@@ -46,6 +46,7 @@ process.onclick = function (event) {
     setProgress(0)
     total = 0;
     results.textContent = 'Requested combinations...';
+    progressText.style.visibility = "visible";
 
     while (combinations.firstChild) {
         combinations.removeChild(combinations.firstChild);
@@ -68,11 +69,11 @@ process.onclick = function (event) {
             data = JSON.parse(event.data);
             if (data['total-matches']) {
                 if (data['value'] == 0){
-                results.textContent = 'No combinations found';
+                results.textContent = currentRequest + ": " + 'No combinations found';
                 } else if (data['value'] == 1) {
-                    results.textContent = '1 combination found';
+                    results.textContent = currentRequest + ": " + '1 combination found';
                 } else {
-                    results.textContent = data['value'] + ' combinations found';
+                    results.textContent = currentRequest + ": " + data['value'] + ' combinations found';
                 }
                 console.log("Total matches received: " + total);
             } else if (data['match']) {
