@@ -11,7 +11,6 @@ html {
 
 body {
     max-width: 100%;
-
     font-family: "Verdana", sans-serif;
     background-color: #4f5165;
     color: #dddddd;
@@ -141,6 +140,15 @@ button {
       grid-template-columns: repeat(4, 1fr);
 }
   
+.rootWord {
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    background: #1b1725;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 .match {
       margin: 10px;
       padding: 5px;

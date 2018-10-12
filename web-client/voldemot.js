@@ -10,6 +10,7 @@ var names = ['isaacasimov', 'iainmbanks', 'arthurclarke',
 // progress bar:
 var progress=0;
 var total = 0;
+var totalRoots = 0;
 
 var currentRequest = '';
 var progressContainer = document.getElementById("progCon");
@@ -83,6 +84,12 @@ process.onclick = function (event) {
                 combinations.appendChild(combo);
                 total += 1;
                 results.textContent = currentRequest + ':' + total + ' combinations found';
+            } else if (data['rootWord']) {
+                var rootWord = document.createElement('div');
+                rootWord.className = 'rootWord'
+                rootWord.textContent = data['value'];
+                combinations.appendChild(rootWord);
+                totalRoots += 1;                
             } else if (data['percent']) {
                 console.log('percent done: ' + data['value']);
                 progress=data['value']
