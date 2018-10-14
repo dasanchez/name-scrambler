@@ -17,13 +17,6 @@ def wordIsPresent(word, soup):
         word = word.replace(letter, "", 1)
     return not word
 
-def searchDictionary(filename, letters):
-    """ returns a list of words that can be built using the letters string using filename dictionary """
-    wordFile = open(filename, "r")
-    wordList = [word.rstrip().lower() for word in wordFile if "'" not in word and wordIsPresent(word.rstrip().lower(), letters)]
-    wordFile.close()
-    return wordList
-
 def getWordList(dictFileName, letters):
     """ returns a list with words found in the letters string using the dictionary in the filename """
     return [word for word in readDictionary(dictFileName) if wordIsPresent(word, letters)]
@@ -36,7 +29,7 @@ def getWordsUnder(wordList, targetLength):
     """ return list of words of a specified length in the list """
     return [word for word in wordList if len(word) < targetLength]
 
-async def findWordCombinations(wordsFound, letters, wordCount, pauseInterval, pauseLength, verbose = False):
+async def findWordCombinations(wordsFound, letters, wordCount, pauseInterval = 10000, pauseLength = 0.05, verbose = False):
     ''' find 2+ word combinations '''
     fullMatch = []
     rootList = getWordsUnder(wordsFound, len(letters) - (wordCount - 2))

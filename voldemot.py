@@ -45,7 +45,7 @@ def main(args):
         wordCount = int(args[3])
 
     # make a list of candidate words
-    wordsFound = vol.searchDictionary(wordFileName, letters)
+    wordsFound = vol.getWordList(wordFileName, letters)
     print("Found " + str(len(wordsFound)) + " words.")
 
     start = time.time()
@@ -65,8 +65,8 @@ def main(args):
     print(f"{(end-start):.2f} seconds elapsed.")
     print(f"There are {len(fullMatch)} full matches.")
 
-    # for entry in fullMatch:
-        # print(entry)
+    for entry in fullMatch:
+        print(entry)
 
 if __name__ == "__main__":
     main(sys.argv)
