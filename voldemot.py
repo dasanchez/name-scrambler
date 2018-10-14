@@ -57,12 +57,14 @@ def main(args):
     fullMatch = []
     # # generate all possible and put them in the fullMatch list
     loop = asyncio.get_event_loop()
-    if wordCount == 4:
-        fullMatch = loop.run_until_complete(fourWordCombinations(wordsFound, letters))
-    elif wordCount == 3:
-        fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
-    elif wordCount == 2:
-        fullMatch = loop.run_until_complete(twoWordCombinations(wordsFound, letters))
+    # if wordCount == 4:
+        # fullMatch = loop.run_until_complete(fourWordCombinations(wordsFound, letters))
+    # elif wordCount == 3:
+        # fullMatch = loop.run_until_complete(threeWordCombinations(wordsFound, letters))
+    # elif wordCount == 2:
+        # fullMatch = loop.run_until_complete(twoWordCombinations(wordsFound, letters))
+    if wordCount >= 2:
+        fullMatch = loop.run_until_complete(vol.findWordCombinations(wordsFound, letters, wordCount))
     else:
         # Default to single words:
         for word in vol.getWordsEqualTo(wordsFound, len(letters)):
@@ -73,8 +75,8 @@ def main(args):
     print(f"{(end-start):.2f} seconds elapsed.")
     print(f"There are {len(fullMatch)} full matches.")
 
-    for entry in fullMatch:
-        print(entry)
+    # for entry in fullMatch:
+    #     print(entry)
 
 async def wordCombinationsRec(wordsFound, targetMatch, spotsLeft, matchList, baggage=''):
     """ find all word combinations given a list and length using recursion """

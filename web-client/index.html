@@ -25,18 +25,19 @@
 
         <section class="input-section">
             <div class="word-container">
-                <input class="words" type="text" pattern=".{,16}" required title="Enter up to 16 characters">
-                <select id="count">
-                        <option value="1">1 word</option>
-                        <option value="2" selected="selected">2 words</option>
-                        <option value="3">3 words</option>
-                        <option value="4">4 words</option>
-                </select>
+                <input class="effect" type="text" pattern=".{1,16}" required
+                 placeholder="Enter up to 16 characters" title="Input characters">
+                 <span class="focus-bg"></span>
             </div>
+            <div class="slider-container">
+                <input class="slider-range" type="range" value="2" min="1" max="4">
+                <span class="slider-value">2</span><span class="words-label">words</span>
+            </div>
+            
         </section>
 
         <section class="button-section">
-            <button>Start</button>
+            <button>start</button>
         </section>
     </header>
 

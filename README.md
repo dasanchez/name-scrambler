@@ -4,7 +4,7 @@ Voldemot takes a set of letters (such as a name) and assembles combinations of w
 
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
 
-## Usage:
+## Usage
 
 `python voldemot.py input [filename] [word count]`
 

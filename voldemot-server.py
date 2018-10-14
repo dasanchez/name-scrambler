@@ -202,6 +202,63 @@ async def fourWordCombinations(wordsFound, letters, websocket):
             await websocket.send(response)
     return fullMatch
 
+
+async def findWordCombinations(wordsFound, letters, wordCount, websocket):
+    ''' find 2+ word combinations '''
+    global pauseInterval
+    global pauseLength
+    pause = pauseInterval
+    
+    fullMatch = []
+    rootList = vol.getWordsUnder(wordsFound, len(letters) - (wordCount - 2))
+    tempWords = rootList.copy()
+    lettersLength = len(letters)
+
+    total = 0
+    percent = 0
+
+    for root in rootList:
+        # traverse the remainder of the list until it's all gone
+        total += 1
+        prefixList = [root]
+        for baggageCounter in range(2, wordCount+1):
+            newPrefixList = []
+            for prefix in prefixList:
+                lastPrefix = prefix.split(' ')[-1]
+                tempList = tempWords[tempWords.index(lastPrefix):]
+                collapsedPrefix = prefix.replace(" ", "")
+                spotsAvailable = lettersLength - len(collapsedPrefix)
+
+                if baggageCounter == wordCount:
+                    for tempWord in vol.getWordsEqualTo(tempList, spotsAvailable):
+                        if sorted(collapsedPrefix + tempWord) == sorted(letters):
+                            newMatch = f"{prefix} {tempWord}"
+                            fullMatch.append(newMatch)
+                            if websocket:
+                                response = json.dumps({'match': True, 'value': newMatch})
+                                await (websocket.send(response))
+                else:
+                    baggageLeft = spotsAvailable - (wordCount - baggageCounter - 1)
+                    for tempWord in vol.getWordsUnder(tempList, baggageLeft):
+                        if vol.wordIsPresent(collapsedPrefix + tempWord, letters):
+                            newPrefixList.append(f"{prefix} {tempWord}")
+
+                pause -= 1
+                if pause == 0:
+                    await asyncio.sleep(pauseLength)
+                    pause = pauseInterval
+            prefixList = newPrefixList.copy()
+
+        tempWords.remove(root)
+        newPercent = int(total * 100 / len(rootList))
+        if newPercent != percent:
+            percent = newPercent
+            response = json.dumps({'percent': True, 'value': percent})
+            await websocket.send(response)
+
+    return fullMatch
+
+
 async def handle_message(websocket, data):
     """ handles incoming message from players """
     if data['type'] == 'voldemot-request':
@@ -221,6 +278,10 @@ async def handle_message(websocket, data):
         wordsFound = vol.getWordList("words/voldemot-dict.txt", str(letters))
         print("Found " + str(len(wordsFound)) + " words.")
 
+        for word in wordsFound:
+            response = json.dumps({'rootWord': True, 'value': word})
+            await websocket.send(response)
+
         if wordCount == 1:
             fullMatch = []
             total = 0
@@ -237,12 +298,14 @@ async def handle_message(websocket, data):
                     percent = newPercent
                     response = json.dumps({'percent': True, 'value': percent})
                     await websocket.send(response)
-        elif wordCount == 2:
-            fullMatch = await twoWordCombinations(wordsFound, str(letters), websocket)
-        elif wordCount == 3:
-            fullMatch = await threeWordCombinations(wordsFound, str(letters), websocket)
-        elif wordCount == 4:
-            fullMatch = await fourWordCombinations(wordsFound, str(letters), websocket)
+        else:
+            fullMatch = await findWordCombinations(wordsFound, str(letters), wordCount, websocket)
+        # elif wordCount == 2:
+            # fullMatch = await twoWordCombinations(wordsFound, str(letters), websocket)
+        # elif wordCount == 3:
+            # fullMatch = await threeWordCombinations(wordsFound, str(letters), websocket)
+        # elif wordCount == 4:
+            # fullMatch = await fourWordCombinations(wordsFound, str(letters), websocket)
 
         return fullMatch
 

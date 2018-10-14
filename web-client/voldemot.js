@@ -1,11 +1,8 @@
 var process = document.querySelector('button'),
     input = document.querySelector('input'),
-    count = document.getElementById('count'),
+    count = document.querySelector('.slider-range'),
     results = document.querySelector('.results'),
     combinations = document.querySelector('.combinations');
-
-var names = ['isaacasimov', 'iainmbanks', 'arthurclarke',
- 'corydoctorow', 'williamgibson', 'frankherbert', 'ursulaleguin', 'stephenking']
 
 // progress bar:
 var progress=0;
@@ -18,6 +15,16 @@ var progressBar = document.getElementById("progBar");
 var progressText = document.querySelector(".prog-text");
 var body = document.getElementsByTagName("BODY")[0];
 
+var range = document.querySelector('input[type="range"]');
+
+var rangeValue = function(){
+    var newValue = range.value;
+    var target = document.querySelector('.slider-value');
+    target.innerHTML = newValue;
+  }
+
+range.addEventListener("input", rangeValue);
+
 async function setProgress(newProgress) {
     contW = progressContainer.clientWidth;
     var pixelValue = (contW*newProgress/100);
@@ -29,11 +36,6 @@ body.onresize = function() {
     setProgress(progress)    
 };
 
-  var x = 0;
-  function myFunction() {
-      var txt = x += 1;
-      document.getElementById("demo").innerHTML = txt;
-  }
 
 input.addEventListener("keyup", function(event) {
     event.preventDefault();
@@ -77,6 +79,7 @@ process.onclick = function (event) {
                     results.textContent = currentRequest + ": " + data['value'] + ' combinations found';
                 }
                 console.log("Total matches received: " + total);
+                process.disabled = false;
             } else if (data['match']) {
                  var combo = document.createElement('div');
                 combo.className = 'match';
@@ -103,6 +106,7 @@ process.onclick = function (event) {
                 currentRequest = data['value'];
                 results.textContent = 'Processing ' + currentRequest + '...';
                 console.log('Processing ' + data['value']);
+                process.disabled = true;
             }
         };
         
@@ -111,9 +115,9 @@ process.onclick = function (event) {
         }
 };
 
-input.focus();
+rangeValue();
 
-input.value = names[Math.floor(Math.random() * names.length)];
+input.focus();
 
 input.onchange = function (event) {
     console.log("New value: " + input.value)
