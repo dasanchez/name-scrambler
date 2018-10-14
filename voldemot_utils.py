@@ -2,38 +2,31 @@
 voldemot_utils
 Helper functions for voldemot package
 """
-def loadDictionary(filename):
+import asyncio
+
+def readDictionary(filename):
     """ reads words line by line from a file and returns them in a list """
-    # wordList = []
     wordFile = open(filename, "r")
     wordList = [word.rstrip().lower() for word in wordFile if "'" not in word]
     wordFile.close()
-    # print("Read " + str(len(wordList)) + " words.")
     return wordList
 
 def wordIsPresent(word, soup):
     """ checks if the word can be assembled with the characters in the soup """
-    testWord = word
     for letter in soup:
-        testWord = testWord.replace(letter, "", 1)
-    return not testWord
+        word = word.replace(letter, "", 1)
+    return not word
 
-def getWordList(wordsFileName, letters):
-    """
-    Fills wordsFound list with words found in the letters string.
-    wordfound is a dictionary with a word as a key and the length as a value
-    """
-    wordsFound = []
-    # Load dictionary
-    wordList = loadDictionary(wordsFileName)
+def searchDictionary(filename, letters):
+    """ returns a list of words that can be built using the letters string using filename dictionary """
+    wordFile = open(filename, "r")
+    wordList = [word.rstrip().lower() for word in wordFile if "'" not in word and wordIsPresent(word.rstrip().lower(), letters)]
+    wordFile.close()
+    return wordList
 
-    # Check if a word can be assembled from the letters available.
-    # If so, add it to the wordsFound list.
-    for word in wordList:
-        if wordIsPresent(word, letters):
-            wordsFound.append(word)
-
-    return wordsFound
+def getWordList(dictFileName, letters):
+    """ returns a list with words found in the letters string using the dictionary in the filename """
+    return [word for word in readDictionary(dictFileName) if wordIsPresent(word, letters)]
 
 def getWordsEqualTo(wordList, targetLength):
     """ return list of words of a specified length in the list """
@@ -43,18 +36,20 @@ def getWordsUnder(wordList, targetLength):
     """ return list of words of a specified length in the list """
     return [word for word in wordList if len(word) < targetLength]
 
-async def findWordCombinations(wordsFound, letters, wordCount):
+async def findWordCombinations(wordsFound, letters, wordCount, pauseInterval, pauseLength, verbose = False):
     ''' find 2+ word combinations '''
     fullMatch = []
     rootList = getWordsUnder(wordsFound, len(letters) - (wordCount - 2))
     tempWords = rootList.copy()
     lettersLength = len(letters)
+    pauseCount = pauseInterval
+    total = 0
+    percent = 0
 
     for root in rootList:
         # traverse the remainder of the list until it's all gone
-        baggageCounter = 1
         prefixList = [root]
-        for baggageCounter in range(2, wordCount+1):
+        for baggageCounter in range(2, wordCount + 1):
             newPrefixList = []
             for prefix in prefixList:
                 lastPrefix = prefix.split(' ')[-1]
@@ -71,8 +66,22 @@ async def findWordCombinations(wordsFound, letters, wordCount):
                     for tempWord in getWordsUnder(tempList, baggageLeft):
                         if wordIsPresent(collapsedPrefix + tempWord, letters):
                             newPrefixList.append(f"{prefix} {tempWord}")
+
+                pauseCount -= 1
+
+                if pauseCount == 0:
+                    pauseCount = pauseInterval
+                    await asyncio.sleep(pauseLength)
+                    
             prefixList = newPrefixList.copy()
 
         tempWords.remove(root)
-
+        
+        if verbose:
+            total += 1
+            newPercent = int(total * 100 / len(rootList))
+            if newPercent != percent:
+                percent = newPercent
+                print(f"{percent}% done.")
+        
     return fullMatch
