@@ -1,6 +1,8 @@
 # voldemot
 
-Voldemot takes a set of letters (such as a name) and assembles combinations of words based on it.
+[![Build Status](https://travis-ci.org/dasanchez/voldemot.svg?branch=master)](https://travis-ci.org/dasanchez/voldemot)
+
+voldemot takes a set of letters (such as a name) and assembles combinations of words based on it.
 
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
 
