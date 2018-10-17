@@ -82,127 +82,6 @@ async def handler(websocket, path):
         finally:
             await unregister(websocket)
 
-async def twoWordCombinations(wordsFound, letters, websocket):
-    """ return a list of two-word combinations """
-    global pauseInterval
-    global pauseLength
-    pause = pauseInterval
-    
-    fullMatch = []
-    firstList = wordsFound.copy()
-    total = 0
-    percent = 0
-    rootList = vol.getWordsUnder(firstList, len(letters) - 1)
-    for first in rootList:
-        total += 1
-        secondList = firstList.copy()
-        for second in vol.getWordsEqualTo(secondList, len(letters) - len(first)):
-            testCombo = first + second
-            if sorted(testCombo) == sorted(letters):
-                testComboStr = str(f"{first} {second}")
-                fullMatch.append(testComboStr)
-                response = json.dumps({'match': True, 'value': testComboStr})
-                await websocket.send(response)
-            
-            pause -= 1
-            if pause == 0:
-                await asyncio.sleep(pauseLength)
-                pause = pauseInterval
-
-        firstList.remove(first)
-        newPercent = int(total * 100 / len(rootList))
-        if newPercent != percent:
-            percent = newPercent
-            response = json.dumps({'percent': True, 'value': percent})
-            await websocket.send(response)
-    return fullMatch
-
-async def threeWordCombinations(wordsFound, letters, websocket):
-    """ return a list of three-word combinations """
-    global pauseInterval
-    global pauseLength
-    pause = pauseInterval
-    
-    fullMatch = []
-    firstList = wordsFound.copy()
-    total = 0
-    percent = 0
-    rootList = vol.getWordsUnder(firstList, len(letters) - 2)
-    for first in rootList:
-        total += 1
-        secondList = firstList.copy()
-        for second in vol.getWordsUnder(secondList, len(letters) - len(first)):
-            twoWordCombo = first + second
-            if vol.wordIsPresent(twoWordCombo, letters):
-                thirdList = secondList.copy()
-                for third in vol.getWordsEqualTo(thirdList, len(letters) - len(twoWordCombo)):
-                    testCombo = twoWordCombo + third
-                    if sorted(testCombo) == sorted(letters):
-                        testComboStr = str(f"{first} {second} {third}")
-                        fullMatch.append(testComboStr)
-                        response = json.dumps({'match': True, 'value': testComboStr})
-                        await websocket.send(response)
-                    
-                    pause -= 1
-                    if pause == 0:
-                        await asyncio.sleep(pauseLength)
-                        pause = pauseInterval
-
-            secondList.remove(second)
-        firstList.remove(first)
-        newPercent = int(total * 100 / len(rootList))
-        if newPercent != percent:
-            percent = newPercent
-            response = json.dumps({'percent': True, 'value': percent})
-            await websocket.send(response)
-    return fullMatch
-
-async def fourWordCombinations(wordsFound, letters, websocket):
-    """ return a list of four-word combinations """
-    global pauseInterval
-    global pauseLength
-    pause = pauseInterval
-
-    fullMatch = []
-    total = 0
-    percent = 0
-    firstList = wordsFound.copy()
-    rootList = vol.getWordsUnder(firstList, len(letters) - 3)
-    for first in rootList:
-        total += 1
-        secondList = firstList.copy()
-        for second in vol.getWordsUnder(secondList, len(letters) - len(first) - 2):
-            twoWordCombo = first + second
-            if vol.wordIsPresent(twoWordCombo, letters):
-                thirdList = secondList.copy()
-                for third in vol.getWordsUnder(thirdList, len(letters) - len(twoWordCombo)):
-                    threeWordCombo = twoWordCombo + third
-                    if vol.wordIsPresent(threeWordCombo, letters):
-                        fourthList = thirdList.copy()
-                        for fourth in vol.getWordsEqualTo(fourthList, len(letters) - len(threeWordCombo)):
-                            fourWordCombo = threeWordCombo + fourth
-                            if sorted(fourWordCombo) == sorted(letters):
-                                testComboStr = f"{first} {second} {third} {fourth}"
-                                fullMatch.append(testComboStr)
-                                response = json.dumps({'match': True, 'value': testComboStr})
-                                await websocket.send(response)
-
-                            pause -= 1
-                            if pause == 0:
-                                await asyncio.sleep(pauseLength)
-                                pause = pauseInterval
-
-                    thirdList.remove(third)
-            secondList.remove(second)
-        firstList.remove(first)
-        newPercent = int(total * 100 / len(rootList))
-        if newPercent != percent:
-            percent = newPercent
-            response = json.dumps({'percent': True, 'value': percent})
-            await websocket.send(response)
-    return fullMatch
-
-
 async def findWordCombinations(wordsFound, letters, wordCount, websocket):
     ''' find 2+ word combinations '''
     global pauseInterval
@@ -282,8 +161,8 @@ async def handle_message(websocket, data):
             response = json.dumps({'rootWord': True, 'value': word})
             await websocket.send(response)
 
+        fullMatch = []
         if wordCount == 1:
-            fullMatch = []
             total = 0
             percent = 0
             rootList = vol.getWordsEqualTo(wordsFound, len(letters))
@@ -300,50 +179,8 @@ async def handle_message(websocket, data):
                     await websocket.send(response)
         else:
             fullMatch = await findWordCombinations(wordsFound, str(letters), wordCount, websocket)
-        # elif wordCount == 2:
-            # fullMatch = await twoWordCombinations(wordsFound, str(letters), websocket)
-        # elif wordCount == 3:
-            # fullMatch = await threeWordCombinations(wordsFound, str(letters), websocket)
-        # elif wordCount == 4:
-            # fullMatch = await fourWordCombinations(wordsFound, str(letters), websocket)
 
         return fullMatch
-
-async def processClientSet(sortedSoup, wordSet, lock, fullMatch, progress, ws):
-    """
-    Compares a set of words to the sorted letters and returns all matches.
-    """
-    global pauseInterval
-    global pauseLength
-
-    comboSet = []
-    pause = pauseInterval
-    for combo in product(*wordSet):
-        setEntry = []
-        for entry in combo:
-            if isinstance(entry, tuple):
-                for subset in entry:
-                    setEntry.append(subset)
-            else:
-                setEntry.append(entry)
-        sortedCombo = sorted(setEntry)
-        letterList = sorted([letter for word in setEntry for letter in word])
-        if sortedSoup == letterList and sortedCombo not in comboSet:
-            comboSet.append(sortedCombo)
-            response = json.dumps({'match': True, 'value': sortedCombo})
-            await (ws.send(response))
-
-        pause -= 1
-        if pause == 0:
-            await asyncio.sleep(pauseLength)
-            pause = pauseInterval
-
-    with await lock:
-        fullMatch.extend(comboSet)
-        percent = int(progress[0]*(100/progress[1]))
-        response = json.dumps({'percent': True, 'value': percent})
-        await ws.send(response)
-        progress[0] += 1
 
 if __name__ == "__main__":
     main(sys.argv)
