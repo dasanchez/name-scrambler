@@ -28,17 +28,18 @@ header {
     display: flex;
     height: 100px;
   }
-  
+
 .title-card {
     width: 40%;
-    margin-top: 10px;
+    /* background-color: #1b1725; */
+    /* margin-top: 10px; */
 }
 
 .title {
     margin-left: 10px;
     margin-right: 10px;
     line-height: 3.2rem;
-    border-radius: 10px;
+    border-radius: 0 0 0px 0px;
     background-color: #1b1725;
     font-size: 1.8rem;
     letter-spacing: 4px;
@@ -46,14 +47,24 @@ header {
 }
 
 .credits {
-    margin-top: 5px;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-size: 0.8em;
+    letter-spacing: 1px;
     text-align: center;
+    background-color: #1b1725;
+    border-top: 1px solid #dddddd;
 }
 
 .input-section {
     width: 40%;
     margin-top: 10px;
+    /* background-color: #1b1725; */
+    margin-left: 0px;
+    margin-right: 10px;
 }
 
 .word-container {
@@ -61,12 +72,12 @@ header {
     width: 80%;
     margin: 5px 10% 0px 10%;
     background-color: #1b1725; 
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 input[type="text"] {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     line-height: 1.6rem;
     font-weight: 500;
@@ -89,39 +100,49 @@ input:invalid {
     border: none;
     border: 2px solid #5f4bb6;
     background: transparent;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .slider-container {
     width: 100%;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 input[type="range"] {
-    margin-top: 5px;
+    /* margin-top: 5px; */
     width: 40%;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
+    background-color: #1b1725;
+    padding: 6px;
+    margin-right: 0px;
+    border: 1px solid #5f4bb6;
+    border-right: none;
+    /* height: 24px; */
 }
 
 .slider-value {
     margin: 10px;
+    margin-left: 0px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
     font-weight: bold;
     font-size: 1.6rem;
-    border: 1px solid #5f4bb6;
-    border-radius: 5px;
+    border: 2px solid #5f4bb6;
+    border-radius: 0 10px 10px 0;
     background-color: #1b1725;
     color: #dddddd;
   }
 
   .words-label {
-      vertical-align: middle;
+      /* margin-left: 0; */
+        vertical-align: middle;
       height: 1.6rem;
       font-size: 1.2rem;
+      /* background-color: #1b1725; */
   }
 
 .button-section {
@@ -131,7 +152,7 @@ input[type="range"] {
 }
 
 button {
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1.2rem;
     width: 100%;
     border: 2px solid #5f4bb6;
@@ -200,7 +221,7 @@ button {
     padding: 5px;
     text-align: center;
     background: #1b1725;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -210,7 +231,7 @@ button {
       padding: 5px;
       text-align: center;
       background: #1b1725;
-      border-radius: 5px;
+      /* border-radius: 5px; */
       letter-spacing: 1px;
 }
   
@@ -222,13 +243,21 @@ button {
 
     .title-card {
         width: 100%;
+       /* margin-right: 10px; */
+    }
+
+    .title {
+        margin-left: 10px;
         margin-right: 10px;
+        /* border-radius: 0px 0px 10px 10px; */
     }
 
     .input-section {
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
+        width: 80%;
+        margin: auto;
+        margin-top: 10px;
+        /* margin-left: 0px; */
+        /* margin-right: 0px; */
     }
 
     .words {
@@ -236,7 +265,9 @@ button {
       } 
 
     .button-section {
-        width: 100%;
+        width: 60%;
+        margin: auto;
+        /* width: 100%; */
         margin-top: 15px;
         text-align: center;
     }
@@ -244,9 +275,7 @@ button {
     button {
         width: 80%;
     } 
-}
 
-@media screen and (max-width: 800px) {
     .combinations {
         display: grid;
         margin-top: 20px;
@@ -255,6 +284,10 @@ button {
 }
 
 @media screen and (max-width: 500px) {
+    .input-section {
+        width: 100%;
+    }
+
     .combinations {
         display: grid;
         margin-top: 20px;
