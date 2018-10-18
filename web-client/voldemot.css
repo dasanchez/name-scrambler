@@ -90,6 +90,7 @@ input[type="text"] {
     background-color: #1b1725;
     color: #dddddd;
     border: 2px solid #5f4bb6;
+    border-bottom: none;
 } 
 
 input:focus, input:not(focus) {
@@ -98,6 +99,7 @@ input:focus, input:not(focus) {
 
 input:invalid {
     border: 2px solid #8780e9;
+    border-bottom: none;
     background-color: #dddddd;
     color: black;
     /* font-weight: bold; */
@@ -127,7 +129,7 @@ input[type="range"] {
     margin-left: 0px;
     background-color: #1b1725;
     margin-right: 0px;
-    border: 1px solid #5f4bb6;
+    border: 2px solid #5f4bb6;
     border-right: none;
     height: 30px;
     padding-left: 10px;
