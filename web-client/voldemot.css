@@ -61,7 +61,7 @@ header {
 
 .input-section {
     width: 40%;
-    margin-top: 10px;
+    margin-top: 24px;
     /* background-color: #1b1725; */
     margin-left: 0px;
     margin-right: 10px;
@@ -69,22 +69,27 @@ header {
 
 .word-container {
     position: relative;
-    width: 80%;
-    margin: 5px 10% 0px 10%;
+    width: 100%;
+    /* margin: 5px 10% 0px 10%; */
     background-color: #1b1725; 
     border-radius: 10px;
 }
 
 input[type="text"] {
     width: 100%;
-    border-radius: 10px;
-    font-size: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 0px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
     line-height: 1.6rem;
     font-weight: 500;
     text-align: center;
     letter-spacing: 1px;
     box-sizing: border-box; 
+    background-color: #1b1725;
     color: #dddddd;
+    border: 2px solid #5f4bb6;
 } 
 
 input:focus, input:not(focus) {
@@ -92,62 +97,65 @@ input:focus, input:not(focus) {
 }
 
 input:invalid {
-    border: 2px solid #7fdeff;
+    border: 2px solid #8780e9;
+    background-color: #dddddd;
+    color: black;
+    /* font-weight: bold; */
   }
 
-.effect {
-    padding: 5px 10px;
-    border: none;
+/* .effect {
+    padding: 5px 0px;
     border: 2px solid #5f4bb6;
     background: transparent;
-    /* border-radius: 5px; */
-}
+    border-radius: 5px;
+} */
 
 .slider-container {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    vertical-align: middle;
+    /* height: 32px; */
 }
 
 input[type="range"] {
-    /* margin-top: 5px; */
-    width: 40%;
-    border-radius: 10px 0 0 10px;
+    width: 65%;
+    border-radius: 0px 0 0 10px;
+    margin-left: 0px;
     background-color: #1b1725;
-    padding: 6px;
     margin-right: 0px;
     border: 1px solid #5f4bb6;
     border-right: none;
-    /* height: 24px; */
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .slider-value {
-    margin: 10px;
+    margin-top: 0px;
     margin-left: 0px;
+    width: 35%;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 2px;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     border: 2px solid #5f4bb6;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 0px 10px 0;
     background-color: #1b1725;
     color: #dddddd;
   }
 
-  .words-label {
-      /* margin-left: 0; */
-        vertical-align: middle;
-      height: 1.6rem;
-      font-size: 1.2rem;
-      /* background-color: #1b1725; */
-  }
+.slider-value::after {
+    content: " words"
+}
 
 .button-section {
     width: 20%;
-    margin-top: 20px;
+    margin-top: 24px;
     margin-right: 20px;
 }
 
@@ -159,7 +167,7 @@ button {
     background-color: #1b1725;
     color: #dddddd;
     font-size: 1.2rem;
-    height: 2.4rem;
+    height: 4.4rem;
   }
 
 .results-container {
@@ -260,12 +268,8 @@ button {
         /* margin-right: 0px; */
     }
 
-    .words {
-        width: 80%;
-      } 
-
     .button-section {
-        width: 60%;
+        width: 100%;
         margin: auto;
         /* width: 100%; */
         margin-top: 15px;
@@ -274,6 +278,7 @@ button {
 
     button {
         width: 80%;
+        height: 2.4rem;
     } 
 
     .combinations {
@@ -285,7 +290,11 @@ button {
 
 @media screen and (max-width: 500px) {
     .input-section {
-        width: 100%;
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
     }
 
     .combinations {
