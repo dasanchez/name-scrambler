@@ -9,7 +9,6 @@ import asyncio
 import json
 import re
 import time
-from itertools import product
 import websockets
 import voldemot_utils as vol
 
