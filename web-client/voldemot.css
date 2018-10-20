@@ -61,7 +61,7 @@ header {
 
 .input-section {
     width: 40%;
-    margin-top: 24px;
+    margin-top: 20px;
     /* background-color: #1b1725; */
     margin-left: 0px;
     margin-right: 10px;
@@ -70,17 +70,22 @@ header {
 .word-container {
     position: relative;
     width: 100%;
+    /* border: 2px solid #5f4bb6; */
+    
+    /* margin-left: 0px; */
+    /* margin-right: 0px; */
     /* margin: 5px 10% 0px 10%; */
-    background-color: #1b1725; 
-    border-radius: 10px;
+    /* background-color: #1b1725;  */
+    /* border-radius: 10px; */
 }
 
 input[type="text"] {
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 10px 10px;
     font-size: 1.2rem;
     line-height: 1.6rem;
     font-weight: 500;
@@ -108,30 +113,36 @@ input[type="text"]:invalid {
     /* border-bottom: none; */
     background-color: #dddddd;
     color: black;
-    outline: none;
-    box-sizing: border-box;
+    /* outline: none; */
+    /* box-sizing: border-box; */
   }
 
 .slider-container {
     width: 100%;
-    margin-top: 0px;
+    margin-top: 5px;
     margin-left: 0px;
+    /* margin-right: 10px; */
     padding-top: 0px;
     display: flex;
     justify-content: center;
     vertical-align: middle;
+    height: 36px;
+    /* background-color: #1b1725; */
+    /* border: 2px solid #5f4bb6; */
+    /* border-radius: 0px 0px 10px 10px; */
+    /* border-top: none; */
 }
 
 input[type="range"] {
     width: 65%;
     -webkit-appearance: none;
-    border-radius: 0px 0 0 10px;
+    border-radius: 10px 0 0 10px;
     margin-left: 0px;
     background-color: #1b1725;
     margin-right: 0px;
     border: 2px solid #5f4bb6;
-    border-top: none;
     border-right: none;
+    /* border-right: 2px solid #5f4bb6; */
     height: 30px;
     padding-left: 10px;
     padding-right: 10px;
@@ -161,6 +172,7 @@ input[type=range]:focus {
     outline: none;
     box-shadow: none;
     background-color: #3a3150;
+    /* border-radius: */
     
 }
 
@@ -168,14 +180,15 @@ input[type=range]:focus {
     margin-top: 0px;
     margin-left: 0px;
     width: 35%;
+    /* margin-right: 10px; */
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 2px;
     text-align: center;
     font-size: 1.2rem;
     border: 2px solid #5f4bb6;
-    border-top: none;
-    border-radius: 0 0px 10px 0;
+    /* border-top: none; */
+    border-radius: 0 10px 10px 0;
     background-color: #1b1725;
     color: #dddddd;
   }
@@ -186,7 +199,7 @@ input[type=range]:focus {
 
 .button-section {
     width: 20%;
-    margin-top: 24px;
+    margin-top: 20px;
     margin-right: 20px;
 }
 
@@ -198,7 +211,7 @@ button {
     background-color: #1b1725;
     color: #dddddd;
     font-size: 1.2rem;
-    height: 4.4rem;
+    height: 5rem;
   }
 
   button:focus {
