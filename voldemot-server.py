@@ -136,7 +136,6 @@ async def findWordCombinations(wordsFound, letters, wordCount, websocket):
 
     return fullMatch
 
-
 async def handle_message(websocket, data):
     """ handles incoming message from players """
     if data['type'] == 'voldemot-request':

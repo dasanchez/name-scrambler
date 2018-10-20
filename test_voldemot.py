@@ -2,11 +2,14 @@ import asyncio
 import voldemot_utils as vol
 
 def test_wordPresent():
+    """ test finding a valid word in the input """
     assert vol.wordIsPresent('a', 'a') == True
     assert vol.wordIsPresent('art', 'arat') == True
     assert vol.wordIsPresent('art', 'at') == False
 
 def test_getWordsUnder():
+    """ test collecting words under a given length """
+
     sourceList = ['a', 'ab', 'abc', 'abcd']
     oneList = []
     twoList = ['a']
@@ -21,6 +24,7 @@ def test_getWordsUnder():
     assert vol.getWordsUnder(sourceList, 5) == fiveList
 
 def test_getWordsEqual():
+    """ test collecting words of a specified length """
     sourceList = ['a', 'ab', 'bc', 'ac', 'abc', 'cba', 'abcd']
     zeroList = []
     oneList = ['a']
@@ -35,6 +39,8 @@ def test_getWordsEqual():
     assert vol.getWordsEqualTo(sourceList, 4) == fourList
 
 def test_wordCombinations():
+    """ test finding word combinations in a given input """
+
     wordList = ['a', 'age', 'ago', 'an', 'away', 'be', 'bile', 'cab', 'ego', 'even', 'fake', 'gave', 'give', 'given', 'go', 
                 'hi', 'hive', 'hoe', 'i', 'in', 'it', 'leg', 'log', 'new', 'newt', 'nile', 'no', 'on', 'oven', 'tin', 'trip', 'way', 'we', 'web', 'well', 'went', 'wet', 'will', 'win', 'won']
 
