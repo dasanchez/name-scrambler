@@ -6,13 +6,39 @@ voldemot takes a set of letters (such as a name) and assembles combinations of w
 
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
 
-## Usage
+## Command Line Interface
 
-`python voldemot.py input [filename] [word count]`
+### Requirements
+- Python >= 3.6
+
+### Usage
+
+`voldemot.py [-h] [-d DICTIONARY] [-c COUNT] [-v] [-p] input`
+
+`input`  
+the letters to de-scramble
+
+`-h, --help`  
+show this help message and exit
+
+`-d DICTIONARY, --dictionary DICTIONARY`  
+dictionary file: newline must separate all words
+
+`-c COUNT, --count COUNT`  
+number of words to split the letters into
+
+`-v, --verbose`  
+show progress
+
+`-p, --print`  
+print results
 
 ## Example
 
-`python voldemot.py albertcamus words/voldemot-dict.txt 2`
+`python voldemot.py albertcamus -c 2 -v -p`
 
-The above example will yield 113 combinations, beginning with _ablate scrum_ and ending with _tsamba ulcer_.  
-It is up to the user to find the real gems, such as _cabal muster_ and _lust macabre_ in this case.
+This command will print:
+- `-v` => the number of letters being analyzed
+- `-v` => the number of matching words found in the dictionary
+- `-v` => a progress bar
+- `-p` => 113 results, beginning with _ablate scrum_ and ending with _tsamba ulcer_.  

@@ -1,9 +1,6 @@
 """
 voldemot - a word de-scrambler by @dasanchez
 
-Takes a set of letters (such as a name) and assembles combinations of words based on it.
-Used the English word list from SCOWL.
-
 Usage:
 usage: voldemot.py [-h] [-d DICTIONARY] [-c COUNT] [-v] [-p] input
 
