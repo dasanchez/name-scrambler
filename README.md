@@ -33,7 +33,7 @@ show progress
 `-p, --print`  
 print results
 
-## Example
+### Example
 
 `python voldemot.py albertcamus -c 2 -v -p`
 
@@ -42,3 +42,4 @@ This command will print:
 - `-v` => the number of matching words found in the dictionary
 - `-v` => a progress bar
 - `-p` => 113 results, beginning with _ablate scrum_ and ending with _tsamba ulcer_.  
+

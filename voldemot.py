@@ -73,7 +73,6 @@ def main(args):
         for entry in fullMatch:
             print(entry)
 
-
 if __name__ == "__main__":
     # validate input
     parser = argparse.ArgumentParser()

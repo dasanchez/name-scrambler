@@ -29,6 +29,28 @@ def getWordsUnder(wordList, targetLength):
     """ return list of words of a specified length in the list """
     return [word for word in wordList if len(word) < targetLength]
 
+def printProgressBar(iteration, total, suffix='',
+                     decimals=1, length=100, fill='█'):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+    Credit: @greenstick
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    progressBar = fill * filledLength + '-' * (length - filledLength)
+    print(f" |{progressBar}| {percent}% {suffix}", end='\r')
+    # Print New Line on Complete
+    if iteration == total:
+        print()
+
 async def findWordCombinations(wordsFound, letters, wordCount, pauseInterval = 10000, pauseLength = 0.05, verbose = False):
     ''' find 2+ word combinations '''
     fullMatch = []
@@ -75,6 +97,6 @@ async def findWordCombinations(wordsFound, letters, wordCount, pauseInterval = 1
             newPercent = int(total * 100 / len(rootList))
             if newPercent != percent:
                 percent = newPercent
-                print(f"{percent}% done.")
+                printProgressBar(total, len(rootList), length=50)
         
     return fullMatch
