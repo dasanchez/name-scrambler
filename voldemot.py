@@ -12,12 +12,17 @@ optional arguments:
                         show this help message and exit
   -d DICTIONARY, --dictionary DICTIONARY
                         dictionary file: newline must separate all words
+                        default: words/voldemot-dict.txt
   -c COUNT, --count COUNT
                         number of words to split the letters into
+                        default: 2
   -v, --verbose
                         show progress
   -p, --print
                         print results
+  -o, -- output                        
+                        save results to file
+                        default: voldemot.txt
 
 For example,
 python voldemot.py albertcamus -d words/voldemot-dict.txt -c 3 -p
@@ -69,10 +74,20 @@ def main(args):
 
     print(f"{(end-start):.2f} seconds elapsed, there are {len(fullMatch)} full matches.")
 
-    if args.print:
-        for entry in fullMatch:
-            print(entry)
+    if args.output:
+        if args.verbose:
+            print(f"Saving results to {args.output}...")
+        f = open(args.output, "w")
 
+    for entry in fullMatch:
+        if args.print:
+            print(entry)
+        if args.output:
+            f.write(entry + "\n")
+
+    if args.output:
+        f.close()
+            
 if __name__ == "__main__":
     # validate input
     parser = argparse.ArgumentParser()
@@ -87,5 +102,8 @@ if __name__ == "__main__":
                         help="show progress", action="store_true")
     parser.add_argument(
         "-p", "--print", help="print results", action="store_true")
+    parser.add_argument(
+        "-o", "--output", nargs='?', const="voldemot.txt", help="output file")
+
     para = parser.parse_args()
     main(para)
