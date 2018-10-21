@@ -42,7 +42,7 @@ def main(args):
     # remove spaces and non-alphabetical characters
     letters = re.sub(r"\W?\d?", "", letters).lower()
     if args.verbose:
-        print("Source soup (" + letters + ") has " +
+        print("Input (" + letters + ") has " +
               str(len(letters)) + " characters")
 
     # generate dictionary file name
