@@ -8,8 +8,6 @@ It uses the English word list from [SCOWL](http://wordlist.aspell.net/).
 
 ## Command Line Interface
 
-![GIF of command line interface](https://ipfs.io/ipfs/QmZd1bW2DScW1iMrNDfGmYYwnr279Y8t5vtsnFUzymSfyX)
-
 ### Requirements
 
 - Python >= 3.6
@@ -44,11 +42,23 @@ default: **voldemot.txt**
 
 ### Example
 
-`python voldemot.py albertcamus -c 2 -v -p`
+```sh
+$ python voldemot.py "tom marvolo riddle" -c 3 -v -o marvolo.txt
+Input (tommarvoloriddle) has 16 characters
+Found 862 words.
+ |██████████████████████████████████████████████████| 100.0%
+10.37 seconds elapsed, there are 430 full matches.
+Saving results to marvolo.txt...done.
 
-This command will print:
-
-- `-v` => the number of letters being analyzed
-- `-v` => the number of matching words found in the dictionary
-- `-v` => a progress bar
-- `-p` => 113 results, beginning with _ablate scrum_ and ending with _tsamba ulcer_.  
+$ head marvolo.txt
+a milord voldemort
+admired toll vroom
+admit mod rollover
+admit mol overlord
+admit roll vroomed
+admit rolled vroom
+advert loom milord
+advil dorm tremolo
+advil dormer molto
+advil drool mortem
+```

@@ -76,7 +76,7 @@ def main(args):
 
     if args.output:
         if args.verbose:
-            print(f"Saving results to {args.output}...")
+            print(f"Saving results to {args.output}...", end='')
         f = open(args.output, "w")
 
     for entry in fullMatch:
@@ -86,6 +86,7 @@ def main(args):
             f.write(entry + "\n")
 
     if args.output:
+        print("done.")
         f.close()
             
 if __name__ == "__main__":
