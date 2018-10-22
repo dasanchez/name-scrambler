@@ -8,7 +8,7 @@ It uses the English word list from [SCOWL](http://wordlist.aspell.net/).
 
 ## Command Line Interface
 
-![GIF of command line interface](https://uutqgq.ch.files.1drv.com/y4mbynYUrzalrRb5DKhWUGU7bnA-xG5pyzisTwFXQF8sRwtq_N9wADJNbxoH-_aEmfpRsBsfVevxlV-Qwsua9IIxKw6t3it6Qaa9oA6het46fqc2k-JvQwz8aQyVVe0RHGna57xNLby73fk-rFsVNFGiPuMch1UIh60DqVVSugwqZbgEYBtHRZmMlcSzIHCWcNw_PIU25AGq7EmyS0RSGGjZg/voldemot-cli.gif)
+![GIF of command line interface](https://ipfs.io/ipfs/QmZd1bW2DScW1iMrNDfGmYYwnr279Y8t5vtsnFUzymSfyX)
 
 ### Requirements
 
