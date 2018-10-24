@@ -4,11 +4,12 @@ Creates a websocket server that listens for a voldemot request
 and returns a list of possible word combinations.
 """
 
-import sys
+# import sys
 import asyncio
 import json
 import re
 import time
+import argparse
 import websockets
 import voldemot_utils as vol
 
@@ -18,11 +19,11 @@ USERS = set()
 
 def main(args):
     """ voldemot web server """
-    port = int(args[1])
+    port = args.port
     print(f"Opening websocket server on port {port}...")
     loop = asyncio.get_event_loop()
     loop.run_until_complete(
-        websockets.serve(handler, '0.0.0.0', int(args[1])))
+        websockets.serve(handler, '0.0.0.0', port))
     loop.run_forever()
 
 async def register(websocket):
@@ -75,6 +76,7 @@ async def handler(websocket, path):
                 await asyncio.sleep(0.5)
                 
                 end = time.time()
+                
                 print(f"Processed request for {data['input']} in {(end-start):.2f} seconds," +
                       f"generating {len(fullMatch)} combinations.")
                 return 'done'
@@ -181,4 +183,22 @@ async def handle_message(websocket, data):
         return fullMatch
 
 if __name__ == "__main__":
-    main(sys.argv)
+    # validate input
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port",
+                        help="specify the port to listen on",
+                        nargs='?',
+                        type=int,
+                        default=9000)
+    # parser.add_argument("-s", "--secure",
+    #                     help="use secure websockets",
+    #                     nargs='*')
+    # parser.add_argument("-v", "--verbose",
+    #                     help="show progress", action="store_true")
+    # parser.add_argument("-o", "--output",
+    #                     nargs='?',
+    #                     const="requests.txt",
+    #                     help="log file")
+    
+    para = parser.parse_args()
+    main(para)
