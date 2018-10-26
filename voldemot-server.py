@@ -40,22 +40,24 @@ def main(args):
 
     loop.run_forever()
 
-async def register(websocket):
+async def register(websocket, verbose=False):
     """ new websocket client has connected """
     global pauseLength
 
     USERS.add(websocket)
     pauseLength += 0.01
-    print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
+    if verbose:
+        print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
-async def unregister(websocket):
+async def unregister(websocket, verbose=False):
     """ websocket client has disconnected """
     global pauseLength
 
     USERS.remove(websocket)
     pauseLength -= 0.01
-    print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
+    if verbose:
+        print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
 def users_event():
@@ -76,28 +78,30 @@ async def handler(args, websocket, path):
     """ register(websocket) sends user_event() to websocket """
     if len(USERS) >= 5:
         await reject_connection(websocket)
-        print("Rejected new connection")
+        if args.verbose:
+            print("Rejected new connection")
         return
     else:
-        await register(websocket)
+        await register(websocket, args.verbose)
         try:
             async for message in websocket:
                 start = time.time()
                 data = json.loads(message)
-                fullMatch = await handle_message(websocket, data)
+                fullMatch = await handle_message(websocket, data, args.verbose)
                 response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
                 await websocket.send(response)
                 await asyncio.sleep(0.5)
                 
                 end = time.time()
                 
-                print(f"Processed request for {data['input']} in {(end-start):.2f} seconds," +
-                      f"generating {len(fullMatch)} combinations.")
+                if args.verbose:
+                    print(f"{data['input']} processed in {(end-start):.2f} seconds: " +
+                          f"{len(fullMatch)} combinations.")
                 return 'done'
         finally:
-            await unregister(websocket)
+            await unregister(websocket, args.verbose)
 
-async def findWordCombinations(wordsFound, letters, wordCount, websocket):
+async def findWordCombinations(wordsFound, letters, wordCount, websocket, verbose):
     ''' find 2+ word combinations '''
     global pauseInterval
     global pauseLength
@@ -152,8 +156,9 @@ async def findWordCombinations(wordsFound, letters, wordCount, websocket):
 
     return fullMatch
 
-async def handle_message(websocket, data):
+async def handle_message(websocket, data, verbose=False):
     """ handles incoming message from players """
+    
     if data['type'] == 'voldemot-request':
         letters = data['input']
         wordCount = int(data['word-count'])
@@ -162,14 +167,17 @@ async def handle_message(websocket, data):
         # Remove spaces and non-alphabetical characters
         letters = re.sub(r"\W?\d?", "", letters).lower()
         letters = letters[:16]
-        print(f"Processing {letters} for {wordCount}-word combinations.")
+        if verbose:
+            print(f"Processing {letters} for {wordCount}-word combinations.")
 
         response = json.dumps({'input': True, 'value': letters})
         await websocket.send(response)
 
         sortedLetters = sorted(list(letters))
         wordsFound = vol.getWordList("words/voldemot-dict.txt", str(letters))
-        print("Found " + str(len(wordsFound)) + " words.")
+
+        if verbose:
+            print(f"{letters}, {wordCount}-word combinations: {len(wordsFound)} root words.")
 
         for word in wordsFound:
             response = json.dumps({'rootWord': True, 'value': word})
@@ -192,7 +200,7 @@ async def handle_message(websocket, data):
                     response = json.dumps({'percent': True, 'value': percent})
                     await websocket.send(response)
         else:
-            fullMatch = await findWordCombinations(wordsFound, str(letters), wordCount, websocket)
+            fullMatch = await findWordCombinations(wordsFound, str(letters), wordCount, websocket, verbose)
 
         return fullMatch
 
