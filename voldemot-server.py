@@ -10,6 +10,8 @@ import json
 import re
 import time
 import argparse
+import functools
+import ssl
 import websockets
 import voldemot_utils as vol
 
@@ -21,9 +23,21 @@ def main(args):
     """ voldemot web server """
     port = args.port
     print(f"Opening websocket server on port {port}...")
+
+    bound_handler = functools.partial(handler, args)
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(
-        websockets.serve(handler, '0.0.0.0', port))
+    
+    if args.secure:
+        chainFileName = args.secure[0]
+        keyFileName = args.secure[1]
+        ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ssl_context.load_cert_chain(chainFileName, keyFileName)
+        start_server = websockets.serve(bound_handler, '0.0.0.0', port, ssl=ssl_context)
+        loop.run_until_complete(start_server)
+    else:
+        start_server = websockets.serve(bound_handler, '0.0.0.0', port)
+        loop.run_until_complete(start_server)
+
     loop.run_forever()
 
 async def register(websocket):
@@ -58,7 +72,7 @@ async def reject_connection(websocket):
     message = json.dumps({'reject': True, 'reason': 'max-users'})
     await websocket.send(message)
 
-async def handler(websocket, path):
+async def handler(args, websocket, path):
     """ register(websocket) sends user_event() to websocket """
     if len(USERS) >= 5:
         await reject_connection(websocket)
@@ -190,15 +204,15 @@ if __name__ == "__main__":
                         nargs='?',
                         type=int,
                         default=9000)
-    # parser.add_argument("-s", "--secure",
-    #                     help="use secure websockets",
-    #                     nargs='*')
-    # parser.add_argument("-v", "--verbose",
-    #                     help="show progress", action="store_true")
-    # parser.add_argument("-o", "--output",
-    #                     nargs='?',
-    #                     const="requests.txt",
-    #                     help="log file")
-    
+    parser.add_argument("-s", "--secure",
+                        help="use secure websockets: [full-chain] [private-key]",
+                        nargs=2)
+    parser.add_argument("-v", "--verbose",
+                        help="show progress", action="store_true")
+    parser.add_argument("-o", "--output",
+                        nargs='?',
+                        const="requests.txt",
+                        help="log file")
     para = parser.parse_args()
+    print(para)
     main(para)
