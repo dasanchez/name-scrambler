@@ -16,7 +16,6 @@ import websockets
 import voldemot_utils as vol
 
 pauseInterval = 10000
-pauseLength = 0.04
 USERS = set()
 
 def main(args):
@@ -26,7 +25,7 @@ def main(args):
 
     bound_handler = functools.partial(handler, args)
     loop = asyncio.get_event_loop()
-    
+
     if args.secure:
         chainFileName = args.secure[0]
         keyFileName = args.secure[1]
@@ -42,22 +41,20 @@ def main(args):
 
 async def register(websocket, verbose=False):
     """ new websocket client has connected """
-    global pauseLength
-
     USERS.add(websocket)
-    pauseLength += 0.01
+    pauseLength = 0.04 + len(USERS)*.01
     if verbose:
-        print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
+        print(f"{len(USERS)} users connected, " +
+              f"{pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
 async def unregister(websocket, verbose=False):
     """ websocket client has disconnected """
-    global pauseLength
-
     USERS.remove(websocket)
-    pauseLength -= 0.01
+    pauseLength = 0.04 + len(USERS)*.01
     if verbose:
-        print(f"{len(USERS)} users connected, {pauseLength:.2f}ms pause every {pauseInterval} checks")
+        print(f"{len(USERS)} users connected, " +
+              f"{pauseLength:.2f}ms pause every {pauseInterval} checks")
     await notify_users()
 
 def users_event():
@@ -71,11 +68,13 @@ async def notify_users():
         await asyncio.wait([user.send(message) for user in USERS])
 
 async def reject_connection(websocket):
+    """ tell client the server is at capacity """
     message = json.dumps({'reject': True, 'reason': 'max-users'})
     await websocket.send(message)
 
 async def handler(args, websocket, path):
     """ register(websocket) sends user_event() to websocket """
+    del path
     if len(USERS) >= 5:
         await reject_connection(websocket)
         if args.verbose:
@@ -87,13 +86,14 @@ async def handler(args, websocket, path):
             async for message in websocket:
                 start = time.time()
                 data = json.loads(message)
-                fullMatch = await handle_message(websocket, data, args.verbose)
-                response = json.dumps({'total-matches': True, 'value': len(fullMatch)})
+                fullMatch, complete = await handle_message(websocket, data, args.verbose)
+                response = json.dumps({'total-matches': True, 'value': len(fullMatch),
+                                       'complete': complete})
                 await websocket.send(response)
                 await asyncio.sleep(0.5)
-                
+
                 end = time.time()
-                
+
                 if args.verbose:
                     print(f"{data['input']} processed in {(end-start):.2f} seconds: " +
                           f"{len(fullMatch)} combinations.")
@@ -101,13 +101,12 @@ async def handler(args, websocket, path):
         finally:
             await unregister(websocket, args.verbose)
 
-async def findWordCombinations(wordsFound, letters, wordCount, websocket, verbose):
+async def findWordCombinations(wordsFound, letters, wordCount, websocket):
     ''' find 2+ word combinations '''
-    global pauseInterval
-    global pauseLength
     pause = pauseInterval
-    
+
     fullMatch = []
+    matchCount = 0
     rootList = vol.getWordsUnder(wordsFound, len(letters) - (wordCount - 2))
     tempWords = rootList.copy()
     lettersLength = len(letters)
@@ -132,9 +131,14 @@ async def findWordCombinations(wordsFound, letters, wordCount, websocket, verbos
                         if sorted(collapsedPrefix + tempWord) == sorted(letters):
                             newMatch = f"{prefix} {tempWord}"
                             fullMatch.append(newMatch)
+                            matchCount += 1
                             if websocket:
                                 response = json.dumps({'match': True, 'value': newMatch})
                                 await (websocket.send(response))
+                            if matchCount >= 10000:
+                                response = json.dumps({'percent': True, 'value': 100})
+                                await websocket.send(response)
+                                return fullMatch, False
                 else:
                     baggageLeft = spotsAvailable - (wordCount - baggageCounter - 1)
                     for tempWord in vol.getWordsUnder(tempList, baggageLeft):
@@ -143,6 +147,7 @@ async def findWordCombinations(wordsFound, letters, wordCount, websocket, verbos
 
                 pause -= 1
                 if pause == 0:
+                    pauseLength = 0.04 + len(USERS)*.01
                     await asyncio.sleep(pauseLength)
                     pause = pauseInterval
             prefixList = newPrefixList.copy()
@@ -154,11 +159,11 @@ async def findWordCombinations(wordsFound, letters, wordCount, websocket, verbos
             response = json.dumps({'percent': True, 'value': percent})
             await websocket.send(response)
 
-    return fullMatch
+    return fullMatch, True
 
 async def handle_message(websocket, data, verbose=False):
     """ handles incoming message from players """
-    
+
     if data['type'] == 'voldemot-request':
         letters = data['input']
         wordCount = int(data['word-count'])
@@ -200,9 +205,12 @@ async def handle_message(websocket, data, verbose=False):
                     response = json.dumps({'percent': True, 'value': percent})
                     await websocket.send(response)
         else:
-            fullMatch = await findWordCombinations(wordsFound, str(letters), wordCount, websocket, verbose)
+            fullMatch, complete = await findWordCombinations(wordsFound,
+                                                             str(letters),
+                                                             wordCount,
+                                                             websocket)
 
-        return fullMatch
+        return fullMatch, complete
 
 if __name__ == "__main__":
     # validate input
@@ -217,10 +225,5 @@ if __name__ == "__main__":
                         nargs=2)
     parser.add_argument("-v", "--verbose",
                         help="show progress", action="store_true")
-    parser.add_argument("-o", "--output",
-                        nargs='?',
-                        const="requests.txt",
-                        help="log file")
     para = parser.parse_args()
-    print(para)
     main(para)
