@@ -18,8 +18,12 @@ def wordIsPresent(word, soup):
     return not word
 
 def getWordList(dictFileName, letters):
-    """ returns a list with words found in the letters string using the dictionary in the filename """
+    """ returns a list of words found in the letters string using the dictionary in the filename """
     return [word for word in readDictionary(dictFileName) if wordIsPresent(word, letters)]
+
+def getRootWords(dictionary, letters):
+    """ returns valid words from a dictionary """
+    return [k for k, v in dictionary.items() if wordIsPresent(k, letters)]
 
 def getWordsEqualTo(wordList, targetLength):
     """ return list of words of a specified length in the list """

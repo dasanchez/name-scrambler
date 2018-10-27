@@ -17,9 +17,14 @@ import voldemot_utils as vol
 
 pauseInterval = 10000
 USERS = set()
+volDictionary = {}
 
 def main(args):
     """ voldemot web server """
+    dictWords = vol.readDictionary("words/voldemot_dict.txt")
+    for word in dictWords:
+        volDictionary[word] = len(word)
+
     port = args.port
     print(f"Opening websocket server on port {port}...")
 
@@ -179,7 +184,7 @@ async def handle_message(websocket, data, verbose=False):
         await websocket.send(response)
 
         sortedLetters = sorted(list(letters))
-        wordsFound = vol.getWordList("words/voldemot-dict.txt", str(letters))
+        wordsFound = vol.getRootWords(volDictionary, letters)
 
         if verbose:
             print(f"{letters}, {wordCount}-word combinations: {len(wordsFound)} root words.")

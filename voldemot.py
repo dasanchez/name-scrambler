@@ -95,7 +95,7 @@ if __name__ == "__main__":
     parser.add_argument("input", help="the letters to de-scramble")
     parser.add_argument("-d", "--dictionary",
                         help="override the default dictionary file",
-                        default="words/voldemot-dict.txt")
+                        default="words/voldemot_dict.txt")
     parser.add_argument("-c", "--count",
                         help="number of words to combine (default: 2)",
                         type=int, default=2)
