@@ -1,0 +1,347 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+html {
+    max-width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    font-family: "Roboto Mono", Verdana, Arial, sans-serif;
+    background-color: #4f5165;
+    color: #dddddd;
+    margin: 0px;
+    padding: 0px;
+}
+
+a:link, a:visited{
+    color: #eeeeee;
+}
+ 
+button, input, select, textarea {
+    font-family : inherit;
+    font-size   : 100%;
+  }
+
+header {
+    display: flex;
+    height: 100px;
+  }
+
+.title-card {
+    width: 40%;
+}
+
+.title {
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 3.2rem;
+    border-radius: 0 0 0px 0px;
+    background-color: #1b1725;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.credits {
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    text-align: center;
+    background-color: #1b1725;
+    border-top: 1px solid #dddddd;
+}
+
+.input-section {
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 1px;
+    box-sizing: border-box; 
+    background-color: #1b1725;
+    color: #dddddd;
+    border: 1px solid #8780e9;
+    outline: none;
+} 
+
+input:focus, input:not(focus) {
+    box-shadow: none;
+    outline: none;
+}
+
+input:focus {
+    background-color: #3a3150;
+}
+
+input[type="text"]:invalid {
+    border: 1px solid #8780e9;
+    background-color: #dddddd;
+    color: black;
+  }
+
+.slider-container {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 0px;
+    padding-top: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="range"] {
+    width: 65%;
+    -webkit-appearance: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-right: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid #8780e9;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #8780e9;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background: #dddddd;
+    cursor: pointer;
+    margin-top: -8px;
+  }
+
+input[type=range]::-moz-range-thumb {
+    border: 1px solid #8780e9;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background: #dddddd;
+    cursor: pointer;
+  }
+input[type=range]::-ms-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background: #dddddd;
+    cursor: pointer;
+    margin-top: 0px;
+  }
+
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    background: #4f5165;
+  }
+
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+
+   input[type=range]::-ms-fill-lower {
+     border: 1px solid #bbbbbb; 
+   } 
+
+  input[type=range]::-ms-fill-upper {
+    border: 1px solid #bbbbbb;
+  }
+
+input[type=range]:not(focus) {
+    background: #1b1725;
+}
+
+input[type=range]:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #3a3150;
+}
+
+.slider-value {
+    margin: 5px;
+    width: 35%;
+    padding-right: 10px;
+    padding: 2px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #dddddd;
+    background-color: #1b1725;
+  }
+
+.slider-value::after {
+    content: " words"
+}
+
+.button-section {
+    width: 20%;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+button {
+    border-radius: 10px;
+    font-size: 1.2rem;
+    width: 100%;
+    border: 1px solid #8780e9;
+    background-color: #1b1725;
+    color: #dddddd;
+    font-size: 1.2rem;
+    height: 5rem;
+  }
+
+  button:focus {
+      outline: none;
+      background-color: #3a3150;
+  }
+
+.results-container {
+    position: sticky;
+    top: 0px;
+    margin-top: 10px;
+    padding-top: 5px;
+    background-color: #1b1725;
+    padding-bottom: 10px;
+    border: 1px solid #5f4bb6;
+    border-style: solid none solid none;
+}
+
+.results {
+    margin-top: 10px;
+    text-align: center;
+    height: 25px;
+    color: #eeeeee;
+  }
+
+.prog-con {
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #4f5165;
+    border-radius: 5px;
+    height: 1.4rem;
+  }
+  
+.prog-bar {
+    position: absolute;
+    height: 1.4rem;
+    width: 0%;
+    background-color: #5f4bb6;
+    border-radius: 2px;
+    z-index: 1;
+}
+  
+.prog-text {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+}
+  
+.prog-text:after {
+    content: "%";
+}
+
+.combinations {
+      display: grid;
+      margin-top: 10px;
+      grid-template-columns: repeat(4, 1fr);
+}
+  
+.rootWord {
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    background: #1b1725;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.match {
+      margin: 10px;
+      padding: 5px;
+      text-align: center;
+      background: #1b1725;
+      letter-spacing: 1px;
+}
+  
+@media screen and (max-width: 800px) {
+    header {
+        height: auto;
+        display: block;
+    }
+
+    .title-card {
+        width: 100%;
+    }
+
+    .title {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .input-section {
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .button-section {
+        width: 100%;
+        margin: auto;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    button {
+        width: 80%;
+        height: 2.4rem;
+    } 
+
+    .combinations {
+        display: grid;
+        margin-top: 20px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .input-section {
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
+    }
+
+    .combinations {
+        display: grid;
+        margin-top: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

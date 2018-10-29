@@ -93,7 +93,7 @@ process.onclick = function (event) {
             combo.textContent = data['value'];
             combinations.appendChild(combo);
             total += 1;
-            results.textContent = currentRequest + ':' + total + ' combinations found';
+            results.textContent = currentRequest + ': ' + total + ' combinations found';
         } else if (data['rootWord']) {
             var rootWord = document.createElement('div');
             rootWord.className = 'rootWord'

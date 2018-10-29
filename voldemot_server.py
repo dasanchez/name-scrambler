@@ -195,20 +195,15 @@ async def handle_message(websocket, data, verbose=False):
 
         fullMatch = []
         if wordCount == 1:
-            total = 0
-            percent = 0
             rootList = vol.getWordsEqualTo(wordsFound, len(letters))
             for word in rootList:
-                total += 1
                 if sorted(word) == sortedLetters:
                     response = json.dumps({'match': True, 'value': word})
                     await websocket.send(response)
                     fullMatch.append(word)
-                newPercent = int(total * 100 / len(rootList))
-                if newPercent != percent:
-                    percent = newPercent
-                    response = json.dumps({'percent': True, 'value': percent})
-                    await websocket.send(response)
+            response = json.dumps({'percent': True, 'value': 100})
+            await websocket.send(response)
+            complete = True
         else:
             fullMatch, complete = await findWordCombinations(wordsFound,
                                                              str(letters),
