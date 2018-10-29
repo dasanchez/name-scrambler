@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="author" content="@dasanchez">
+    <meta name="description" content="Takes a set of letters (such as a name)
+         and assembles combinations of words based on it.">
+    <title>voldemot</title>
+    <link rel="stylesheet" href="voldemot.css">
+</head>
+
+<body>
+
+    <header>
+        <section class="title-card">
+            <div class="title">
+                voldemot
+            </div>
+            <div class="credits">
+                A word de-scrambler<br>by <a href="https://github.com/dasanchez/voldemot">@dasanchez</a>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <div class="word-container">
+                <input class="effect" type="text" pattern=".{1,16}" required
+                 placeholder="Enter up to 16 characters" title="Input characters">
+            </div>
+            <div class="slider-container">
+                <input class="slider-range" type="range" value="2" min="1" max="4">
+                <span class="slider-value">2</span>
+            </div>
+            
+        </section>
+
+        <section class="button-section">
+            <button>start</button>
+        </section>
+    </header>
+
+    <section class="main">
+        <div class="results-container">
+            <div class="results">Waiting for query</div>
+            <div class="prog-con" id="progCon">
+                <div class="prog-bar" id="progBar"></div>
+                <div class="prog-text">0</div>
+            </div>
+        </div>
+
+        <div class="combinations"></div>
+    </section>
+
+    <footer>
+
+    </footer>
+
+    <script src="voldemot.js"></script>
+</body>
+
+</html>
