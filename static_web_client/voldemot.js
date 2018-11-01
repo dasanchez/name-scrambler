@@ -14,7 +14,7 @@ var range = document.querySelector('input[type="range"]');
 var progress = 0;
 var total = 0;
 var totalRoots = 0;
-var pauseInterval = 1000;
+var pauseInterval = 1000; // combinations evaluated between pauses
 var pauseLength = 5; // milliseconds
 var currentRequest = '';
 
