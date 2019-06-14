@@ -6,15 +6,24 @@ voldemot takes a set of letters (such as a name) and assembles combinations of w
 
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
 
+Try a live demo at [urra.ca](https://urra.ca/voldemot/) or [urraca on dat](dat://urra.ca/voldemot/)!
+
+## Web Interfaces
+
+- The `web_client` version relies on a WebSockets server running on port 9000 (see `voldemot_server.py`).
+
+- The `static_web_client` version is built with vanilla JavaScript, and is peer-to-peer friendly!
+
 ## Command Line Interface
 
 ### Requirements
 
 - Python >= 3.6
+- [WebSockets](https://websockets.readthedocs.io/en/stable/) library (only needed for the web interface server)
 
 ### Usage
 
-`voldemot.py [-h] [-d DICTIONARY] [-c COUNT] [-v] [-p] [-o [OUTPUT]] input`
+`python voldemot.py [-h] [-d DICTIONARY] [-c COUNT] [-v] [-p] [-o [OUTPUT]] input`
 
 `input`  
 the letters to de-scramble
