@@ -8,7 +8,7 @@ It uses the English word list from [SCOWL](http://wordlist.aspell.net/).
 
 Try a live demo at [urra.ca](https://urra.ca/voldemot/)!
 
-Dat link: dat://f5b4ee786d09f17b271a3cb11fc02edc937dca9bcdea3a1316fe380d47f320ae/voldemot/
+[Dat](https://dat.foundation/) link: dat://f5b4ee786d09f17b271a3cb11fc02edc937dca9bcdea3a1316fe380d47f320ae/voldemot/
 
 ## Web Interfaces
 
