@@ -6,7 +6,9 @@ voldemot takes a set of letters (such as a name) and assembles combinations of w
 
 It uses the English word list from [SCOWL](http://wordlist.aspell.net/).  
 
-Try a live demo at [urra.ca](https://urra.ca/voldemot/) or [urraca on dat](dat://urra.ca/voldemot/)!
+Try a live demo at [urra.ca](https://urra.ca/voldemot/)!
+
+Dat link: dat://f5b4ee786d09f17b271a3cb11fc02edc937dca9bcdea3a1316fe380d47f320ae/voldemot/
 
 ## Web Interfaces
 
