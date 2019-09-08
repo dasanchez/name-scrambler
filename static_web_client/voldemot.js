@@ -2,6 +2,7 @@ var process = document.querySelector('button'),
     input = document.querySelector('input'),
     count = document.querySelector('.slider-range'),
     results = document.querySelector('.results'),
+    rootWordsArea = document.querySelector('.root-words'),
     combinations = document.querySelector('.combinations');
 
 var progressContainer = document.getElementById("progCon");
@@ -195,6 +196,11 @@ process.onclick = async function (event) {
     results.textContent = 'Requested combinations...';
     progressText.style.visibility = "visible";
 
+    // clean results
+    while (rootWordsArea.firstChild) {
+        rootWordsArea.removeChild(rootWordsArea.firstChild);
+    }
+
     while (combinations.firstChild) {
         combinations.removeChild(combinations.firstChild);
     }
@@ -214,7 +220,8 @@ process.onclick = async function (event) {
         var rootWord = document.createElement('div');
         rootWord.className = 'rootWord'
         rootWord.textContent = rootWords[index];
-        combinations.appendChild(rootWord);
+        rootWordsArea.appendChild(rootWord);
+        // combinations.appendChild(rootWord);
     }
 
     // 3. Find word combinations
