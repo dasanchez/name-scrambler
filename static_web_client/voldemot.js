@@ -221,7 +221,6 @@ process.onclick = async function (event) {
         rootWord.className = 'rootWord'
         rootWord.textContent = rootWords[index];
         rootWordsArea.appendChild(rootWord);
-        // combinations.appendChild(rootWord);
     }
 
     // 3. Find word combinations
@@ -231,7 +230,6 @@ process.onclick = async function (event) {
 
         for (var index = 0; index < oneWordList.length; index++) {
             total += 1;
-            // console.log(oneWordList[index]);
             displayNewMatch(oneWordList[index]);
         }
         progress = 100;
