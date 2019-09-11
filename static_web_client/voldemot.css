@@ -26,8 +26,7 @@ button, input, select, textarea {
 
 header {
     display: flex;
-    height: 14vh;
-    min-height: 110px;
+    height: 112px;
   }
 
 .title-card {
@@ -221,19 +220,21 @@ button {
   }
 
   .main {
-      height: 86vh;
+      height: calc(100vh - 112px);
   }
 
 .results-container {
     background-color: #1b1725;
     border: 1px solid #5f4bb6;
     border-style: solid none solid none;
-    height: 10%;
+    height: 64px;
 }
 
 .results {
     text-align: center;
     color: #eeeeee;
+    font-size: 0.8rem;
+    margin: 5px;
   }
 
 .prog-con {
@@ -267,7 +268,7 @@ button {
 }
 
 .words-returned {
-    height: 90%;
+    height: calc(100% - 64px);
 }
 
 .root-words {
@@ -331,8 +332,7 @@ button {
   
 @media screen and (max-width: 800px) {
     header {
-        min-height: 240px;
-        height: 32vh;
+        height: 240px;
         display: block;
     }
 
@@ -353,7 +353,7 @@ button {
 
     .button-section {
         width: 100%;
-        margin: auto;
+        margin: 0 auto;
         margin-top: 5px;
         text-align: center;
     }
@@ -364,20 +364,7 @@ button {
     } 
 
     .main {
-        height: 68vh;
-    }
-
-    .results {
-        height: auto;
-    }
-
-    .prog-con {
-        margin-top: 2px;
-        height: 1.2rem;
-    }
-
-    .prog-bar {
-        height: 1.2rem;
+        height: calc(100% - 240px);
     }
 
     .root-words {
@@ -391,8 +378,7 @@ button {
 
 @media screen and (max-width: 500px) {
     header {
-        min-height: 190px;
-        height: 25vh;
+        height: 190px;
     }
     
     .input-section {
@@ -429,39 +415,15 @@ button {
         content: "";
     }
 
-    .button-section {
-        margin-top: 5px;
-    }
-
     button {
         font-size: 1.2rem;
-        height: 2rem;
-        width: 90%;
+        height: 2.2rem;
+        width: 100%;
+        border-radius: 0px;
+        border-width: 1px 0px;
     }
 
     .main {
-        height: 75vh;
+        height: calc(100% - 190px);
     }
-
-    .results {
-        font-size: 0.8rem;
-        margin-top: 2px;
-        margin-bottom: 4px;
-        height: auto;
-    }
-
-    .prog-con {
-        margin-top: 2px;
-        height: 35%;
-    }
-
-    .prog-bar {
-        height: 100%;
-    }
-
-    .prog-text {
-        font-size: 0.8rem;
-        top: -1.1rem;
-    }
-
 }
